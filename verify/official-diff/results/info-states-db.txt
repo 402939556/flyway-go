@@ -1,0 +1,10 @@
+WHERE replaced V2 checksum
+installed_rank|version|description|type|script|checksum|success
+1|1|one|SQL|V1__one.sql|1189105721|true
+2|2|two|SQL|V2__two.sql|1714472617|true
+3|3|three|SQL|V3__three.sql|1107467086|true
+4|NULL|rr|SQL|R__rr.sql|1033863754|true
+90|4|future success|SQL|V4__future-success.sql|123|true
+91|5|future failed|SQL|V5__future-failed.sql|456|false
+92|NULL|deleted repeatable|DELETE|R__deleted.sql|NULL|true
+93|2|two|SQL|V2__two.sql|999999|true

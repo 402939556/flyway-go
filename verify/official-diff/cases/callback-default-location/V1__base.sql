@@ -1,0 +1,1 @@
+CREATE TABLE cb_default_base (id INT);

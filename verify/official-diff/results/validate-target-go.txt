@@ -1,0 +1,1 @@
+执行失败: 历史表 flyway_schema_history 不存在，无法校验，请先执行 migrate 或 baseline

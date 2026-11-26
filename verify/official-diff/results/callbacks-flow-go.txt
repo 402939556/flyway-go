@@ -1,0 +1,60 @@
+创建历史表 flyway_schema_history
+数据库已是最新状态，无需执行迁移
+EXIT=0
+
+=== GO MIGRATE (no callback support) ===
+迁移 1（one）...
+  -> 成功，耗时 1 ms
+迁移 2（two）...
+  -> 成功，耗时 1 ms
+迁移完成，共执行 2 个脚本
+EXIT=0
+ cb_events | cf_one | cf_two 
+-----------+--------+--------
+           | cf_one | cf_two
+(1 row)
+
+ installed_rank | version | description | type |   script    | success 
+----------------+---------+-------------+------+-------------+---------
+              1 | 1       | one         | SQL  | V1__one.sql | t
+              2 | 2       | two         | SQL  | V2__two.sql | t
+(2 rows)
+
+
+=== GO CALLBACK FLAG ACCEPTANCE ===
+flag provided but not defined: -callback-locations
+Usage of migrate:
+  -baseline-description string
+    	基线描述 (default "<< Flyway Baseline >>")
+  -baseline-on-migrate
+    	库非空时自动 baseline
+  -baseline-version string
+    	基线版本 (default "1")
+  -clean-disabled
+    	禁用 clean (default true)
+  -driver string
+    	驱动: postgres | mysql
+  -ignore-missing
+    	忽略本地缺失的已应用迁移
+  -ignore-pending
+    	忽略未应用的本地迁移
+  -locations string
+    	迁移脚本目录，逗号分隔 (default ".")
+  -out-of-order
+    	允许执行低版本脚本
+  -table string
+    	历史表名 (default "flyway_schema_history")
+  -target string
+    	迁移目标版本
+  -url string
+    	数据库连接串
+  -validate-on-migrate
+    	迁移前校验 (default true)
+EXIT=2
+clean 完成，清理了 1 个对象
+EXIT=0
+ before_tbl | after_tbl 
+------------+-----------
+            | 
+(1 row)
+

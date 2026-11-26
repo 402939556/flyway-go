@@ -1,0 +1,5 @@
+CREATE TABLE mt_base (id INT);
+
+CREATE TRIGGER mt_trigger
+BEFORE INSERT ON mt_base
+FOR EACH ROW SET NEW.id = 1;

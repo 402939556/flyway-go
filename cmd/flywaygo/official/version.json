@@ -1,0 +1,7 @@
+{
+  "command" : "version",
+  "edition" : null,
+  "permitExpiry" : null,
+  "pluginVersions" : [ ],
+  "version" : "13.13.0"
+}

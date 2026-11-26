@@ -1,0 +1,1004 @@
+Compiled from "MigrationInfoImpl.java"
+public class org.flywaydb.core.internal.info.MigrationInfoImpl implements org.flywaydb.core.api.MigrationInfo {
+  private final org.flywaydb.core.api.resolver.ResolvedMigration resolvedMigration;
+
+  private final org.flywaydb.core.extensibility.AppliedMigration appliedMigration;
+
+  private final org.flywaydb.core.internal.info.MigrationInfoContext context;
+
+  private final boolean outOfOrder;
+
+  private final boolean deleted;
+
+  private final boolean shouldNotExecuteMigration;
+
+  private final boolean undone;
+
+  org.flywaydb.core.internal.info.MigrationInfoImpl(org.flywaydb.core.api.resolver.ResolvedMigration, org.flywaydb.core.extensibility.AppliedMigration, org.flywaydb.core.internal.info.MigrationInfoContext, boolean, boolean, boolean);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #7                  // Field resolvedMigration:Lorg/flywaydb/core/api/resolver/ResolvedMigration;
+       9: aload_0
+      10: aload_2
+      11: putfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+      14: aload_0
+      15: aload_3
+      16: putfield      #17                 // Field context:Lorg/flywaydb/core/internal/info/MigrationInfoContext;
+      19: aload_0
+      20: iload         4
+      22: putfield      #21                 // Field outOfOrder:Z
+      25: aload_0
+      26: iload         5
+      28: putfield      #25                 // Field deleted:Z
+      31: aload_0
+      32: aload_0
+      33: aload_1
+      34: invokevirtual #28                 // Method shouldNotExecuteMigration:(Lorg/flywaydb/core/api/resolver/ResolvedMigration;)Z
+      37: putfield      #32                 // Field shouldNotExecuteMigration:Z
+      40: aload_0
+      41: iload         6
+      43: putfield      #34                 // Field undone:Z
+      46: return
+
+  public org.flywaydb.core.api.resolver.ResolvedMigration getResolvedMigration();
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field resolvedMigration:Lorg/flywaydb/core/api/resolver/ResolvedMigration;
+       4: areturn
+
+  public org.flywaydb.core.extensibility.AppliedMigration getAppliedMigration();
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+       4: areturn
+
+  public org.flywaydb.core.extensibility.MigrationType getType();
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+       4: ifnull        17
+       7: aload_0
+       8: getfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+      11: invokeinterface #37,  1           // InterfaceMethod org/flywaydb/core/extensibility/AppliedMigration.getType:()Lorg/flywaydb/core/extensibility/MigrationType;
+      16: areturn
+      17: aload_0
+      18: getfield      #7                  // Field resolvedMigration:Lorg/flywaydb/core/api/resolver/ResolvedMigration;
+      21: invokeinterface #43,  1           // InterfaceMethod org/flywaydb/core/api/resolver/ResolvedMigration.getType:()Lorg/flywaydb/core/extensibility/MigrationType;
+      26: areturn
+
+  public java.lang.Integer getChecksum();
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+       4: ifnull        17
+       7: aload_0
+       8: getfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+      11: invokeinterface #46,  1           // InterfaceMethod org/flywaydb/core/extensibility/AppliedMigration.getChecksum:()Ljava/lang/Integer;
+      16: areturn
+      17: aload_0
+      18: getfield      #7                  // Field resolvedMigration:Lorg/flywaydb/core/api/resolver/ResolvedMigration;
+      21: invokeinterface #50,  1           // InterfaceMethod org/flywaydb/core/api/resolver/ResolvedMigration.getChecksum:()Ljava/lang/Integer;
+      26: areturn
+
+  public boolean isVersioned();
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+       4: ifnull        17
+       7: aload_0
+       8: getfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+      11: invokeinterface #51,  1           // InterfaceMethod org/flywaydb/core/extensibility/AppliedMigration.isVersioned:()Z
+      16: ireturn
+      17: aload_0
+      18: getfield      #7                  // Field resolvedMigration:Lorg/flywaydb/core/api/resolver/ResolvedMigration;
+      21: invokeinterface #55,  1           // InterfaceMethod org/flywaydb/core/api/resolver/ResolvedMigration.isVersioned:()Z
+      26: ireturn
+
+  public org.flywaydb.core.api.MigrationVersion getVersion();
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+       4: ifnull        17
+       7: aload_0
+       8: getfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+      11: invokeinterface #56,  1           // InterfaceMethod org/flywaydb/core/extensibility/AppliedMigration.getVersion:()Lorg/flywaydb/core/api/MigrationVersion;
+      16: areturn
+      17: aload_0
+      18: getfield      #7                  // Field resolvedMigration:Lorg/flywaydb/core/api/resolver/ResolvedMigration;
+      21: invokeinterface #60,  1           // InterfaceMethod org/flywaydb/core/api/resolver/ResolvedMigration.getVersion:()Lorg/flywaydb/core/api/MigrationVersion;
+      26: areturn
+
+  public java.lang.String getDescription();
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+       4: ifnull        17
+       7: aload_0
+       8: getfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+      11: invokeinterface #61,  1           // InterfaceMethod org/flywaydb/core/extensibility/AppliedMigration.getDescription:()Ljava/lang/String;
+      16: areturn
+      17: aload_0
+      18: getfield      #7                  // Field resolvedMigration:Lorg/flywaydb/core/api/resolver/ResolvedMigration;
+      21: invokeinterface #65,  1           // InterfaceMethod org/flywaydb/core/api/resolver/ResolvedMigration.getDescription:()Ljava/lang/String;
+      26: areturn
+
+  public java.lang.String getScript();
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+       4: ifnull        17
+       7: aload_0
+       8: getfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+      11: invokeinterface #66,  1           // InterfaceMethod org/flywaydb/core/extensibility/AppliedMigration.getScript:()Ljava/lang/String;
+      16: areturn
+      17: aload_0
+      18: getfield      #7                  // Field resolvedMigration:Lorg/flywaydb/core/api/resolver/ResolvedMigration;
+      21: invokeinterface #69,  1           // InterfaceMethod org/flywaydb/core/api/resolver/ResolvedMigration.getScript:()Ljava/lang/String;
+      26: areturn
+
+  public java.lang.String getShouldExecuteExpression();
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field resolvedMigration:Lorg/flywaydb/core/api/resolver/ResolvedMigration;
+       4: ifnull        22
+       7: aload_0
+       8: getfield      #7                  // Field resolvedMigration:Lorg/flywaydb/core/api/resolver/ResolvedMigration;
+      11: invokeinterface #70,  1           // InterfaceMethod org/flywaydb/core/api/resolver/ResolvedMigration.getExecutor:()Lorg/flywaydb/core/api/executor/MigrationExecutor;
+      16: invokeinterface #74,  1           // InterfaceMethod org/flywaydb/core/api/executor/MigrationExecutor.shouldExecuteExpression:()Ljava/lang/String;
+      21: areturn
+      22: aconst_null
+      23: areturn
+
+  public org.flywaydb.core.api.MigrationState getState();
+    Code:
+       0: aload_0
+       1: getfield      #34                 // Field undone:Z
+       4: ifeq          11
+       7: getstatic     #79                 // Field org/flywaydb/core/api/MigrationState.UNDONE:Lorg/flywaydb/core/api/MigrationState;
+      10: areturn
+      11: aload_0
+      12: getfield      #25                 // Field deleted:Z
+      15: ifeq          22
+      18: getstatic     #85                 // Field org/flywaydb/core/api/MigrationState.DELETED:Lorg/flywaydb/core/api/MigrationState;
+      21: areturn
+      22: aload_0
+      23: getfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+      26: ifnonnull     98
+      29: aload_0
+      30: getfield      #17                 // Field context:Lorg/flywaydb/core/internal/info/MigrationInfoContext;
+      33: getfield      #88                 // Field org/flywaydb/core/internal/info/MigrationInfoContext.cherryPickSupport:Lorg/flywaydb/core/extensibility/CherryPickSupport;
+      36: aload_0
+      37: getfield      #17                 // Field context:Lorg/flywaydb/core/internal/info/MigrationInfoContext;
+      40: getfield      #94                 // Field org/flywaydb/core/internal/info/MigrationInfoContext.cherryPick:[Lorg/flywaydb/core/api/MigrationPattern;
+      43: aload_0
+      44: getfield      #7                  // Field resolvedMigration:Lorg/flywaydb/core/api/resolver/ResolvedMigration;
+      47: invokeinterface #60,  1           // InterfaceMethod org/flywaydb/core/api/resolver/ResolvedMigration.getVersion:()Lorg/flywaydb/core/api/MigrationVersion;
+      52: aload_0
+      53: getfield      #7                  // Field resolvedMigration:Lorg/flywaydb/core/api/resolver/ResolvedMigration;
+      56: invokeinterface #65,  1           // InterfaceMethod org/flywaydb/core/api/resolver/ResolvedMigration.getDescription:()Ljava/lang/String;
+      61: invokeinterface #98,  4           // InterfaceMethod org/flywaydb/core/extensibility/CherryPickSupport.getStateOverride:([Lorg/flywaydb/core/api/MigrationPattern;Lorg/flywaydb/core/api/MigrationVersion;Ljava/lang/String;)Lorg/flywaydb/core/api/MigrationState;
+      66: astore_1
+      67: aload_1
+      68: ifnull        73
+      71: aload_1
+      72: areturn
+      73: aload_0
+      74: getfield      #32                 // Field shouldNotExecuteMigration:Z
+      77: ifeq          84
+      80: getstatic     #104                // Field org/flywaydb/core/api/MigrationState.IGNORED:Lorg/flywaydb/core/api/MigrationState;
+      83: areturn
+      84: aload_0
+      85: getfield      #7                  // Field resolvedMigration:Lorg/flywaydb/core/api/resolver/ResolvedMigration;
+      88: aload_0
+      89: getfield      #17                 // Field context:Lorg/flywaydb/core/internal/info/MigrationInfoContext;
+      92: invokeinterface #107,  2          // InterfaceMethod org/flywaydb/core/api/resolver/ResolvedMigration.getState:(Lorg/flywaydb/core/internal/info/MigrationInfoContext;)Lorg/flywaydb/core/api/MigrationState;
+      97: areturn
+      98: aload_0
+      99: getfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+     102: aload_0
+     103: getfield      #17                 // Field context:Lorg/flywaydb/core/internal/info/MigrationInfoContext;
+     106: aload_0
+     107: getfield      #21                 // Field outOfOrder:Z
+     110: aload_0
+     111: getfield      #7                  // Field resolvedMigration:Lorg/flywaydb/core/api/resolver/ResolvedMigration;
+     114: invokeinterface #111,  4          // InterfaceMethod org/flywaydb/core/extensibility/AppliedMigration.getState:(Lorg/flywaydb/core/internal/info/MigrationInfoContext;ZLorg/flywaydb/core/api/resolver/ResolvedMigration;)Lorg/flywaydb/core/api/MigrationState;
+     119: areturn
+
+  public java.util.Date getInstalledOn();
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+       4: ifnull        17
+       7: aload_0
+       8: getfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+      11: invokeinterface #114,  1          // InterfaceMethod org/flywaydb/core/extensibility/AppliedMigration.getInstalledOn:()Ljava/util/Date;
+      16: areturn
+      17: aconst_null
+      18: areturn
+
+  public java.lang.String getInstalledBy();
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+       4: ifnull        17
+       7: aload_0
+       8: getfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+      11: invokeinterface #118,  1          // InterfaceMethod org/flywaydb/core/extensibility/AppliedMigration.getInstalledBy:()Ljava/lang/String;
+      16: areturn
+      17: aconst_null
+      18: areturn
+
+  public java.lang.Integer getInstalledRank();
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+       4: ifnull        20
+       7: aload_0
+       8: getfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+      11: invokeinterface #121,  1          // InterfaceMethod org/flywaydb/core/extensibility/AppliedMigration.getInstalledRank:()I
+      16: invokestatic  #125                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      19: areturn
+      20: aconst_null
+      21: areturn
+
+  public java.lang.Integer getExecutionTime();
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+       4: ifnull        20
+       7: aload_0
+       8: getfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+      11: invokeinterface #131,  1          // InterfaceMethod org/flywaydb/core/extensibility/AppliedMigration.getExecutionTime:()I
+      16: invokestatic  #125                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      19: areturn
+      20: aconst_null
+      21: areturn
+
+  public java.lang.String getPhysicalLocation();
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field resolvedMigration:Lorg/flywaydb/core/api/resolver/ResolvedMigration;
+       4: ifnull        17
+       7: aload_0
+       8: getfield      #7                  // Field resolvedMigration:Lorg/flywaydb/core/api/resolver/ResolvedMigration;
+      11: invokeinterface #134,  1          // InterfaceMethod org/flywaydb/core/api/resolver/ResolvedMigration.getPhysicalLocation:()Ljava/lang/String;
+      16: areturn
+      17: ldc           #137                // String
+      19: areturn
+
+  public org.flywaydb.core.api.ErrorDetails validate();
+    Code:
+       0: aload_0
+       1: invokevirtual #139                // Method getState:()Lorg/flywaydb/core/api/MigrationState;
+       4: astore_1
+       5: getstatic     #79                 // Field org/flywaydb/core/api/MigrationState.UNDONE:Lorg/flywaydb/core/api/MigrationState;
+       8: aload_1
+       9: invokevirtual #142                // Method org/flywaydb/core/api/MigrationState.equals:(Ljava/lang/Object;)Z
+      12: ifeq          17
+      15: aconst_null
+      16: areturn
+      17: getstatic     #146                // Field org/flywaydb/core/api/MigrationState.ABOVE_TARGET:Lorg/flywaydb/core/api/MigrationState;
+      20: aload_1
+      21: invokevirtual #142                // Method org/flywaydb/core/api/MigrationState.equals:(Ljava/lang/Object;)Z
+      24: ifeq          29
+      27: aconst_null
+      28: areturn
+      29: getstatic     #85                 // Field org/flywaydb/core/api/MigrationState.DELETED:Lorg/flywaydb/core/api/MigrationState;
+      32: aload_1
+      33: invokevirtual #142                // Method org/flywaydb/core/api/MigrationState.equals:(Ljava/lang/Object;)Z
+      36: ifeq          41
+      39: aconst_null
+      40: areturn
+      41: aload_0
+      42: getfield      #17                 // Field context:Lorg/flywaydb/core/internal/info/MigrationInfoContext;
+      45: getfield      #149                // Field org/flywaydb/core/internal/info/MigrationInfoContext.ignorePatterns:[Lorg/flywaydb/core/api/pattern/ValidatePattern;
+      48: invokestatic  #153                // Method java/util/Arrays.stream:([Ljava/lang/Object;)Ljava/util/stream/Stream;
+      51: aload_0
+      52: aload_1
+      53: invokedynamic #159,  0            // InvokeDynamic #0:test:(Lorg/flywaydb/core/internal/info/MigrationInfoImpl;Lorg/flywaydb/core/api/MigrationState;)Ljava/util/function/Predicate;
+      58: invokeinterface #163,  2          // InterfaceMethod java/util/stream/Stream.anyMatch:(Ljava/util/function/Predicate;)Z
+      63: ifeq          68
+      66: aconst_null
+      67: areturn
+      68: aload_1
+      69: invokevirtual #169                // Method org/flywaydb/core/api/MigrationState.isFailed:()Z
+      72: ifeq          150
+      75: aload_0
+      76: getfield      #17                 // Field context:Lorg/flywaydb/core/internal/info/MigrationInfoContext;
+      79: invokevirtual #172                // Method org/flywaydb/core/internal/info/MigrationInfoContext.isFutureIgnored:()Z
+      82: ifeq          92
+      85: getstatic     #175                // Field org/flywaydb/core/api/MigrationState.FUTURE_FAILED:Lorg/flywaydb/core/api/MigrationState;
+      88: aload_1
+      89: if_acmpeq     150
+      92: aload_0
+      93: invokevirtual #178                // Method getVersion:()Lorg/flywaydb/core/api/MigrationVersion;
+      96: ifnonnull     121
+      99: aload_0
+     100: invokevirtual #179                // Method getDescription:()Ljava/lang/String;
+     103: invokedynamic #180,  0            // InvokeDynamic #1:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     108: astore_2
+     109: new           #184                // class org/flywaydb/core/api/ErrorDetails
+     112: dup
+     113: getstatic     #186                // Field org/flywaydb/core/api/CoreErrorCode.FAILED_REPEATABLE_MIGRATION:Lorg/flywaydb/core/api/CoreErrorCode;
+     116: aload_2
+     117: invokespecial #192                // Method org/flywaydb/core/api/ErrorDetails."<init>":(Lorg/flywaydb/core/api/ErrorCode;Ljava/lang/String;)V
+     120: areturn
+     121: aload_0
+     122: invokevirtual #178                // Method getVersion:()Lorg/flywaydb/core/api/MigrationVersion;
+     125: invokestatic  #195                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     128: aload_0
+     129: invokevirtual #179                // Method getDescription:()Ljava/lang/String;
+     132: invokedynamic #200,  0            // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     137: astore_2
+     138: new           #184                // class org/flywaydb/core/api/ErrorDetails
+     141: dup
+     142: getstatic     #203                // Field org/flywaydb/core/api/CoreErrorCode.FAILED_VERSIONED_MIGRATION:Lorg/flywaydb/core/api/CoreErrorCode;
+     145: aload_2
+     146: invokespecial #192                // Method org/flywaydb/core/api/ErrorDetails."<init>":(Lorg/flywaydb/core/api/ErrorCode;Ljava/lang/String;)V
+     149: areturn
+     150: aload_0
+     151: getfield      #17                 // Field context:Lorg/flywaydb/core/internal/info/MigrationInfoContext;
+     154: getfield      #88                 // Field org/flywaydb/core/internal/info/MigrationInfoContext.cherryPickSupport:Lorg/flywaydb/core/extensibility/CherryPickSupport;
+     157: aload_0
+     158: getfield      #17                 // Field context:Lorg/flywaydb/core/internal/info/MigrationInfoContext;
+     161: getfield      #94                 // Field org/flywaydb/core/internal/info/MigrationInfoContext.cherryPick:[Lorg/flywaydb/core/api/MigrationPattern;
+     164: aload_0
+     165: invokevirtual #178                // Method getVersion:()Lorg/flywaydb/core/api/MigrationVersion;
+     168: aload_0
+     169: invokevirtual #179                // Method getDescription:()Ljava/lang/String;
+     172: invokeinterface #206,  4          // InterfaceMethod org/flywaydb/core/extensibility/CherryPickSupport.shouldSkipValidation:([Lorg/flywaydb/core/api/MigrationPattern;Lorg/flywaydb/core/api/MigrationVersion;Ljava/lang/String;)Z
+     177: ifeq          182
+     180: aconst_null
+     181: areturn
+     182: aload_0
+     183: getfield      #7                  // Field resolvedMigration:Lorg/flywaydb/core/api/resolver/ResolvedMigration;
+     186: ifnonnull     337
+     189: aload_0
+     190: getfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+     193: invokeinterface #37,  1           // InterfaceMethod org/flywaydb/core/extensibility/AppliedMigration.getType:()Lorg/flywaydb/core/extensibility/MigrationType;
+     198: invokeinterface #210,  1          // InterfaceMethod org/flywaydb/core/extensibility/MigrationType.isSynthetic:()Z
+     203: ifne          337
+     206: aload_0
+     207: getfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+     210: invokeinterface #37,  1           // InterfaceMethod org/flywaydb/core/extensibility/AppliedMigration.getType:()Lorg/flywaydb/core/extensibility/MigrationType;
+     215: invokeinterface #215,  1          // InterfaceMethod org/flywaydb/core/extensibility/MigrationType.isUndo:()Z
+     220: ifne          337
+     223: getstatic     #218                // Field org/flywaydb/core/api/MigrationState.SUPERSEDED:Lorg/flywaydb/core/api/MigrationState;
+     226: aload_1
+     227: if_acmpeq     337
+     230: aload_0
+     231: getfield      #17                 // Field context:Lorg/flywaydb/core/internal/info/MigrationInfoContext;
+     234: invokevirtual #221                // Method org/flywaydb/core/internal/info/MigrationInfoContext.isMissingIgnored:()Z
+     237: ifeq          254
+     240: getstatic     #224                // Field org/flywaydb/core/api/MigrationState.MISSING_SUCCESS:Lorg/flywaydb/core/api/MigrationState;
+     243: aload_1
+     244: if_acmpeq     337
+     247: getstatic     #227                // Field org/flywaydb/core/api/MigrationState.MISSING_FAILED:Lorg/flywaydb/core/api/MigrationState;
+     250: aload_1
+     251: if_acmpeq     337
+     254: aload_0
+     255: getfield      #17                 // Field context:Lorg/flywaydb/core/internal/info/MigrationInfoContext;
+     258: invokevirtual #172                // Method org/flywaydb/core/internal/info/MigrationInfoContext.isFutureIgnored:()Z
+     261: ifeq          278
+     264: getstatic     #230                // Field org/flywaydb/core/api/MigrationState.FUTURE_SUCCESS:Lorg/flywaydb/core/api/MigrationState;
+     267: aload_1
+     268: if_acmpeq     337
+     271: getstatic     #175                // Field org/flywaydb/core/api/MigrationState.FUTURE_FAILED:Lorg/flywaydb/core/api/MigrationState;
+     274: aload_1
+     275: if_acmpeq     337
+     278: aload_0
+     279: getfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+     282: invokeinterface #56,  1           // InterfaceMethod org/flywaydb/core/extensibility/AppliedMigration.getVersion:()Lorg/flywaydb/core/api/MigrationVersion;
+     287: ifnull        315
+     290: aload_0
+     291: invokevirtual #178                // Method getVersion:()Lorg/flywaydb/core/api/MigrationVersion;
+     294: invokestatic  #195                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     297: invokedynamic #233,  0            // InvokeDynamic #3:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     302: astore_2
+     303: new           #184                // class org/flywaydb/core/api/ErrorDetails
+     306: dup
+     307: getstatic     #234                // Field org/flywaydb/core/api/CoreErrorCode.APPLIED_VERSIONED_MIGRATION_NOT_RESOLVED:Lorg/flywaydb/core/api/CoreErrorCode;
+     310: aload_2
+     311: invokespecial #192                // Method org/flywaydb/core/api/ErrorDetails."<init>":(Lorg/flywaydb/core/api/ErrorCode;Ljava/lang/String;)V
+     314: areturn
+     315: aload_0
+     316: invokevirtual #179                // Method getDescription:()Ljava/lang/String;
+     319: invokedynamic #233,  0            // InvokeDynamic #3:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     324: astore_2
+     325: new           #184                // class org/flywaydb/core/api/ErrorDetails
+     328: dup
+     329: getstatic     #237                // Field org/flywaydb/core/api/CoreErrorCode.APPLIED_REPEATABLE_MIGRATION_NOT_RESOLVED:Lorg/flywaydb/core/api/CoreErrorCode;
+     332: aload_2
+     333: invokespecial #192                // Method org/flywaydb/core/api/ErrorDetails."<init>":(Lorg/flywaydb/core/api/ErrorCode;Ljava/lang/String;)V
+     336: areturn
+     337: aload_0
+     338: getfield      #17                 // Field context:Lorg/flywaydb/core/internal/info/MigrationInfoContext;
+     341: invokevirtual #240                // Method org/flywaydb/core/internal/info/MigrationInfoContext.isIgnoredIgnored:()Z
+     344: ifne          451
+     347: getstatic     #104                // Field org/flywaydb/core/api/MigrationState.IGNORED:Lorg/flywaydb/core/api/MigrationState;
+     350: aload_1
+     351: if_acmpne     451
+     354: aload_0
+     355: getfield      #7                  // Field resolvedMigration:Lorg/flywaydb/core/api/resolver/ResolvedMigration;
+     358: invokeinterface #43,  1           // InterfaceMethod org/flywaydb/core/api/resolver/ResolvedMigration.getType:()Lorg/flywaydb/core/extensibility/MigrationType;
+     363: invokeinterface #243,  1          // InterfaceMethod org/flywaydb/core/extensibility/MigrationType.isBaseline:()Z
+     368: ifne          451
+     371: aload_0
+     372: getfield      #7                  // Field resolvedMigration:Lorg/flywaydb/core/api/resolver/ResolvedMigration;
+     375: invokeinterface #43,  1           // InterfaceMethod org/flywaydb/core/api/resolver/ResolvedMigration.getType:()Lorg/flywaydb/core/extensibility/MigrationType;
+     380: invokeinterface #215,  1          // InterfaceMethod org/flywaydb/core/extensibility/MigrationType.isUndo:()Z
+     385: ifne          451
+     388: aload_0
+     389: getfield      #32                 // Field shouldNotExecuteMigration:Z
+     392: ifeq          397
+     395: aconst_null
+     396: areturn
+     397: aload_0
+     398: invokevirtual #178                // Method getVersion:()Lorg/flywaydb/core/api/MigrationVersion;
+     401: ifnull        429
+     404: aload_0
+     405: invokevirtual #178                // Method getVersion:()Lorg/flywaydb/core/api/MigrationVersion;
+     408: invokestatic  #195                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     411: invokedynamic #246,  0            // InvokeDynamic #4:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     416: astore_2
+     417: new           #184                // class org/flywaydb/core/api/ErrorDetails
+     420: dup
+     421: getstatic     #247                // Field org/flywaydb/core/api/CoreErrorCode.RESOLVED_VERSIONED_MIGRATION_NOT_APPLIED:Lorg/flywaydb/core/api/CoreErrorCode;
+     424: aload_2
+     425: invokespecial #192                // Method org/flywaydb/core/api/ErrorDetails."<init>":(Lorg/flywaydb/core/api/ErrorCode;Ljava/lang/String;)V
+     428: areturn
+     429: aload_0
+     430: invokevirtual #179                // Method getDescription:()Ljava/lang/String;
+     433: invokedynamic #250,  0            // InvokeDynamic #5:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     438: astore_2
+     439: new           #184                // class org/flywaydb/core/api/ErrorDetails
+     442: dup
+     443: getstatic     #251                // Field org/flywaydb/core/api/CoreErrorCode.RESOLVED_REPEATABLE_MIGRATION_NOT_APPLIED:Lorg/flywaydb/core/api/CoreErrorCode;
+     446: aload_2
+     447: invokespecial #192                // Method org/flywaydb/core/api/ErrorDetails."<init>":(Lorg/flywaydb/core/api/ErrorCode;Ljava/lang/String;)V
+     450: areturn
+     451: aload_0
+     452: getfield      #17                 // Field context:Lorg/flywaydb/core/internal/info/MigrationInfoContext;
+     455: invokevirtual #254                // Method org/flywaydb/core/internal/info/MigrationInfoContext.isPendingIgnored:()Z
+     458: ifne          522
+     461: getstatic     #257                // Field org/flywaydb/core/api/MigrationState.PENDING:Lorg/flywaydb/core/api/MigrationState;
+     464: aload_1
+     465: if_acmpne     522
+     468: aload_0
+     469: invokevirtual #178                // Method getVersion:()Lorg/flywaydb/core/api/MigrationVersion;
+     472: ifnull        500
+     475: aload_0
+     476: invokevirtual #178                // Method getVersion:()Lorg/flywaydb/core/api/MigrationVersion;
+     479: invokestatic  #195                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     482: invokedynamic #260,  0            // InvokeDynamic #6:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     487: astore_2
+     488: new           #184                // class org/flywaydb/core/api/ErrorDetails
+     491: dup
+     492: getstatic     #247                // Field org/flywaydb/core/api/CoreErrorCode.RESOLVED_VERSIONED_MIGRATION_NOT_APPLIED:Lorg/flywaydb/core/api/CoreErrorCode;
+     495: aload_2
+     496: invokespecial #192                // Method org/flywaydb/core/api/ErrorDetails."<init>":(Lorg/flywaydb/core/api/ErrorCode;Ljava/lang/String;)V
+     499: areturn
+     500: aload_0
+     501: invokevirtual #179                // Method getDescription:()Ljava/lang/String;
+     504: invokedynamic #261,  0            // InvokeDynamic #7:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     509: astore_2
+     510: new           #184                // class org/flywaydb/core/api/ErrorDetails
+     513: dup
+     514: getstatic     #251                // Field org/flywaydb/core/api/CoreErrorCode.RESOLVED_REPEATABLE_MIGRATION_NOT_APPLIED:Lorg/flywaydb/core/api/CoreErrorCode;
+     517: aload_2
+     518: invokespecial #192                // Method org/flywaydb/core/api/ErrorDetails."<init>":(Lorg/flywaydb/core/api/ErrorCode;Ljava/lang/String;)V
+     521: areturn
+     522: aload_0
+     523: getfield      #17                 // Field context:Lorg/flywaydb/core/internal/info/MigrationInfoContext;
+     526: invokevirtual #254                // Method org/flywaydb/core/internal/info/MigrationInfoContext.isPendingIgnored:()Z
+     529: ifne          561
+     532: getstatic     #262                // Field org/flywaydb/core/api/MigrationState.OUTDATED:Lorg/flywaydb/core/api/MigrationState;
+     535: aload_1
+     536: if_acmpne     561
+     539: aload_0
+     540: invokevirtual #179                // Method getDescription:()Ljava/lang/String;
+     543: invokedynamic #265,  0            // InvokeDynamic #8:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     548: astore_2
+     549: new           #184                // class org/flywaydb/core/api/ErrorDetails
+     552: dup
+     553: getstatic     #266                // Field org/flywaydb/core/api/CoreErrorCode.OUTDATED_REPEATABLE_MIGRATION:Lorg/flywaydb/core/api/CoreErrorCode;
+     556: aload_2
+     557: invokespecial #192                // Method org/flywaydb/core/api/ErrorDetails."<init>":(Lorg/flywaydb/core/api/ErrorCode;Ljava/lang/String;)V
+     560: areturn
+     561: aload_0
+     562: getfield      #7                  // Field resolvedMigration:Lorg/flywaydb/core/api/resolver/ResolvedMigration;
+     565: ifnull        859
+     568: aload_0
+     569: getfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+     572: ifnull        859
+     575: aload_0
+     576: invokevirtual #269                // Method getType:()Lorg/flywaydb/core/extensibility/MigrationType;
+     579: getstatic     #270                // Field org/flywaydb/core/api/CoreMigrationType.DELETE:Lorg/flywaydb/core/api/CoreMigrationType;
+     582: if_acmpeq     859
+     585: aload_0
+     586: invokevirtual #269                // Method getType:()Lorg/flywaydb/core/extensibility/MigrationType;
+     589: invokeinterface #215,  1          // InterfaceMethod org/flywaydb/core/extensibility/MigrationType.isUndo:()Z
+     594: ifne          859
+     597: aload_0
+     598: getfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+     601: invokeinterface #56,  1           // InterfaceMethod org/flywaydb/core/extensibility/AppliedMigration.getVersion:()Lorg/flywaydb/core/api/MigrationVersion;
+     606: ifnonnull     621
+     609: aload_0
+     610: getfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+     613: invokeinterface #66,  1           // InterfaceMethod org/flywaydb/core/extensibility/AppliedMigration.getScript:()Ljava/lang/String;
+     618: goto          638
+     621: aload_0
+     622: getfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+     625: invokeinterface #56,  1           // InterfaceMethod org/flywaydb/core/extensibility/AppliedMigration.getVersion:()Lorg/flywaydb/core/api/MigrationVersion;
+     630: invokestatic  #195                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     633: invokedynamic #276,  0            // InvokeDynamic #9:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     638: astore_2
+     639: aload_0
+     640: invokevirtual #178                // Method getVersion:()Lorg/flywaydb/core/api/MigrationVersion;
+     643: ifnull        663
+     646: aload_0
+     647: invokevirtual #178                // Method getVersion:()Lorg/flywaydb/core/api/MigrationVersion;
+     650: aload_0
+     651: getfield      #17                 // Field context:Lorg/flywaydb/core/internal/info/MigrationInfoContext;
+     654: getfield      #277                // Field org/flywaydb/core/internal/info/MigrationInfoContext.appliedBaseline:Lorg/flywaydb/core/api/MigrationVersion;
+     657: invokevirtual #281                // Method org/flywaydb/core/api/MigrationVersion.compareTo:(Lorg/flywaydb/core/api/MigrationVersion;)I
+     660: ifle          859
+     663: aload_0
+     664: getfield      #7                  // Field resolvedMigration:Lorg/flywaydb/core/api/resolver/ResolvedMigration;
+     667: invokeinterface #43,  1           // InterfaceMethod org/flywaydb/core/api/resolver/ResolvedMigration.getType:()Lorg/flywaydb/core/extensibility/MigrationType;
+     672: aload_0
+     673: getfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+     676: invokeinterface #37,  1           // InterfaceMethod org/flywaydb/core/extensibility/AppliedMigration.getType:()Lorg/flywaydb/core/extensibility/MigrationType;
+     681: if_acmpeq     723
+     684: aload_0
+     685: ldc_w         #287                // String type
+     688: aload_2
+     689: aload_0
+     690: getfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+     693: invokeinterface #37,  1           // InterfaceMethod org/flywaydb/core/extensibility/AppliedMigration.getType:()Lorg/flywaydb/core/extensibility/MigrationType;
+     698: aload_0
+     699: getfield      #7                  // Field resolvedMigration:Lorg/flywaydb/core/api/resolver/ResolvedMigration;
+     702: invokeinterface #43,  1           // InterfaceMethod org/flywaydb/core/api/resolver/ResolvedMigration.getType:()Lorg/flywaydb/core/extensibility/MigrationType;
+     707: invokevirtual #289                // Method createMismatchMessage:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/String;
+     710: astore_3
+     711: new           #184                // class org/flywaydb/core/api/ErrorDetails
+     714: dup
+     715: getstatic     #293                // Field org/flywaydb/core/api/CoreErrorCode.TYPE_MISMATCH:Lorg/flywaydb/core/api/CoreErrorCode;
+     718: aload_3
+     719: invokespecial #192                // Method org/flywaydb/core/api/ErrorDetails."<init>":(Lorg/flywaydb/core/api/ErrorCode;Ljava/lang/String;)V
+     722: areturn
+     723: aload_0
+     724: getfield      #7                  // Field resolvedMigration:Lorg/flywaydb/core/api/resolver/ResolvedMigration;
+     727: invokeinterface #60,  1           // InterfaceMethod org/flywaydb/core/api/resolver/ResolvedMigration.getVersion:()Lorg/flywaydb/core/api/MigrationVersion;
+     732: ifnonnull     759
+     735: aload_0
+     736: getfield      #17                 // Field context:Lorg/flywaydb/core/internal/info/MigrationInfoContext;
+     739: invokevirtual #254                // Method org/flywaydb/core/internal/info/MigrationInfoContext.isPendingIgnored:()Z
+     742: ifeq          805
+     745: getstatic     #262                // Field org/flywaydb/core/api/MigrationState.OUTDATED:Lorg/flywaydb/core/api/MigrationState;
+     748: aload_1
+     749: if_acmpeq     805
+     752: getstatic     #218                // Field org/flywaydb/core/api/MigrationState.SUPERSEDED:Lorg/flywaydb/core/api/MigrationState;
+     755: aload_1
+     756: if_acmpeq     805
+     759: aload_0
+     760: invokevirtual #296                // Method isChecksumMatching:()Z
+     763: ifne          805
+     766: aload_0
+     767: ldc_w         #299                // String checksum
+     770: aload_2
+     771: aload_0
+     772: getfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+     775: invokeinterface #46,  1           // InterfaceMethod org/flywaydb/core/extensibility/AppliedMigration.getChecksum:()Ljava/lang/Integer;
+     780: aload_0
+     781: getfield      #7                  // Field resolvedMigration:Lorg/flywaydb/core/api/resolver/ResolvedMigration;
+     784: invokeinterface #50,  1           // InterfaceMethod org/flywaydb/core/api/resolver/ResolvedMigration.getChecksum:()Ljava/lang/Integer;
+     789: invokevirtual #289                // Method createMismatchMessage:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/String;
+     792: astore_3
+     793: new           #184                // class org/flywaydb/core/api/ErrorDetails
+     796: dup
+     797: getstatic     #301                // Field org/flywaydb/core/api/CoreErrorCode.CHECKSUM_MISMATCH:Lorg/flywaydb/core/api/CoreErrorCode;
+     800: aload_3
+     801: invokespecial #192                // Method org/flywaydb/core/api/ErrorDetails."<init>":(Lorg/flywaydb/core/api/ErrorCode;Ljava/lang/String;)V
+     804: areturn
+     805: aload_0
+     806: aload_0
+     807: getfield      #7                  // Field resolvedMigration:Lorg/flywaydb/core/api/resolver/ResolvedMigration;
+     810: aload_0
+     811: getfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+     814: invokevirtual #304                // Method descriptionMismatch:(Lorg/flywaydb/core/api/resolver/ResolvedMigration;Lorg/flywaydb/core/extensibility/AppliedMigration;)Z
+     817: ifeq          859
+     820: aload_0
+     821: ldc_w         #308                // String description
+     824: aload_2
+     825: aload_0
+     826: getfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+     829: invokeinterface #61,  1           // InterfaceMethod org/flywaydb/core/extensibility/AppliedMigration.getDescription:()Ljava/lang/String;
+     834: aload_0
+     835: getfield      #7                  // Field resolvedMigration:Lorg/flywaydb/core/api/resolver/ResolvedMigration;
+     838: invokeinterface #65,  1           // InterfaceMethod org/flywaydb/core/api/resolver/ResolvedMigration.getDescription:()Ljava/lang/String;
+     843: invokevirtual #289                // Method createMismatchMessage:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/String;
+     846: astore_3
+     847: new           #184                // class org/flywaydb/core/api/ErrorDetails
+     850: dup
+     851: getstatic     #310                // Field org/flywaydb/core/api/CoreErrorCode.DESCRIPTION_MISMATCH:Lorg/flywaydb/core/api/CoreErrorCode;
+     854: aload_3
+     855: invokespecial #192                // Method org/flywaydb/core/api/ErrorDetails."<init>":(Lorg/flywaydb/core/api/ErrorCode;Ljava/lang/String;)V
+     858: areturn
+     859: aload_0
+     860: getfield      #17                 // Field context:Lorg/flywaydb/core/internal/info/MigrationInfoContext;
+     863: invokevirtual #254                // Method org/flywaydb/core/internal/info/MigrationInfoContext.isPendingIgnored:()Z
+     866: ifne          896
+     869: getstatic     #257                // Field org/flywaydb/core/api/MigrationState.PENDING:Lorg/flywaydb/core/api/MigrationState;
+     872: aload_1
+     873: if_acmpne     896
+     876: aload_0
+     877: getfield      #7                  // Field resolvedMigration:Lorg/flywaydb/core/api/resolver/ResolvedMigration;
+     880: instanceof    #313                // class org/flywaydb/core/internal/resolver/ResolvedMigrationImpl
+     883: ifeq          896
+     886: aload_0
+     887: getfield      #7                  // Field resolvedMigration:Lorg/flywaydb/core/api/resolver/ResolvedMigration;
+     890: checkcast     #313                // class org/flywaydb/core/internal/resolver/ResolvedMigrationImpl
+     893: invokevirtual #315                // Method org/flywaydb/core/internal/resolver/ResolvedMigrationImpl.validate:()V
+     896: aconst_null
+     897: areturn
+
+  private boolean shouldNotExecuteMigration(org.flywaydb.core.api.resolver.ResolvedMigration);
+    Code:
+       0: aload_1
+       1: ifnull        31
+       4: aload_1
+       5: invokeinterface #70,  1           // InterfaceMethod org/flywaydb/core/api/resolver/ResolvedMigration.getExecutor:()Lorg/flywaydb/core/api/executor/MigrationExecutor;
+      10: ifnull        31
+      13: aload_1
+      14: invokeinterface #70,  1           // InterfaceMethod org/flywaydb/core/api/resolver/ResolvedMigration.getExecutor:()Lorg/flywaydb/core/api/executor/MigrationExecutor;
+      19: invokeinterface #318,  1          // InterfaceMethod org/flywaydb/core/api/executor/MigrationExecutor.shouldExecute:()Z
+      24: ifne          31
+      27: iconst_1
+      28: goto          32
+      31: iconst_0
+      32: ireturn
+
+  private boolean descriptionMismatch(org.flywaydb.core.api.resolver.ResolvedMigration, org.flywaydb.core.extensibility.AppliedMigration);
+    Code:
+       0: ldc_w         #323                // String << no description >>
+       3: aload_2
+       4: invokeinterface #61,  1           // InterfaceMethod org/flywaydb/core/extensibility/AppliedMigration.getDescription:()Ljava/lang/String;
+       9: invokevirtual #325                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      12: ifeq          35
+      15: ldc           #137                // String
+      17: aload_1
+      18: invokeinterface #65,  1           // InterfaceMethod org/flywaydb/core/api/resolver/ResolvedMigration.getDescription:()Ljava/lang/String;
+      23: invokevirtual #325                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      26: ifne          33
+      29: iconst_1
+      30: goto          34
+      33: iconst_0
+      34: ireturn
+      35: aload_1
+      36: invokeinterface #65,  1           // InterfaceMethod org/flywaydb/core/api/resolver/ResolvedMigration.getDescription:()Ljava/lang/String;
+      41: invokestatic  #326                // Method org/flywaydb/core/internal/util/AbbreviationUtils.abbreviateDescription:(Ljava/lang/String;)Ljava/lang/String;
+      44: aload_2
+      45: invokeinterface #61,  1           // InterfaceMethod org/flywaydb/core/extensibility/AppliedMigration.getDescription:()Ljava/lang/String;
+      50: invokevirtual #325                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      53: ifne          60
+      56: iconst_1
+      57: goto          61
+      60: iconst_0
+      61: ireturn
+
+  private java.lang.String createMismatchMessage(java.lang.String, java.lang.String, java.lang.Object, java.lang.Object);
+    Code:
+       0: aload_1
+       1: invokedynamic #331,  0            // InvokeDynamic #10:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       6: iconst_3
+       7: anewarray     #2                  // class java/lang/Object
+      10: dup
+      11: iconst_0
+      12: aload_2
+      13: aastore
+      14: dup
+      15: iconst_1
+      16: aload_3
+      17: aastore
+      18: dup
+      19: iconst_2
+      20: aload         4
+      22: aastore
+      23: invokestatic  #332                // Method java/lang/String.format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+      26: areturn
+
+  public boolean canExecuteInTransaction();
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field resolvedMigration:Lorg/flywaydb/core/api/resolver/ResolvedMigration;
+       4: ifnull        28
+       7: aload_0
+       8: getfield      #7                  // Field resolvedMigration:Lorg/flywaydb/core/api/resolver/ResolvedMigration;
+      11: invokeinterface #70,  1           // InterfaceMethod org/flywaydb/core/api/resolver/ResolvedMigration.getExecutor:()Lorg/flywaydb/core/api/executor/MigrationExecutor;
+      16: invokeinterface #336,  1          // InterfaceMethod org/flywaydb/core/api/executor/MigrationExecutor.canExecuteInTransaction:()Z
+      21: ifeq          28
+      24: iconst_1
+      25: goto          29
+      28: iconst_0
+      29: ireturn
+
+  public int compareTo(org.flywaydb.core.api.MigrationInfo);
+    Code:
+       0: aload_0
+       1: getfield      #17                 // Field context:Lorg/flywaydb/core/internal/info/MigrationInfoContext;
+       4: getfield      #88                 // Field org/flywaydb/core/internal/info/MigrationInfoContext.cherryPickSupport:Lorg/flywaydb/core/extensibility/CherryPickSupport;
+       7: aload_0
+       8: getfield      #17                 // Field context:Lorg/flywaydb/core/internal/info/MigrationInfoContext;
+      11: getfield      #94                 // Field org/flywaydb/core/internal/info/MigrationInfoContext.cherryPick:[Lorg/flywaydb/core/api/MigrationPattern;
+      14: aload_0
+      15: aload_1
+      16: invokeinterface #339,  4          // InterfaceMethod org/flywaydb/core/extensibility/CherryPickSupport.compareByPickOrder:([Lorg/flywaydb/core/api/MigrationPattern;Lorg/flywaydb/core/api/MigrationInfo;Lorg/flywaydb/core/api/MigrationInfo;)Ljava/util/OptionalInt;
+      21: astore_2
+      22: aload_2
+      23: invokevirtual #343                // Method java/util/OptionalInt.isPresent:()Z
+      26: ifeq          34
+      29: aload_2
+      30: invokevirtual #348                // Method java/util/OptionalInt.getAsInt:()I
+      33: ireturn
+      34: aload_0
+      35: invokevirtual #351                // Method getInstalledRank:()Ljava/lang/Integer;
+      38: ifnull        64
+      41: aload_1
+      42: invokeinterface #353,  1          // InterfaceMethod org/flywaydb/core/api/MigrationInfo.getInstalledRank:()Ljava/lang/Integer;
+      47: ifnull        64
+      50: aload_0
+      51: invokevirtual #351                // Method getInstalledRank:()Ljava/lang/Integer;
+      54: aload_1
+      55: invokeinterface #353,  1          // InterfaceMethod org/flywaydb/core/api/MigrationInfo.getInstalledRank:()Ljava/lang/Integer;
+      60: invokevirtual #356                // Method java/lang/Integer.compareTo:(Ljava/lang/Integer;)I
+      63: ireturn
+      64: aload_0
+      65: invokevirtual #139                // Method getState:()Lorg/flywaydb/core/api/MigrationState;
+      68: astore_3
+      69: aload_1
+      70: invokeinterface #359,  1          // InterfaceMethod org/flywaydb/core/api/MigrationInfo.getState:()Lorg/flywaydb/core/api/MigrationState;
+      75: astore        4
+      77: aload_3
+      78: getstatic     #360                // Field org/flywaydb/core/api/MigrationState.BELOW_BASELINE:Lorg/flywaydb/core/api/MigrationState;
+      81: if_acmpeq     91
+      84: aload_3
+      85: getstatic     #363                // Field org/flywaydb/core/api/MigrationState.BASELINE_IGNORED:Lorg/flywaydb/core/api/MigrationState;
+      88: if_acmpne     101
+      91: aload         4
+      93: invokevirtual #366                // Method org/flywaydb/core/api/MigrationState.isApplied:()Z
+      96: ifeq          101
+      99: iconst_m1
+     100: ireturn
+     101: aload_3
+     102: invokevirtual #366                // Method org/flywaydb/core/api/MigrationState.isApplied:()Z
+     105: ifeq          126
+     108: aload         4
+     110: getstatic     #360                // Field org/flywaydb/core/api/MigrationState.BELOW_BASELINE:Lorg/flywaydb/core/api/MigrationState;
+     113: if_acmpeq     124
+     116: aload         4
+     118: getstatic     #363                // Field org/flywaydb/core/api/MigrationState.BASELINE_IGNORED:Lorg/flywaydb/core/api/MigrationState;
+     121: if_acmpne     126
+     124: iconst_1
+     125: ireturn
+     126: aload_0
+     127: invokevirtual #351                // Method getInstalledRank:()Ljava/lang/Integer;
+     130: ifnull        135
+     133: iconst_m1
+     134: ireturn
+     135: aload_1
+     136: invokeinterface #353,  1          // InterfaceMethod org/flywaydb/core/api/MigrationInfo.getInstalledRank:()Ljava/lang/Integer;
+     141: ifnull        146
+     144: iconst_1
+     145: ireturn
+     146: aload_0
+     147: aload_1
+     148: invokevirtual #369                // Method compareVersion:(Lorg/flywaydb/core/api/MigrationInfo;)I
+     151: ireturn
+
+  public int compareVersion(org.flywaydb.core.api.MigrationInfo);
+    Code:
+       0: aload_0
+       1: invokevirtual #178                // Method getVersion:()Lorg/flywaydb/core/api/MigrationVersion;
+       4: ifnull        154
+       7: aload_1
+       8: invokeinterface #373,  1          // InterfaceMethod org/flywaydb/core/api/MigrationInfo.getVersion:()Lorg/flywaydb/core/api/MigrationVersion;
+      13: ifnull        154
+      16: aload_0
+      17: invokevirtual #178                // Method getVersion:()Lorg/flywaydb/core/api/MigrationVersion;
+      20: aload_1
+      21: invokeinterface #373,  1          // InterfaceMethod org/flywaydb/core/api/MigrationInfo.getVersion:()Lorg/flywaydb/core/api/MigrationVersion;
+      26: invokevirtual #281                // Method org/flywaydb/core/api/MigrationVersion.compareTo:(Lorg/flywaydb/core/api/MigrationVersion;)I
+      29: istore_2
+      30: iload_2
+      31: ifeq          36
+      34: iload_2
+      35: ireturn
+      36: aload_0
+      37: invokevirtual #269                // Method getType:()Lorg/flywaydb/core/extensibility/MigrationType;
+      40: invokeinterface #215,  1          // InterfaceMethod org/flywaydb/core/extensibility/MigrationType.isUndo:()Z
+      45: ifeq          64
+      48: aload_1
+      49: invokeinterface #374,  1          // InterfaceMethod org/flywaydb/core/api/MigrationInfo.getType:()Lorg/flywaydb/core/extensibility/MigrationType;
+      54: invokeinterface #215,  1          // InterfaceMethod org/flywaydb/core/extensibility/MigrationType.isUndo:()Z
+      59: ifeq          64
+      62: iconst_0
+      63: ireturn
+      64: aload_0
+      65: invokevirtual #269                // Method getType:()Lorg/flywaydb/core/extensibility/MigrationType;
+      68: invokeinterface #215,  1          // InterfaceMethod org/flywaydb/core/extensibility/MigrationType.isUndo:()Z
+      73: ifeq          78
+      76: iconst_1
+      77: ireturn
+      78: aload_1
+      79: invokeinterface #374,  1          // InterfaceMethod org/flywaydb/core/api/MigrationInfo.getType:()Lorg/flywaydb/core/extensibility/MigrationType;
+      84: invokeinterface #215,  1          // InterfaceMethod org/flywaydb/core/extensibility/MigrationType.isUndo:()Z
+      89: ifeq          94
+      92: iconst_m1
+      93: ireturn
+      94: aload_0
+      95: invokevirtual #269                // Method getType:()Lorg/flywaydb/core/extensibility/MigrationType;
+      98: invokeinterface #243,  1          // InterfaceMethod org/flywaydb/core/extensibility/MigrationType.isBaseline:()Z
+     103: ifeq          122
+     106: aload_1
+     107: invokeinterface #374,  1          // InterfaceMethod org/flywaydb/core/api/MigrationInfo.getType:()Lorg/flywaydb/core/extensibility/MigrationType;
+     112: invokeinterface #243,  1          // InterfaceMethod org/flywaydb/core/extensibility/MigrationType.isBaseline:()Z
+     117: ifeq          122
+     120: iconst_0
+     121: ireturn
+     122: aload_0
+     123: invokevirtual #269                // Method getType:()Lorg/flywaydb/core/extensibility/MigrationType;
+     126: invokeinterface #243,  1          // InterfaceMethod org/flywaydb/core/extensibility/MigrationType.isBaseline:()Z
+     131: ifeq          136
+     134: iconst_1
+     135: ireturn
+     136: aload_1
+     137: invokeinterface #374,  1          // InterfaceMethod org/flywaydb/core/api/MigrationInfo.getType:()Lorg/flywaydb/core/extensibility/MigrationType;
+     142: invokeinterface #243,  1          // InterfaceMethod org/flywaydb/core/extensibility/MigrationType.isBaseline:()Z
+     147: ifeq          152
+     150: iconst_m1
+     151: ireturn
+     152: iconst_0
+     153: ireturn
+     154: aload_0
+     155: invokevirtual #178                // Method getVersion:()Lorg/flywaydb/core/api/MigrationVersion;
+     158: ifnull        163
+     161: iconst_m1
+     162: ireturn
+     163: aload_1
+     164: invokeinterface #373,  1          // InterfaceMethod org/flywaydb/core/api/MigrationInfo.getVersion:()Lorg/flywaydb/core/api/MigrationVersion;
+     169: ifnull        174
+     172: iconst_1
+     173: ireturn
+     174: aload_0
+     175: invokevirtual #179                // Method getDescription:()Ljava/lang/String;
+     178: aload_1
+     179: invokeinterface #375,  1          // InterfaceMethod org/flywaydb/core/api/MigrationInfo.getDescription:()Ljava/lang/String;
+     184: invokevirtual #376                // Method java/lang/String.compareTo:(Ljava/lang/String;)I
+     187: ireturn
+
+  public boolean equals(java.lang.Object);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: if_acmpne     7
+       5: iconst_1
+       6: ireturn
+       7: aload_1
+       8: ifnull        22
+      11: aload_0
+      12: invokevirtual #379                // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      15: aload_1
+      16: invokevirtual #379                // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      19: if_acmpeq     24
+      22: iconst_0
+      23: ireturn
+      24: aload_1
+      25: checkcast     #8                  // class org/flywaydb/core/internal/info/MigrationInfoImpl
+      28: astore_2
+      29: aload_0
+      30: getfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+      33: aload_2
+      34: getfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+      37: invokestatic  #383                // Method java/util/Objects.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+      40: ifne          45
+      43: iconst_0
+      44: ireturn
+      45: aload_0
+      46: getfield      #17                 // Field context:Lorg/flywaydb/core/internal/info/MigrationInfoContext;
+      49: aload_2
+      50: getfield      #17                 // Field context:Lorg/flywaydb/core/internal/info/MigrationInfoContext;
+      53: invokevirtual #388                // Method org/flywaydb/core/internal/info/MigrationInfoContext.equals:(Ljava/lang/Object;)Z
+      56: ifne          61
+      59: iconst_0
+      60: ireturn
+      61: aload_0
+      62: getfield      #7                  // Field resolvedMigration:Lorg/flywaydb/core/api/resolver/ResolvedMigration;
+      65: aload_2
+      66: getfield      #7                  // Field resolvedMigration:Lorg/flywaydb/core/api/resolver/ResolvedMigration;
+      69: invokestatic  #383                // Method java/util/Objects.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+      72: ireturn
+
+  public int hashCode();
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field resolvedMigration:Lorg/flywaydb/core/api/resolver/ResolvedMigration;
+       4: ifnull        19
+       7: aload_0
+       8: getfield      #7                  // Field resolvedMigration:Lorg/flywaydb/core/api/resolver/ResolvedMigration;
+      11: invokeinterface #389,  1          // InterfaceMethod org/flywaydb/core/api/resolver/ResolvedMigration.hashCode:()I
+      16: goto          20
+      19: iconst_0
+      20: istore_1
+      21: bipush        31
+      23: iload_1
+      24: imul
+      25: aload_0
+      26: getfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+      29: ifnull        44
+      32: aload_0
+      33: getfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+      36: invokeinterface #392,  1          // InterfaceMethod org/flywaydb/core/extensibility/AppliedMigration.hashCode:()I
+      41: goto          45
+      44: iconst_0
+      45: iadd
+      46: istore_1
+      47: bipush        31
+      49: iload_1
+      50: imul
+      51: aload_0
+      52: getfield      #17                 // Field context:Lorg/flywaydb/core/internal/info/MigrationInfoContext;
+      55: invokevirtual #393                // Method org/flywaydb/core/internal/info/MigrationInfoContext.hashCode:()I
+      58: iadd
+      59: istore_1
+      60: iload_1
+      61: ireturn
+
+  public java.lang.Integer getResolvedChecksum();
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field resolvedMigration:Lorg/flywaydb/core/api/resolver/ResolvedMigration;
+       4: ifnonnull     11
+       7: aconst_null
+       8: goto          20
+      11: aload_0
+      12: getfield      #7                  // Field resolvedMigration:Lorg/flywaydb/core/api/resolver/ResolvedMigration;
+      15: invokeinterface #50,  1           // InterfaceMethod org/flywaydb/core/api/resolver/ResolvedMigration.getChecksum:()Ljava/lang/Integer;
+      20: areturn
+
+  public java.lang.Integer getAppliedChecksum();
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+       4: ifnonnull     11
+       7: aconst_null
+       8: goto          20
+      11: aload_0
+      12: getfield      #13                 // Field appliedMigration:Lorg/flywaydb/core/extensibility/AppliedMigration;
+      15: invokeinterface #46,  1           // InterfaceMethod org/flywaydb/core/extensibility/AppliedMigration.getChecksum:()Ljava/lang/Integer;
+      20: areturn
+
+  public int compareTo(java.lang.Object);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: checkcast     #354                // class org/flywaydb/core/api/MigrationInfo
+       5: invokevirtual #394                // Method compareTo:(Lorg/flywaydb/core/api/MigrationInfo;)I
+       8: ireturn
+
+  private boolean lambda$validate$0(org.flywaydb.core.api.MigrationState, org.flywaydb.core.api.pattern.ValidatePattern);
+    Code:
+       0: aload_2
+       1: aload_0
+       2: invokevirtual #178                // Method getVersion:()Lorg/flywaydb/core/api/MigrationVersion;
+       5: ifnull        12
+       8: iconst_1
+       9: goto          13
+      12: iconst_0
+      13: aload_1
+      14: invokevirtual #396                // Method org/flywaydb/core/api/pattern/ValidatePattern.matchesMigration:(ZLorg/flywaydb/core/api/MigrationState;)Z
+      17: ireturn
+}

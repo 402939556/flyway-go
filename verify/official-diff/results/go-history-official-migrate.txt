@@ -1,0 +1,43 @@
+=== OFFICIAL MIGRATE ON GO-WRITTEN HISTORY ===
+11�� 20, 2026 12:07:07 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 12:07:07 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+ERROR	org.flywaydb.core.api.exception.FlywayValidateException	Validate failed: Migrations have failed validation
+Migration description mismatch for migration version 1
+-> Applied to database : create users
+-> Resolved locally    : create-users
+Either revert the changes to the migration, or run repair to update the schema history.
+Migration description mismatch for migration version 2
+-> Applied to database : add email
+-> Resolved locally    : add-email
+Either revert the changes to the migration, or run repair to update the schema history.
+Detected applied migration not resolved locally: user view.
+If you removed this migration intentionally, run repair to mark the migration as deleted.
+Need more flexibility with validation rules? Learn more: https://help.red-gate.com/help/flyway-cli13/help_13.aspx?topic=flyway-blog/older-posts/customize-validation-rules-with-ignoremigrationpatterns
+org.flywaydb.core.api.exception.FlywayValidateException: Validate failed: Migrations have failed validation
+Migration description mismatch for migration version 1
+-> Applied to database : create users
+-> Resolved locally    : create-users
+Either revert the changes to the migration, or run repair to update the schema history.
+Migration description mismatch for migration version 2
+-> Applied to database : add email
+-> Resolved locally    : add-email
+Either revert the changes to the migration, or run repair to update the schema history.
+Detected applied migration not resolved locally: user view.
+If you removed this migration intentionally, run repair to mark the migration as deleted.
+Need more flexibility with validation rules? Learn more: https://help.red-gate.com/help/flyway-cli13/help_13.aspx?topic=flyway-blog/older-posts/customize-validation-rules-with-ignoremigrationpatterns
+	at org.flywaydb.core.Flyway.lambda$migrate$0(Flyway.java:189)
+	at org.flywaydb.core.FlywayExecutor.execute(FlywayExecutor.java:242)
+	at org.flywaydb.core.FlywayExecutor.execute(FlywayExecutor.java:125)
+	at org.flywaydb.core.Flyway.migrate(Flyway.java:176)
+	at FlywayRunner.main(FlywayRunner.java:47)
+JAVA_EXIT=1
+=== HISTORY AFTER ===
+ installed_rank | version | description  | type |        script        |        installed_on        
+----------------+---------+--------------+------+----------------------+----------------------------
+              1 | 1       | create users | SQL  | V1__create-users.sql | 2026-11-20 04:06:34.552264
+              2 | 2       | add email    | SQL  | V2__add-email.sql    | 2026-11-20 04:06:34.556276
+              3 |         | user view    | SQL  | R__user-view.sql     | 2026-11-20 04:06:34.558909
+(3 rows)
+

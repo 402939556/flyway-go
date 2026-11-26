@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS cb_clean_before (id INT);

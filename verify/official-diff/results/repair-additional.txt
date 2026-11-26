@@ -1,0 +1,168 @@
+=== VERSIONED CHECKSUM CHANGE: OFFICIAL ===
+--- migrate ---
+11�� 20, 2026 12:01:44 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 12:01:44 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 12:01:44 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory allAppliedMigrations
+��Ϣ: Schema history table "public"."flyway_schema_history" does not exist yet
+11�� 20, 2026 12:01:44 ���� org.flywaydb.core.internal.command.DbValidate validate
+��Ϣ: Successfully validated 2 migrations (execution time 00:00.016s)
+11�� 20, 2026 12:01:44 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory create
+��Ϣ: Creating Schema History table "public"."flyway_schema_history" ...
+11�� 20, 2026 12:01:44 ���� org.flywaydb.core.internal.command.DbMigrate migrateGroup
+��Ϣ: Current version of schema "public": << Empty Schema >>
+11�� 20, 2026 12:01:44 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" to version "1 - base"
+11�� 20, 2026 12:01:44 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" to version "2 - two"
+11�� 20, 2026 12:01:44 ���� org.flywaydb.core.internal.command.DbMigrate logSummary
+��Ϣ: Successfully applied 2 migrations to schema "public", now at version v2 (execution time 00:00.010s)
+RESULT	migrate	success=true	migrationsExecuted=2
+EXIT=0
+HISTORY BEFORE:
+1|1|base|SQL|V1__base.sql|-907615070|t
+2|2|two|SQL|V2__two.sql|344705948|t
+--- validate after edit ---
+11�� 20, 2026 12:01:45 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 12:01:45 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+RESULT	validate	valid=false	invalidMigrations=1	validateCount=0
+INVALID	2	two	E:\work\flyway-go\verify\official-diff\cases\repair-version-checksum\migrations\V2__two.sql	CHECKSUM_MISMATCH	Migration checksum mismatch for migration version 2
+-> Applied to database : 344705948
+-> Resolved locally    : 529025298
+Either revert the changes to the migration, or run repair to update the schema history.
+EXIT=0
+--- repair after edit ---
+11�� 20, 2026 12:01:45 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 12:01:45 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 12:01:45 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory removeFailedMigrations
+��Ϣ: Repair of failed migration in Schema History table "public"."flyway_schema_history" not necessary. No failed migration detected.
+11�� 20, 2026 12:01:45 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory update
+��Ϣ: Repairing Schema History table for version 2 (Description: two, Type: SQL, Checksum: 529025298)  ...
+11�� 20, 2026 12:01:45 ���� org.flywaydb.core.internal.command.DbRepair repair
+��Ϣ: Successfully repaired schema history table "public"."flyway_schema_history" (execution time 00:00.039s).
+RESULT	repair	repairActions=1	alignedMigrations=1
+REPAIR	Aligned applied migration checksums
+EXIT=0
+HISTORY AFTER:
+1|1|base|SQL|V1__base.sql|-907615070|t
+2|2|two|SQL|V2__two.sql|529025298|t
+--- info after repair ---
+11�� 20, 2026 12:01:46 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 12:01:46 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+INFO	Versioned	1	base	SQL	SUCCESS	2026-11-20 12:01:44.312176	postgres	V1__base.sql	-907615070	1
+INFO	Versioned	2	two	SQL	SUCCESS	2026-11-20 12:01:44.349615	postgres	V2__two.sql	529025298	2
+EXIT=0
+=== VERSIONED CHECKSUM CHANGE: GO ===
+--- migrate ---
+创建历史表 flyway_schema_history
+迁移 1（base）...
+  -> 成功，耗时 0 ms
+迁移 2（two）...
+  -> 成功，耗时 0 ms
+迁移完成，共执行 2 个脚本
+EXIT=0
+HISTORY BEFORE:
+1|1|base|SQL|V1__base.sql|-907615070|t
+2|2|two|SQL|V2__two.sql|344705948|t
+--- validate after edit ---
+执行失败: Validate failed: 迁移 V2__two.sql 的校验和不一致：数据库记录 344705948，本地计算 529025298
+EXIT=1
+--- repair after edit ---
+已清理 0 条失败记录
+已修正版本 2 的校验和: 344705948 -> 529025298
+EXIT=0
+HISTORY AFTER:
+1|1|base|SQL|V1__base.sql|-907615070|t
+2|2|two|SQL|V2__two.sql|529025298|t
+--- info after repair ---
+Category     Version    Description                      Type         Installed On         State
+--------------------------------------------------------------------------------------------------------------
+Versioned    1          base                             SQL          2026-11-20 04:01:47  Success
+Versioned    2          two                              SQL          2026-11-20 04:01:47  Success
+EXIT=0
+=== MISSING VERSIONED: OFFICIAL ===
+11�� 20, 2026 12:01:48 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 12:01:48 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 12:01:48 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory allAppliedMigrations
+��Ϣ: Schema history table "public"."flyway_schema_history" does not exist yet
+11�� 20, 2026 12:01:48 ���� org.flywaydb.core.internal.command.DbValidate validate
+��Ϣ: Successfully validated 3 migrations (execution time 00:00.016s)
+11�� 20, 2026 12:01:48 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory create
+��Ϣ: Creating Schema History table "public"."flyway_schema_history" ...
+11�� 20, 2026 12:01:48 ���� org.flywaydb.core.internal.command.DbMigrate migrateGroup
+��Ϣ: Current version of schema "public": << Empty Schema >>
+11�� 20, 2026 12:01:48 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" to version "1 - base"
+11�� 20, 2026 12:01:48 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" to version "2 - two"
+11�� 20, 2026 12:01:48 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" to version "3 - three"
+11�� 20, 2026 12:01:48 ���� org.flywaydb.core.internal.command.DbMigrate logSummary
+��Ϣ: Successfully applied 3 migrations to schema "public", now at version v3 (execution time 00:00.012s)
+RESULT	migrate	success=true	migrationsExecuted=3
+EXIT=0
+HISTORY BEFORE:
+1|1|base|SQL|V1__base.sql|-1728876599|t
+2|2|two|SQL|V2__two.sql|-553608531|t
+3|3|three|SQL|V3__three.sql|1152645797|t
+--- repair after V3 removed ---
+11�� 20, 2026 12:01:49 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 12:01:49 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 12:01:49 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory removeFailedMigrations
+��Ϣ: Repair of failed migration in Schema History table "public"."flyway_schema_history" not necessary. No failed migration detected.
+11�� 20, 2026 12:01:49 ���� org.flywaydb.core.internal.command.DbRepair repair
+��Ϣ: Successfully repaired schema history table "public"."flyway_schema_history" (execution time 00:00.033s).
+RESULT	repair	repairActions=0	alignedMigrations=0
+EXIT=0
+HISTORY AFTER:
+1|1|base|SQL|V1__base.sql|-1728876599|t
+2|2|two|SQL|V2__two.sql|-553608531|t
+3|3|three|SQL|V3__three.sql|1152645797|t
+--- info after repair ---
+11�� 20, 2026 12:01:50 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 12:01:50 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+INFO	Versioned	1	base	SQL	SUCCESS	2026-11-20 12:01:48.321023	postgres	V1__base.sql	-1728876599	1
+INFO	Versioned	2	two	SQL	SUCCESS	2026-11-20 12:01:48.356961	postgres	V2__two.sql	-553608531	2
+INFO	Versioned	3	three	SQL	FUTURE_SUCCESS	2026-11-20 12:01:48.375114	postgres	V3__three.sql	1152645797	3
+EXIT=0
+=== MISSING VERSIONED: GO ===
+创建历史表 flyway_schema_history
+迁移 1（base）...
+  -> 成功，耗时 0 ms
+迁移 2（two）...
+  -> 成功，耗时 1 ms
+迁移 3（three）...
+  -> 成功，耗时 0 ms
+迁移完成，共执行 3 个脚本
+EXIT=0
+HISTORY BEFORE:
+1|1|base|SQL|V1__base.sql|-1728876599|t
+2|2|two|SQL|V2__two.sql|-553608531|t
+3|3|three|SQL|V3__three.sql|1152645797|t
+--- repair after V3 removed ---
+已清理 0 条失败记录
+EXIT=0
+HISTORY AFTER:
+1|1|base|SQL|V1__base.sql|-1728876599|t
+2|2|two|SQL|V2__two.sql|-553608531|t
+3|3|three|SQL|V3__three.sql|1152645797|t
+--- info after repair ---
+Category     Version    Description                      Type         Installed On         State
+--------------------------------------------------------------------------------------------------------------
+Versioned    1          base                             SQL          2026-11-20 04:01:50  Success
+Versioned    2          two                              SQL          2026-11-20 04:01:50  Success
+Versioned    3          three                            SQL          2026-11-20 04:01:50  Missing
+EXIT=0

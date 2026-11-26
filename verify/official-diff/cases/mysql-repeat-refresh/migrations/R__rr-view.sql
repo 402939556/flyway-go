@@ -1,0 +1,1 @@
+CREATE OR REPLACE VIEW v_rr_refresh AS SELECT id, id AS id2 FROM rr_refresh;

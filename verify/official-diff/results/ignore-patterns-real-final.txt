@@ -1,0 +1,24 @@
+=== GO VALIDATE no history default ===
+RESULT	validate	valid=false	invalidMigrations=3	validateCount=0
+INVALID	1	one	E:\work\flyway-go\verify\official-diff\cases\ignore-patterns\V1__one.sql	RESOLVED_VERSIONED_MIGRATION_NOT_APPLIED	Detected resolved migration not applied to database: 1.
+To fix this error, either run migrate, or set -ignoreMigrationPatterns='*:pending'.
+INVALID	2	two	E:\work\flyway-go\verify\official-diff\cases\ignore-patterns\V2__two.sql	RESOLVED_VERSIONED_MIGRATION_NOT_APPLIED	Detected resolved migration not applied to database: 2.
+To fix this error, either run migrate, or set -ignoreMigrationPatterns='*:pending'.
+INVALID	3	three	E:\work\flyway-go\verify\official-diff\cases\ignore-patterns\V3__three.sql	RESOLVED_VERSIONED_MIGRATION_NOT_APPLIED	Detected resolved migration not applied to database: 3.
+To fix this error, either run migrate, or set -ignoreMigrationPatterns='*:pending'.
+EXIT=0
+=== GO VALIDATE no history *:pending ===
+RESULT	validate	valid=true	invalidMigrations=0	validateCount=3
+EXIT=0
+=== GO VALIDATE no history versioned:pending ===
+RESULT	validate	valid=true	invalidMigrations=0	validateCount=3
+EXIT=0
+=== GO VALIDATE no history repeatable:pending ===
+RESULT	validate	valid=false	invalidMigrations=3	validateCount=0
+INVALID	1	one	E:\work\flyway-go\verify\official-diff\cases\ignore-patterns\V1__one.sql	RESOLVED_VERSIONED_MIGRATION_NOT_APPLIED	Detected resolved migration not applied to database: 1.
+To fix this error, either run migrate, or set -ignoreMigrationPatterns='*:pending'.
+INVALID	2	two	E:\work\flyway-go\verify\official-diff\cases\ignore-patterns\V2__two.sql	RESOLVED_VERSIONED_MIGRATION_NOT_APPLIED	Detected resolved migration not applied to database: 2.
+To fix this error, either run migrate, or set -ignoreMigrationPatterns='*:pending'.
+INVALID	3	three	E:\work\flyway-go\verify\official-diff\cases\ignore-patterns\V3__three.sql	RESOLVED_VERSIONED_MIGRATION_NOT_APPLIED	Detected resolved migration not applied to database: 3.
+To fix this error, either run migrate, or set -ignoreMigrationPatterns='*:pending'.
+EXIT=0

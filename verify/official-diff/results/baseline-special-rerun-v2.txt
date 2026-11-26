@@ -1,0 +1,24 @@
+=== OFFICIAL BASELINE latest ===
+EXIT=0
+1|<< Latest Version >>|BASELINE
+=== GO BASELINE latest ===
+EXIT=0
+1|<< Latest Version >>|BASELINE
+=== OFFICIAL BASELINE current ===
+EXIT=0
+1|<< Current Version >>|BASELINE
+=== GO BASELINE current ===
+EXIT=0
+1|<< Current Version >>|BASELINE
+=== OFFICIAL BASELINE next ===
+EXIT=0
+1|<< Next Version >>|BASELINE
+=== GO BASELINE next ===
+EXIT=0
+1|<< Next Version >>|BASELINE
+=== OFFICIAL BASELINE 0 ===
+EXIT=0
+1|0|BASELINE
+=== GO BASELINE 0 ===
+EXIT=0
+1|0|BASELINE

@@ -1,0 +1,6 @@
+=== OFFICIAL TARGET 0 ===
+EXIT=1
+0
+=== GO TARGET 0 ===
+EXIT=1
+0

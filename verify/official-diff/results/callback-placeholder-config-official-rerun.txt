@@ -1,0 +1,51 @@
+=== OFFICIAL callbacks options accepted ===
+11�� 20, 2026 12:09:59 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 12:09:59 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 12:09:59 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory allAppliedMigrations
+��Ϣ: Schema history table "public"."flyway_schema_history" does not exist yet
+11�� 20, 2026 12:09:59 ���� org.flywaydb.core.internal.command.DbValidate validate
+��Ϣ: Successfully validated 1 migration (execution time 00:00.016s)
+11�� 20, 2026 12:09:59 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory create
+��Ϣ: Creating Schema History table "public"."flyway_schema_history" ...
+11�� 20, 2026 12:09:59 ���� org.flywaydb.core.internal.callback.SqlScriptCallbackFactory
+��Ϣ: Executing SQL callback: beforeMigrate - 
+11�� 20, 2026 12:09:59 ���� org.flywaydb.core.internal.command.DbMigrate migrateGroup
+��Ϣ: Current version of schema "public": << Empty Schema >>
+11�� 20, 2026 12:09:59 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" to version "1 - base"
+11�� 20, 2026 12:09:59 ���� org.flywaydb.core.internal.command.DbMigrate logSummary
+��Ϣ: Successfully applied 1 migration to schema "public", now at version v1 (execution time 00:00.007s)
+11�� 20, 2026 12:09:59 ���� org.flywaydb.core.internal.callback.SqlScriptCallbackFactory
+��Ϣ: Executing SQL callback: afterMigrate - 
+RESULT	migrate	success=true	migrationsExecuted=1
+OFFICIAL_CALLBACK_EXIT=0
+ERROR:  relation "callback_log" does not exist
+LINE 1: SELECT * FROM callback_log ORDER BY id
+                      ^
+
+=== OFFICIAL placeholders option accepted ===
+11�� 20, 2026 12:10:00 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 12:10:00 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 12:10:00 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory allAppliedMigrations
+��Ϣ: Schema history table "public"."flyway_schema_history" does not exist yet
+11�� 20, 2026 12:10:00 ���� org.flywaydb.core.internal.command.DbValidate validate
+��Ϣ: Successfully validated 1 migration (execution time 00:00.016s)
+11�� 20, 2026 12:10:00 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory create
+��Ϣ: Creating Schema History table "public"."flyway_schema_history" ...
+11�� 20, 2026 12:10:00 ���� org.flywaydb.core.internal.command.DbMigrate migrateGroup
+��Ϣ: Current version of schema "public": << Empty Schema >>
+11�� 20, 2026 12:10:00 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" to version "1 - placeholder table"
+11�� 20, 2026 12:10:00 ���� org.flywaydb.core.internal.command.DbMigrate logSummary
+��Ϣ: Successfully applied 1 migration to schema "public", now at version v1 (execution time 00:00.008s)
+RESULT	migrate	success=true	migrationsExecuted=1
+OFFICIAL_PLACEHOLDER_EXIT=0
+   table_name   
+----------------
+ placeholder_ok
+(1 row)
+

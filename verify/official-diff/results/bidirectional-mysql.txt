@@ -1,0 +1,115 @@
+=== RESET MYSQL ===
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+=== OFFICIAL BASIC MIGRATE ===
+11�� 20, 2026 12:08:45 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 12:08:45 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:mysql:******** (MySQL 8.4)
+11�� 20, 2026 12:08:45 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory allAppliedMigrations
+��Ϣ: Schema history table `flywaygo`.`flyway_schema_history` does not exist yet
+11�� 20, 2026 12:08:45 ���� org.flywaydb.core.internal.command.DbValidate validate
+��Ϣ: Successfully validated 3 migrations (execution time 00:00.027s)
+11�� 20, 2026 12:08:45 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory create
+��Ϣ: Creating Schema History table `flywaygo`.`flyway_schema_history` ...
+11�� 20, 2026 12:08:45 ���� org.flywaydb.core.internal.command.DbMigrate migrateGroup
+��Ϣ: Current version of schema `flywaygo`: << Empty Schema >>
+11�� 20, 2026 12:08:45 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema `flywaygo` to version "1 - create-users"
+11�� 20, 2026 12:08:45 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema `flywaygo` to version "2 - add-email"
+11�� 20, 2026 12:08:45 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema `flywaygo` with repeatable migration "user-view"
+11�� 20, 2026 12:08:45 ���� org.flywaydb.core.internal.command.DbMigrate logSummary
+��Ϣ: Successfully applied 3 migrations to schema `flywaygo`, now at version v2 (execution time 00:00.032s)
+RESULT	migrate	success=true	migrationsExecuted=3
+JAVA_MIGRATE_EXIT=0
+
+=== HISTORY WRITTEN BY OFFICIAL ===
+mysql: [Warning] Using a password on the command line interface can be insecure.
+1	1	create-users	V1__create-users.sql	-475489945	2026-11-20 04:08:45	1
+2	2	add-email	V2__add-email.sql	-504985890	2026-11-20 04:08:45	1
+3	NULL	user-view	R__user-view.sql	-2128053619	2026-11-20 04:08:45	1
+
+=== GO INFO ON OFFICIAL MYSQL HISTORY ===
+Category     Version    Description                      Type         Installed On         State
+--------------------------------------------------------------------------------------------------------------
+Versioned    1          create users                     SQL          2026-11-20 04:08:45  Success
+Versioned    2          add email                        SQL          2026-11-20 04:08:45  Success
+Repeatable              user view                        SQL          2026-11-20 04:08:45  Success
+GO_INFO_EXIT=0
+
+=== GO VALIDATE ON OFFICIAL MYSQL HISTORY ===
+校验通过：所有已应用迁移与本地脚本一致
+GO_VALIDATE_EXIT=0
+
+=== GO MIGRATE ON OFFICIAL MYSQL HISTORY ===
+数据库已是最新状态，无需执行迁移
+GO_MIGRATE_EXIT=0
+
+=== RESET MYSQL AGAIN ===
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+=== GO BASIC MIGRATE ===
+创建历史表 flyway_schema_history
+迁移 1（create users）...
+  -> 成功，耗时 5 ms
+迁移 2（add email）...
+  -> 成功，耗时 45 ms
+迁移 R__user view（user view）...
+  -> 成功，耗时 1 ms
+迁移完成，共执行 3 个脚本
+GO_BASIC_EXIT=0
+
+=== HISTORY WRITTEN BY GO ===
+mysql: [Warning] Using a password on the command line interface can be insecure.
+1	1	create users	V1__create-users.sql	-475489945	2026-11-20 04:08:46	1
+2	2	add email	V2__add-email.sql	-504985890	2026-11-20 04:08:46	1
+3	NULL	user view	R__user-view.sql	-2128053619	2026-11-20 04:08:46	1
+
+=== OFFICIAL INFO ON GO MYSQL HISTORY ===
+11�� 20, 2026 12:08:47 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 12:08:47 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:mysql:******** (MySQL 8.4)
+INFO	Versioned	1	create users	SQL	SUCCESS	2026-11-20 04:08:46.0	root	V1__create-users.sql	-475489945	1
+INFO	Versioned	2	add email	SQL	SUCCESS	2026-11-20 04:08:46.0	root	V2__add-email.sql	-504985890	2
+INFO	Repeatable	null	user view	SQL	MISSING_SUCCESS	2026-11-20 04:08:46.0	root	R__user-view.sql	-2128053619	3
+INFO	Repeatable	null	user-view	SQL	PENDING	null		R__user-view.sql	-2128053619	null
+JAVA_INFO_EXIT=0
+
+=== OFFICIAL MIGRATE ON GO MYSQL HISTORY ===
+11�� 20, 2026 12:08:47 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 12:08:47 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:mysql:******** (MySQL 8.4)
+ERROR	org.flywaydb.core.api.exception.FlywayValidateException	Validate failed: Migrations have failed validation
+Migration description mismatch for migration version 1
+-> Applied to database : create users
+-> Resolved locally    : create-users
+Either revert the changes to the migration, or run repair to update the schema history.
+Migration description mismatch for migration version 2
+-> Applied to database : add email
+-> Resolved locally    : add-email
+Either revert the changes to the migration, or run repair to update the schema history.
+Detected applied migration not resolved locally: user view.
+If you removed this migration intentionally, run repair to mark the migration as deleted.
+Need more flexibility with validation rules? Learn more: https://help.red-gate.com/help/flyway-cli13/help_13.aspx?topic=flyway-blog/older-posts/customize-validation-rules-with-ignoremigrationpatterns
+org.flywaydb.core.api.exception.FlywayValidateException: Validate failed: Migrations have failed validation
+Migration description mismatch for migration version 1
+-> Applied to database : create users
+-> Resolved locally    : create-users
+Either revert the changes to the migration, or run repair to update the schema history.
+Migration description mismatch for migration version 2
+-> Applied to database : add email
+-> Resolved locally    : add-email
+Either revert the changes to the migration, or run repair to update the schema history.
+Detected applied migration not resolved locally: user view.
+If you removed this migration intentionally, run repair to mark the migration as deleted.
+Need more flexibility with validation rules? Learn more: https://help.red-gate.com/help/flyway-cli13/help_13.aspx?topic=flyway-blog/older-posts/customize-validation-rules-with-ignoremigrationpatterns
+	at org.flywaydb.core.Flyway.lambda$migrate$0(Flyway.java:189)
+	at org.flywaydb.core.FlywayExecutor.execute(FlywayExecutor.java:242)
+	at org.flywaydb.core.FlywayExecutor.execute(FlywayExecutor.java:125)
+	at org.flywaydb.core.Flyway.migrate(Flyway.java:176)
+	at FlywayRunner.main(FlywayRunner.java:47)
+JAVA_MIGRATE_ON_GO_EXIT=1

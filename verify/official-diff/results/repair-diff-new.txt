@@ -1,0 +1,91 @@
+=== OFFICIAL MIGRATE ===
+11�� 20, 2026 11:56:45 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:56:45 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 11:56:45 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory allAppliedMigrations
+��Ϣ: Schema history table "public"."flyway_schema_history" does not exist yet
+11�� 20, 2026 11:56:45 ���� org.flywaydb.core.internal.command.DbValidate validate
+��Ϣ: Successfully validated 2 migrations (execution time 00:00.021s)
+11�� 20, 2026 11:56:45 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory create
+��Ϣ: Creating Schema History table "public"."flyway_schema_history" ...
+11�� 20, 2026 11:56:46 ���� org.flywaydb.core.internal.command.DbMigrate migrateGroup
+��Ϣ: Current version of schema "public": << Empty Schema >>
+11�� 20, 2026 11:56:46 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" to version "1 - base"
+11�� 20, 2026 11:56:46 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" with repeatable migration "rr-view"
+11�� 20, 2026 11:56:46 ���� org.flywaydb.core.internal.command.DbMigrate logSummary
+��Ϣ: Successfully applied 2 migrations to schema "public", now at version v1 (execution time 00:00.012s)
+RESULT	migrate	success=true	migrationsExecuted=2
+
+=== OFFICIAL REPAIR AFTER REPEATABLE CHANGE ===
+ERROR	java.lang.IllegalArgumentException	unknown action: repair
+java.lang.IllegalArgumentException: unknown action: repair
+	at AdvancedRunner.main(AdvancedRunner.java:52)
+EXIT=1
+
+=== HISTORY AFTER OFFICIAL REPAIR ===
+ installed_rank | version | description | type |     script     |  checksum  | success 
+----------------+---------+-------------+------+----------------+------------+---------
+              1 | 1       | base        | SQL  | V1__base.sql   | 1001537598 | t
+              2 |         | rr-view     | SQL  | R__rr-view.sql | 1785126136 | t
+(2 rows)
+
+
+=== OFFICIAL INFO ===
+11�� 20, 2026 11:56:47 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:56:47 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+INFO	Versioned	1	base	SQL	SUCCESS	V1__base.sql
+INFO	Repeatable	null	rr-view	SQL	OUTDATED	R__rr-view.sql
+INFO	Repeatable	null	rr-view	SQL	PENDING	R__rr-view.sql
+
+=== OFFICIAL REPAIR AFTER REPEATABLE CHANGE (FlywayRunner) ===
+11�� 20, 2026 11:56:58 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:56:58 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 11:56:58 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory removeFailedMigrations
+��Ϣ: Repair of failed migration in Schema History table "public"."flyway_schema_history" not necessary. No failed migration detected.
+11�� 20, 2026 11:56:58 ���� org.flywaydb.core.internal.command.DbRepair repair
+��Ϣ: Successfully repaired schema history table "public"."flyway_schema_history" (execution time 00:00.036s).
+RESULT	repair	repairActions=0	alignedMigrations=0
+EXIT=0
+
+=== HISTORY AFTER OFFICIAL REPAIR ===
+ installed_rank | version | description | type |     script     |  checksum  | success 
+----------------+---------+-------------+------+----------------+------------+---------
+              1 | 1       | base        | SQL  | V1__base.sql   | 1001537598 | t
+              2 |         | rr-view     | SQL  | R__rr-view.sql | 1785126136 | t
+(2 rows)
+
+
+=== OFFICIAL INFO AFTER REPAIR ===
+11�� 20, 2026 11:56:59 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:56:59 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+INFO	Versioned	1	base	SQL	SUCCESS	2026-11-20 11:56:46.012768	postgres	V1__base.sql	1001537598	1
+INFO	Repeatable	null	rr-view	SQL	OUTDATED	2026-11-20 11:56:46.050249	postgres	R__rr-view.sql	1785126136	2
+INFO	Repeatable	null	rr-view	SQL	PENDING	null		R__rr-view.sql	936102977	null
+
+=== GO REPAIR AFTER SAME REPEATABLE CHANGE ===
+已清理 0 条失败记录
+已修正可重复迁移 R__rr-view.sql 的校验和: 1785126136 -> 936102977
+EXIT=0
+
+=== HISTORY AFTER GO REPAIR ===
+ installed_rank | version | description | type |     script     |  checksum  | success 
+----------------+---------+-------------+------+----------------+------------+---------
+              1 | 1       | base        | SQL  | V1__base.sql   | 1001537598 | t
+              2 |         | rr-view     | SQL  | R__rr-view.sql |  936102977 | t
+(2 rows)
+
+
+=== GO INFO AFTER REPAIR ===
+Category     Version    Description                      Type         Installed On         State
+--------------------------------------------------------------------------------------------------------------
+Versioned    1          base                             SQL          2026-11-20 11:56:46  Success
+Repeatable              rr view                          SQL          2026-11-20 11:56:46  Success

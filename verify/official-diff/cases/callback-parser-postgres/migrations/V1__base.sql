@@ -1,0 +1,1 @@
+CREATE TABLE cb_copy_main (id INTEGER PRIMARY KEY);

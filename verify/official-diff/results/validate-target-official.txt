@@ -1,0 +1,9 @@
+11�� 20, 2026 11:49:12 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:49:12 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 11:49:13 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory allAppliedMigrations
+��Ϣ: Schema history table "public"."flyway_schema_history" does not exist yet
+RESULT	validate	valid=false	invalidMigrations=1	validateCount=0
+INVALID	1	one	E:\work\flyway-go\verify\official-diff\cases\ignore-patterns\V1__one.sql	RESOLVED_VERSIONED_MIGRATION_NOT_APPLIED	Detected resolved migration not applied to database: 1.
+To fix this error, either run migrate, or set -ignoreMigrationPatterns='*:pending'.

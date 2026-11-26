@@ -1,0 +1,18 @@
+=== OFFICIAL TARGET NEXT RUN 1 ===
+ERROR	org.flywaydb.core.api.FlywayException	Version may only contain 0..9 and . (dot). Invalid version: -target
+org.flywaydb.core.api.FlywayException: Version may only contain 0..9 and . (dot). Invalid version: -target
+	at org.flywaydb.core.api.MigrationVersion.toBigInteger(MigrationVersion.java:323)
+	at org.flywaydb.core.api.MigrationVersion.tokenize(MigrationVersion.java:306)
+	at org.flywaydb.core.api.MigrationVersion.<init>(MigrationVersion.java:105)
+	at org.flywaydb.core.api.MigrationVersion.fromVersion(MigrationVersion.java:94)
+	at FlywayRunner.main(FlywayRunner.java:34)
+EXIT=1
+=== OFFICIAL TARGET 0 ===
+ERROR	org.flywaydb.core.api.FlywayException	Version may only contain 0..9 and . (dot). Invalid version: -target
+org.flywaydb.core.api.FlywayException: Version may only contain 0..9 and . (dot). Invalid version: -target
+	at org.flywaydb.core.api.MigrationVersion.toBigInteger(MigrationVersion.java:323)
+	at org.flywaydb.core.api.MigrationVersion.tokenize(MigrationVersion.java:306)
+	at org.flywaydb.core.api.MigrationVersion.<init>(MigrationVersion.java:105)
+	at org.flywaydb.core.api.MigrationVersion.fromVersion(MigrationVersion.java:94)
+	at FlywayRunner.main(FlywayRunner.java:34)
+EXIT=1

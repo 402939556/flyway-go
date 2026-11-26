@@ -1,0 +1,128 @@
+=== OFFICIAL EMPTY MIGRATE (create history) ===
+11�� 20, 2026 11:58:28 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:58:28 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 11:58:28 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory allAppliedMigrations
+��Ϣ: Schema history table "public"."flyway_schema_history" does not exist yet
+11�� 20, 2026 11:58:28 ���� org.flywaydb.core.internal.command.DbValidate validate
+��Ϣ: Successfully validated 0 migrations (execution time 00:00.011s)
+11�� 20, 2026 11:58:28 ���� org.flywaydb.core.internal.command.DbValidate validate
+����: No migrations found. Are your locations set up correctly?
+11�� 20, 2026 11:58:28 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory create
+��Ϣ: Creating Schema History table "public"."flyway_schema_history" ...
+11�� 20, 2026 11:58:29 ���� org.flywaydb.core.internal.command.DbMigrate migrateGroup
+��Ϣ: Current version of schema "public": << Empty Schema >>
+11�� 20, 2026 11:58:29 ���� org.flywaydb.core.internal.command.DbMigrate migrateGroup
+��Ϣ: No migrations found on disk.
+Here are some relevant configuration settings.
+11�� 20, 2026 11:58:29 ���� org.flywaydb.core.internal.command.DbMigrate migrateGroup
+��Ϣ: 
++------------------------------+-----------------------------------------------------------------------------+
+| Setting                      | Value                                                                       |
++------------------------------+-----------------------------------------------------------------------------+
+| locations                    | filesystem:E:\work\flyway-go\verify\official-diff\cases\callback-flow\empty |
+| callbackLocations            |                                                                             |
+| workingDirectory             | E:\work\flyway-go                                                           |
+| repeatableSqlMigrationPrefix | R                                                                           |
+| sqlMigrationPrefix           | V                                                                           |
+| baselineMigrationPrefix      | B                                                                           |
+| sqlMigrationSeparator        | __                                                                          |
+| sqlMigrationSuffixes         | .sql                                                                        |
++------------------------------+-----------------------------------------------------------------------------+
+
+11�� 20, 2026 11:58:29 ���� org.flywaydb.core.internal.command.DbMigrate logSummary
+��Ϣ: Schema "public" is up to date. No migration necessary.
+RESULT	migrate	success=true	migrationsExecuted=0
+
+=== OFFICIAL MIGRATE + CALLBACKS ===
+11�� 20, 2026 11:58:29 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:58:29 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 11:58:29 ���� org.flywaydb.core.internal.callback.SqlScriptCallbackFactory
+��Ϣ: Executing SQL callback: beforeValidate - 
+11�� 20, 2026 11:58:29 ���� org.flywaydb.core.internal.command.DbValidate validate
+��Ϣ: Successfully validated 2 migrations (execution time 00:00.018s)
+11�� 20, 2026 11:58:29 ���� org.flywaydb.core.internal.callback.SqlScriptCallbackFactory
+��Ϣ: Executing SQL callback: afterValidate - 
+11�� 20, 2026 11:58:29 ���� org.flywaydb.core.internal.callback.SqlScriptCallbackFactory
+��Ϣ: Executing SQL callback: beforeMigrate - 
+11�� 20, 2026 11:58:29 ���� org.flywaydb.core.internal.command.DbMigrate migrateGroup
+��Ϣ: Current version of schema "public": << Empty Schema >>
+11�� 20, 2026 11:58:29 ���� org.flywaydb.core.internal.callback.SqlScriptCallbackFactory
+��Ϣ: Executing SQL callback: beforeEachMigrate - 
+11�� 20, 2026 11:58:29 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" to version "1 - one"
+11�� 20, 2026 11:58:29 ���� org.flywaydb.core.internal.callback.SqlScriptCallbackFactory
+��Ϣ: Executing SQL callback: afterEachMigrate - 
+11�� 20, 2026 11:58:29 ���� org.flywaydb.core.internal.callback.SqlScriptCallbackFactory
+��Ϣ: Executing SQL callback: beforeEachMigrate - 
+11�� 20, 2026 11:58:29 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" to version "2 - two"
+11�� 20, 2026 11:58:29 ���� org.flywaydb.core.internal.callback.SqlScriptCallbackFactory
+��Ϣ: Executing SQL callback: afterEachMigrate - 
+11�� 20, 2026 11:58:29 ���� org.flywaydb.core.internal.command.DbMigrate logSummary
+��Ϣ: Successfully applied 2 migrations to schema "public", now at version v2 (execution time 00:00.023s)
+11�� 20, 2026 11:58:29 ���� org.flywaydb.core.internal.callback.SqlScriptCallbackFactory
+��Ϣ: Executing SQL callback: afterMigrate - 
+RESULT	migrate	success=true	migrationsExecuted=2
+
+=== EVENTS AFTER MIGRATE ===
+                                                            events                                                             
+-------------------------------------------------------------------------------------------------------------------------------
+ beforeValidate,afterValidate,beforeMigrate,beforeEachMigrate,afterEachMigrate,beforeEachMigrate,afterEachMigrate,afterMigrate
+(1 row)
+
+
+=== OFFICIAL REPAIR + CALLBACKS ===
+11�� 20, 2026 11:58:30 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:58:30 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 11:58:30 ���� org.flywaydb.core.internal.callback.SqlScriptCallbackFactory
+��Ϣ: Executing SQL callback: beforeRepair - 
+11�� 20, 2026 11:58:30 ���� org.flywaydb.core.internal.proprietaryStubs.ErrorOverridesSupportStub printWarning
+����: DB: relation "cb_events" already exists, skipping (SQL State: 42P07 - Error Code: 0)
+11�� 20, 2026 11:58:30 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory removeFailedMigrations
+��Ϣ: Repair of failed migration in Schema History table "public"."flyway_schema_history" not necessary. No failed migration detected.
+11�� 20, 2026 11:58:30 ���� org.flywaydb.core.internal.command.DbRepair repair
+��Ϣ: Successfully repaired schema history table "public"."flyway_schema_history" (execution time 00:00.025s).
+11�� 20, 2026 11:58:30 ���� org.flywaydb.core.internal.callback.SqlScriptCallbackFactory
+��Ϣ: Executing SQL callback: afterRepair - 
+RESULT	repair	repairActions=0	alignedMigrations=0
+EXIT=0
+
+=== EVENTS AFTER REPAIR ===
+                                                                         events                                                                         
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+ beforeValidate,afterValidate,beforeMigrate,beforeEachMigrate,afterEachMigrate,beforeEachMigrate,afterEachMigrate,afterMigrate,beforeRepair,afterRepair
+(1 row)
+
+
+=== OFFICIAL CLEAN + CALLBACKS ===
+11�� 20, 2026 11:58:31 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:58:31 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 11:58:31 ���� org.flywaydb.core.internal.callback.SqlScriptCallbackFactory
+��Ϣ: Executing SQL callback: beforeClean - 
+11�� 20, 2026 11:58:31 ���� org.flywaydb.core.internal.command.clean.CleanExecutor dropDatabaseObjectsPreSchemas
+��Ϣ: Successfully dropped pre-schema database level objects (execution time 00:00.000s)
+11�� 20, 2026 11:58:31 ���� org.flywaydb.core.internal.command.clean.CleanExecutor cleanSchema
+��Ϣ: Successfully cleaned schema "public" (execution time 00:00.028s)
+11�� 20, 2026 11:58:31 ���� org.flywaydb.core.internal.command.clean.CleanExecutor cleanSchema
+��Ϣ: Successfully cleaned schema "public" (execution time 00:00.012s)
+11�� 20, 2026 11:58:31 ���� org.flywaydb.core.internal.command.clean.CleanExecutor dropDatabaseObjectsPostSchemas
+��Ϣ: Successfully dropped post-schema database level objects (execution time 00:00.000s)
+11�� 20, 2026 11:58:31 ���� org.flywaydb.core.internal.callback.SqlScriptCallbackFactory
+��Ϣ: Executing SQL callback: afterClean - 
+RESULT	clean	success=true
+EXIT=0
+
+=== OBJECTS AFTER CLEAN ===
+ before_tbl |   after_tbl    | history 
+------------+----------------+---------
+            | cb_clean_after | 
+(1 row)
+

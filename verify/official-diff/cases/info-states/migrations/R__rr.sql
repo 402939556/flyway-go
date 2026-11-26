@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS info_rr (id INT);

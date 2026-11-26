@@ -1,0 +1,1 @@
+CREATE TABLE oo_one (id INT);

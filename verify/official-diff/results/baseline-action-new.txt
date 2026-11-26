@@ -1,0 +1,202 @@
+11�� 20, 2026 11:59:21 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:59:21 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 11:59:22 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory create
+��Ϣ: Creating Schema History table "public"."flyway_schema_history" with baseline ...
+11�� 20, 2026 11:59:22 ���� org.flywaydb.core.internal.command.DbBaseline baseline
+��Ϣ: Successfully baselined schema with version: 1
+RESULT	baseline	success=true	baselineVersion=1
+EXIT=0
+
+=== OFFICIAL BASELINE HISTORY ===
+ installed_rank | version |      description      |   type   |        script         | checksum | success 
+----------------+---------+-----------------------+----------+-----------------------+----------+---------
+              1 | 1       | << Flyway Baseline >> | BASELINE | << Flyway Baseline >> |          | t
+(1 row)
+
+
+=== GO BASELINE LATEST ===
+执行失败: 非法 baselineVersion "<< Latest Version >>": 版本号只能包含 0..9 与点号，非法版本: << Latest Version >>
+EXIT=1
+
+=== GO BASELINE HISTORY ===
+ERROR:  relation "flyway_schema_history" does not exist
+LINE 1: ...ion,description,type,script,checksum,success FROM flyway_sch...
+                                                             ^
+
+=== OFFICIAL BASELINE << Latest Version >> ===
+11�� 20, 2026 11:59:31 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:59:31 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+ERROR	org.flywaydb.core.api.FlywayException	Version may only contain 0..9 and . (dot). Invalid version: << Latest Version >>
+org.flywaydb.core.api.FlywayException: Version may only contain 0..9 and . (dot). Invalid version: << Latest Version >>
+	at org.flywaydb.core.api.MigrationVersion.toBigInteger(MigrationVersion.java:323)
+	at org.flywaydb.core.api.MigrationVersion.tokenize(MigrationVersion.java:306)
+	at org.flywaydb.core.api.MigrationVersion.<init>(MigrationVersion.java:105)
+	at org.flywaydb.core.api.MigrationVersion.fromVersion(MigrationVersion.java:94)
+	at org.flywaydb.core.api.configuration.ClassicConfiguration.getBaselineVersion(ClassicConfiguration.java:990)
+	at org.flywaydb.core.Flyway.doBaseline(Flyway.java:542)
+	at org.flywaydb.core.Flyway.lambda$baseline$0(Flyway.java:425)
+	at org.flywaydb.core.FlywayExecutor.execute(FlywayExecutor.java:242)
+	at org.flywaydb.core.FlywayExecutor.execute(FlywayExecutor.java:125)
+	at org.flywaydb.core.Flyway.baseline(Flyway.java:414)
+	at FlywayRunner.main(FlywayRunner.java:68)
+EXIT=1
+ERROR:  relation "flyway_schema_history" does not exist
+LINE 1: ...ion,description,type,script,checksum,success FROM flyway_sch...
+                                                             ^
+
+=== OFFICIAL BASELINE << Current Version >> ===
+11�� 20, 2026 11:59:32 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:59:32 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+ERROR	org.flywaydb.core.api.FlywayException	Version may only contain 0..9 and . (dot). Invalid version: << Current Version >>
+org.flywaydb.core.api.FlywayException: Version may only contain 0..9 and . (dot). Invalid version: << Current Version >>
+	at org.flywaydb.core.api.MigrationVersion.toBigInteger(MigrationVersion.java:323)
+	at org.flywaydb.core.api.MigrationVersion.tokenize(MigrationVersion.java:306)
+	at org.flywaydb.core.api.MigrationVersion.<init>(MigrationVersion.java:105)
+	at org.flywaydb.core.api.MigrationVersion.fromVersion(MigrationVersion.java:94)
+	at org.flywaydb.core.api.configuration.ClassicConfiguration.getBaselineVersion(ClassicConfiguration.java:990)
+	at org.flywaydb.core.Flyway.doBaseline(Flyway.java:542)
+	at org.flywaydb.core.Flyway.lambda$baseline$0(Flyway.java:425)
+	at org.flywaydb.core.FlywayExecutor.execute(FlywayExecutor.java:242)
+	at org.flywaydb.core.FlywayExecutor.execute(FlywayExecutor.java:125)
+	at org.flywaydb.core.Flyway.baseline(Flyway.java:414)
+	at FlywayRunner.main(FlywayRunner.java:68)
+EXIT=1
+ERROR:  relation "flyway_schema_history" does not exist
+LINE 1: ...ion,description,type,script,checksum,success FROM flyway_sch...
+                                                             ^
+
+=== OFFICIAL BASELINE << Next Version >> ===
+11�� 20, 2026 11:59:33 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:59:33 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+ERROR	org.flywaydb.core.api.FlywayException	Version may only contain 0..9 and . (dot). Invalid version: << Next Version >>
+org.flywaydb.core.api.FlywayException: Version may only contain 0..9 and . (dot). Invalid version: << Next Version >>
+	at org.flywaydb.core.api.MigrationVersion.toBigInteger(MigrationVersion.java:323)
+	at org.flywaydb.core.api.MigrationVersion.tokenize(MigrationVersion.java:306)
+	at org.flywaydb.core.api.MigrationVersion.<init>(MigrationVersion.java:105)
+	at org.flywaydb.core.api.MigrationVersion.fromVersion(MigrationVersion.java:94)
+	at org.flywaydb.core.api.configuration.ClassicConfiguration.getBaselineVersion(ClassicConfiguration.java:990)
+	at org.flywaydb.core.Flyway.doBaseline(Flyway.java:542)
+	at org.flywaydb.core.Flyway.lambda$baseline$0(Flyway.java:425)
+	at org.flywaydb.core.FlywayExecutor.execute(FlywayExecutor.java:242)
+	at org.flywaydb.core.FlywayExecutor.execute(FlywayExecutor.java:125)
+	at org.flywaydb.core.Flyway.baseline(Flyway.java:414)
+	at FlywayRunner.main(FlywayRunner.java:68)
+EXIT=1
+ERROR:  relation "flyway_schema_history" does not exist
+LINE 1: ...ion,description,type,script,checksum,success FROM flyway_sch...
+                                                             ^
+
+=== OFFICIAL BASELINE 0 ===
+11�� 20, 2026 11:59:34 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:59:34 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 11:59:34 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory create
+��Ϣ: Creating Schema History table "public"."flyway_schema_history" with baseline ...
+11�� 20, 2026 11:59:34 ���� org.flywaydb.core.internal.command.DbBaseline baseline
+��Ϣ: Successfully baselined schema with version: 0
+RESULT	baseline	success=true	baselineVersion=0
+EXIT=0
+ installed_rank | version | description |   type   | script | checksum | success 
+----------------+---------+-------------+----------+--------+----------+---------
+              1 | 0       | custom      | BASELINE | custom |          | t
+(1 row)
+
+
+=== OFFICIAL BASELINEONMIGRATE latest ===
+11�� 20, 2026 11:59:43 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:59:43 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 11:59:43 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory allAppliedMigrations
+��Ϣ: Schema history table "public"."flyway_schema_history" does not exist yet
+11�� 20, 2026 11:59:43 ���� org.flywaydb.core.internal.command.DbValidate validate
+��Ϣ: Successfully validated 2 migrations (execution time 00:00.016s)
+11�� 20, 2026 11:59:43 ���� org.flywaydb.core.Flyway lambda$migrate$0
+��Ϣ: All configured schemas are empty; a baseline marker will not be added to Flyway's schema history table. A baseline or migration script with a lower version than the baseline version may execute if available. Check the Schemas parameter if this is not intended. See https://help.red-gate.com/help/flyway-cli13/help_13.aspx?topic=baseline-on-migrate for more info
+11�� 20, 2026 11:59:43 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory create
+��Ϣ: Creating Schema History table "public"."flyway_schema_history" ...
+11�� 20, 2026 11:59:43 ���� org.flywaydb.core.internal.command.DbMigrate migrateGroup
+��Ϣ: Current version of schema "public": << Empty Schema >>
+11�� 20, 2026 11:59:43 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" to version "1 - one"
+11�� 20, 2026 11:59:43 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" to version "2 - two"
+11�� 20, 2026 11:59:43 ���� org.flywaydb.core.internal.command.DbMigrate logSummary
+��Ϣ: Successfully applied 2 migrations to schema "public", now at version v2 (execution time 00:00.010s)
+RESULT	migrate	success=true	migrationsExecuted=2
+EXIT=0
+ installed_rank | version | description | type |   script    |  checksum  | success 
+----------------+---------+-------------+------+-------------+------------+---------
+              1 | 1       | one         | SQL  | V1__one.sql | 1242411884 | t
+              2 | 2       | two         | SQL  | V2__two.sql | -739256979 | t
+(2 rows)
+
+
+=== OFFICIAL BASELINEONMIGRATE current ===
+11�� 20, 2026 11:59:44 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:59:44 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 11:59:44 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory allAppliedMigrations
+��Ϣ: Schema history table "public"."flyway_schema_history" does not exist yet
+11�� 20, 2026 11:59:44 ���� org.flywaydb.core.internal.command.DbValidate validate
+��Ϣ: Successfully validated 2 migrations (execution time 00:00.016s)
+11�� 20, 2026 11:59:44 ���� org.flywaydb.core.Flyway lambda$migrate$0
+��Ϣ: All configured schemas are empty; a baseline marker will not be added to Flyway's schema history table. A baseline or migration script with a lower version than the baseline version may execute if available. Check the Schemas parameter if this is not intended. See https://help.red-gate.com/help/flyway-cli13/help_13.aspx?topic=baseline-on-migrate for more info
+11�� 20, 2026 11:59:44 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory create
+��Ϣ: Creating Schema History table "public"."flyway_schema_history" ...
+11�� 20, 2026 11:59:44 ���� org.flywaydb.core.internal.command.DbMigrate migrateGroup
+��Ϣ: Current version of schema "public": << Empty Schema >>
+11�� 20, 2026 11:59:44 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" to version "1 - one"
+11�� 20, 2026 11:59:44 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" to version "2 - two"
+11�� 20, 2026 11:59:44 ���� org.flywaydb.core.internal.command.DbMigrate logSummary
+��Ϣ: Successfully applied 2 migrations to schema "public", now at version v2 (execution time 00:00.010s)
+RESULT	migrate	success=true	migrationsExecuted=2
+EXIT=0
+ installed_rank | version | description | type |   script    |  checksum  | success 
+----------------+---------+-------------+------+-------------+------------+---------
+              1 | 1       | one         | SQL  | V1__one.sql | 1242411884 | t
+              2 | 2       | two         | SQL  | V2__two.sql | -739256979 | t
+(2 rows)
+
+
+=== OFFICIAL BASELINEONMIGRATE next ===
+11�� 20, 2026 11:59:45 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:59:45 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 11:59:45 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory allAppliedMigrations
+��Ϣ: Schema history table "public"."flyway_schema_history" does not exist yet
+11�� 20, 2026 11:59:45 ���� org.flywaydb.core.internal.command.DbValidate validate
+��Ϣ: Successfully validated 2 migrations (execution time 00:00.017s)
+11�� 20, 2026 11:59:45 ���� org.flywaydb.core.Flyway lambda$migrate$0
+��Ϣ: All configured schemas are empty; a baseline marker will not be added to Flyway's schema history table. A baseline or migration script with a lower version than the baseline version may execute if available. Check the Schemas parameter if this is not intended. See https://help.red-gate.com/help/flyway-cli13/help_13.aspx?topic=baseline-on-migrate for more info
+11�� 20, 2026 11:59:45 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory create
+��Ϣ: Creating Schema History table "public"."flyway_schema_history" ...
+11�� 20, 2026 11:59:45 ���� org.flywaydb.core.internal.command.DbMigrate migrateGroup
+��Ϣ: Current version of schema "public": << Empty Schema >>
+11�� 20, 2026 11:59:45 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" to version "1 - one"
+11�� 20, 2026 11:59:45 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" to version "2 - two"
+11�� 20, 2026 11:59:45 ���� org.flywaydb.core.internal.command.DbMigrate logSummary
+��Ϣ: Successfully applied 2 migrations to schema "public", now at version v2 (execution time 00:00.010s)
+RESULT	migrate	success=true	migrationsExecuted=2
+EXIT=0
+ installed_rank | version | description | type |   script    |  checksum  | success 
+----------------+---------+-------------+------+-------------+------------+---------
+              1 | 1       | one         | SQL  | V1__one.sql | 1242411884 | t
+              2 | 2       | two         | SQL  | V2__two.sql | -739256979 | t
+(2 rows)
+

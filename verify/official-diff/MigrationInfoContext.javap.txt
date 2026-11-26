@@ -1,0 +1,340 @@
+Compiled from "MigrationInfoContext.java"
+public class org.flywaydb.core.internal.info.MigrationInfoContext {
+  public boolean outOfOrder;
+
+  public org.flywaydb.core.api.pattern.ValidatePattern[] ignorePatterns;
+
+  public org.flywaydb.core.api.MigrationVersion target;
+
+  public org.flywaydb.core.api.MigrationPattern[] cherryPick;
+
+  public org.flywaydb.core.extensibility.CherryPickSupport cherryPickSupport;
+
+  public org.flywaydb.core.api.MigrationVersion schema;
+
+  public org.flywaydb.core.api.MigrationVersion pendingBaseline;
+
+  public org.flywaydb.core.api.MigrationVersion appliedBaseline;
+
+  public org.flywaydb.core.api.MigrationVersion lastResolved;
+
+  public org.flywaydb.core.api.MigrationVersion lastApplied;
+
+  public java.util.Map<java.lang.String, java.lang.Integer> latestRepeatableRuns;
+
+  public org.flywaydb.core.internal.info.MigrationInfoContext(org.flywaydb.core.api.configuration.Configuration);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: iconst_0
+       6: anewarray     #7                  // class org/flywaydb/core/api/pattern/ValidatePattern
+       9: putfield      #9                  // Field ignorePatterns:[Lorg/flywaydb/core/api/pattern/ValidatePattern;
+      12: aload_0
+      13: getstatic     #15                 // Field org/flywaydb/core/api/MigrationVersion.EMPTY:Lorg/flywaydb/core/api/MigrationVersion;
+      16: putfield      #21                 // Field lastResolved:Lorg/flywaydb/core/api/MigrationVersion;
+      19: aload_0
+      20: getstatic     #15                 // Field org/flywaydb/core/api/MigrationVersion.EMPTY:Lorg/flywaydb/core/api/MigrationVersion;
+      23: putfield      #24                 // Field lastApplied:Lorg/flywaydb/core/api/MigrationVersion;
+      26: aload_0
+      27: new           #27                 // class java/util/HashMap
+      30: dup
+      31: invokespecial #29                 // Method java/util/HashMap."<init>":()V
+      34: putfield      #30                 // Field latestRepeatableRuns:Ljava/util/Map;
+      37: aload_0
+      38: aload_1
+      39: invokeinterface #34,  1           // InterfaceMethod org/flywaydb/core/api/configuration/Configuration.getCherryPick:()[Lorg/flywaydb/core/api/MigrationPattern;
+      44: putfield      #40                 // Field cherryPick:[Lorg/flywaydb/core/api/MigrationPattern;
+      47: aload_0
+      48: aload_1
+      49: invokeinterface #44,  1           // InterfaceMethod org/flywaydb/core/api/configuration/Configuration.getPluginRegister:()Lorg/flywaydb/core/internal/plugin/PluginRegister;
+      54: ldc           #48                 // class org/flywaydb/core/extensibility/CherryPickSupport
+      56: invokevirtual #50                 // Method org/flywaydb/core/internal/plugin/PluginRegister.getInstanceOf:(Ljava/lang/Class;)Lorg/flywaydb/core/extensibility/Plugin;
+      59: checkcast     #48                 // class org/flywaydb/core/extensibility/CherryPickSupport
+      62: putfield      #56                 // Field cherryPickSupport:Lorg/flywaydb/core/extensibility/CherryPickSupport;
+      65: return
+
+  public boolean isPendingIgnored();
+    Code:
+       0: aload_0
+       1: getfield      #9                  // Field ignorePatterns:[Lorg/flywaydb/core/api/pattern/ValidatePattern;
+       4: invokestatic  #60                 // Method org/flywaydb/core/internal/util/ValidatePatternUtils.isPendingIgnored:([Lorg/flywaydb/core/api/pattern/ValidatePattern;)Z
+       7: ireturn
+
+  public boolean isIgnoredIgnored();
+    Code:
+       0: aload_0
+       1: getfield      #40                 // Field cherryPick:[Lorg/flywaydb/core/api/MigrationPattern;
+       4: ifnonnull     17
+       7: aload_0
+       8: getfield      #9                  // Field ignorePatterns:[Lorg/flywaydb/core/api/pattern/ValidatePattern;
+      11: invokestatic  #66                 // Method org/flywaydb/core/internal/util/ValidatePatternUtils.isIgnoredIgnored:([Lorg/flywaydb/core/api/pattern/ValidatePattern;)Z
+      14: ifeq          21
+      17: iconst_1
+      18: goto          22
+      21: iconst_0
+      22: ireturn
+
+  public boolean isMissingIgnored();
+    Code:
+       0: aload_0
+       1: getfield      #9                  // Field ignorePatterns:[Lorg/flywaydb/core/api/pattern/ValidatePattern;
+       4: invokestatic  #69                 // Method org/flywaydb/core/internal/util/ValidatePatternUtils.isMissingIgnored:([Lorg/flywaydb/core/api/pattern/ValidatePattern;)Z
+       7: ireturn
+
+  public boolean isFutureIgnored();
+    Code:
+       0: aload_0
+       1: getfield      #9                  // Field ignorePatterns:[Lorg/flywaydb/core/api/pattern/ValidatePattern;
+       4: invokestatic  #72                 // Method org/flywaydb/core/internal/util/ValidatePatternUtils.isFutureIgnored:([Lorg/flywaydb/core/api/pattern/ValidatePattern;)Z
+       7: ireturn
+
+  public boolean equals(java.lang.Object);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: if_acmpne     7
+       5: iconst_1
+       6: ireturn
+       7: aload_1
+       8: ifnull        22
+      11: aload_0
+      12: invokevirtual #75                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      15: aload_1
+      16: invokevirtual #75                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      19: if_acmpeq     24
+      22: iconst_0
+      23: ireturn
+      24: aload_1
+      25: checkcast     #10                 // class org/flywaydb/core/internal/info/MigrationInfoContext
+      28: astore_2
+      29: aload_0
+      30: getfield      #79                 // Field outOfOrder:Z
+      33: aload_2
+      34: getfield      #79                 // Field outOfOrder:Z
+      37: if_icmpeq     42
+      40: iconst_0
+      41: ireturn
+      42: aload_0
+      43: getfield      #83                 // Field target:Lorg/flywaydb/core/api/MigrationVersion;
+      46: ifnull        66
+      49: aload_0
+      50: getfield      #83                 // Field target:Lorg/flywaydb/core/api/MigrationVersion;
+      53: aload_2
+      54: getfield      #83                 // Field target:Lorg/flywaydb/core/api/MigrationVersion;
+      57: invokevirtual #86                 // Method org/flywaydb/core/api/MigrationVersion.equals:(Ljava/lang/Object;)Z
+      60: ifne          75
+      63: goto          73
+      66: aload_2
+      67: getfield      #83                 // Field target:Lorg/flywaydb/core/api/MigrationVersion;
+      70: ifnull        75
+      73: iconst_0
+      74: ireturn
+      75: aload_0
+      76: getfield      #90                 // Field schema:Lorg/flywaydb/core/api/MigrationVersion;
+      79: ifnull        99
+      82: aload_0
+      83: getfield      #90                 // Field schema:Lorg/flywaydb/core/api/MigrationVersion;
+      86: aload_2
+      87: getfield      #90                 // Field schema:Lorg/flywaydb/core/api/MigrationVersion;
+      90: invokevirtual #86                 // Method org/flywaydb/core/api/MigrationVersion.equals:(Ljava/lang/Object;)Z
+      93: ifne          108
+      96: goto          106
+      99: aload_2
+     100: getfield      #90                 // Field schema:Lorg/flywaydb/core/api/MigrationVersion;
+     103: ifnull        108
+     106: iconst_0
+     107: ireturn
+     108: aload_0
+     109: getfield      #93                 // Field appliedBaseline:Lorg/flywaydb/core/api/MigrationVersion;
+     112: ifnull        132
+     115: aload_0
+     116: getfield      #93                 // Field appliedBaseline:Lorg/flywaydb/core/api/MigrationVersion;
+     119: aload_2
+     120: getfield      #93                 // Field appliedBaseline:Lorg/flywaydb/core/api/MigrationVersion;
+     123: invokevirtual #86                 // Method org/flywaydb/core/api/MigrationVersion.equals:(Ljava/lang/Object;)Z
+     126: ifne          141
+     129: goto          139
+     132: aload_2
+     133: getfield      #93                 // Field appliedBaseline:Lorg/flywaydb/core/api/MigrationVersion;
+     136: ifnull        141
+     139: iconst_0
+     140: ireturn
+     141: aload_0
+     142: getfield      #21                 // Field lastResolved:Lorg/flywaydb/core/api/MigrationVersion;
+     145: ifnull        165
+     148: aload_0
+     149: getfield      #21                 // Field lastResolved:Lorg/flywaydb/core/api/MigrationVersion;
+     152: aload_2
+     153: getfield      #21                 // Field lastResolved:Lorg/flywaydb/core/api/MigrationVersion;
+     156: invokevirtual #86                 // Method org/flywaydb/core/api/MigrationVersion.equals:(Ljava/lang/Object;)Z
+     159: ifne          174
+     162: goto          172
+     165: aload_2
+     166: getfield      #21                 // Field lastResolved:Lorg/flywaydb/core/api/MigrationVersion;
+     169: ifnull        174
+     172: iconst_0
+     173: ireturn
+     174: aload_0
+     175: getfield      #24                 // Field lastApplied:Lorg/flywaydb/core/api/MigrationVersion;
+     178: ifnull        198
+     181: aload_0
+     182: getfield      #24                 // Field lastApplied:Lorg/flywaydb/core/api/MigrationVersion;
+     185: aload_2
+     186: getfield      #24                 // Field lastApplied:Lorg/flywaydb/core/api/MigrationVersion;
+     189: invokevirtual #86                 // Method org/flywaydb/core/api/MigrationVersion.equals:(Ljava/lang/Object;)Z
+     192: ifne          207
+     195: goto          205
+     198: aload_2
+     199: getfield      #24                 // Field lastApplied:Lorg/flywaydb/core/api/MigrationVersion;
+     202: ifnull        207
+     205: iconst_0
+     206: ireturn
+     207: aload_0
+     208: getfield      #40                 // Field cherryPick:[Lorg/flywaydb/core/api/MigrationPattern;
+     211: ifnull        231
+     214: aload_0
+     215: getfield      #40                 // Field cherryPick:[Lorg/flywaydb/core/api/MigrationPattern;
+     218: aload_2
+     219: getfield      #40                 // Field cherryPick:[Lorg/flywaydb/core/api/MigrationPattern;
+     222: invokevirtual #96                 // Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+     225: ifne          240
+     228: goto          238
+     231: aload_2
+     232: getfield      #40                 // Field cherryPick:[Lorg/flywaydb/core/api/MigrationPattern;
+     235: ifnull        240
+     238: iconst_0
+     239: ireturn
+     240: aload_0
+     241: getfield      #9                  // Field ignorePatterns:[Lorg/flywaydb/core/api/pattern/ValidatePattern;
+     244: ifnull        264
+     247: aload_0
+     248: getfield      #9                  // Field ignorePatterns:[Lorg/flywaydb/core/api/pattern/ValidatePattern;
+     251: aload_2
+     252: getfield      #9                  // Field ignorePatterns:[Lorg/flywaydb/core/api/pattern/ValidatePattern;
+     255: invokevirtual #96                 // Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+     258: ifne          273
+     261: goto          271
+     264: aload_2
+     265: getfield      #9                  // Field ignorePatterns:[Lorg/flywaydb/core/api/pattern/ValidatePattern;
+     268: ifnull        273
+     271: iconst_0
+     272: ireturn
+     273: aload_0
+     274: getfield      #30                 // Field latestRepeatableRuns:Ljava/util/Map;
+     277: aload_2
+     278: getfield      #30                 // Field latestRepeatableRuns:Ljava/util/Map;
+     281: invokeinterface #97,  2           // InterfaceMethod java/util/Map.equals:(Ljava/lang/Object;)Z
+     286: ireturn
+
+  public int hashCode();
+    Code:
+       0: aload_0
+       1: getfield      #79                 // Field outOfOrder:Z
+       4: ifeq          11
+       7: iconst_1
+       8: goto          12
+      11: iconst_0
+      12: istore_1
+      13: bipush        31
+      15: iload_1
+      16: imul
+      17: aload_0
+      18: getfield      #83                 // Field target:Lorg/flywaydb/core/api/MigrationVersion;
+      21: ifnull        34
+      24: aload_0
+      25: getfield      #83                 // Field target:Lorg/flywaydb/core/api/MigrationVersion;
+      28: invokevirtual #100                // Method org/flywaydb/core/api/MigrationVersion.hashCode:()I
+      31: goto          35
+      34: iconst_0
+      35: iadd
+      36: istore_1
+      37: bipush        31
+      39: iload_1
+      40: imul
+      41: aload_0
+      42: getfield      #90                 // Field schema:Lorg/flywaydb/core/api/MigrationVersion;
+      45: ifnull        58
+      48: aload_0
+      49: getfield      #90                 // Field schema:Lorg/flywaydb/core/api/MigrationVersion;
+      52: invokevirtual #100                // Method org/flywaydb/core/api/MigrationVersion.hashCode:()I
+      55: goto          59
+      58: iconst_0
+      59: iadd
+      60: istore_1
+      61: bipush        31
+      63: iload_1
+      64: imul
+      65: aload_0
+      66: getfield      #93                 // Field appliedBaseline:Lorg/flywaydb/core/api/MigrationVersion;
+      69: ifnull        82
+      72: aload_0
+      73: getfield      #93                 // Field appliedBaseline:Lorg/flywaydb/core/api/MigrationVersion;
+      76: invokevirtual #100                // Method org/flywaydb/core/api/MigrationVersion.hashCode:()I
+      79: goto          83
+      82: iconst_0
+      83: iadd
+      84: istore_1
+      85: bipush        31
+      87: iload_1
+      88: imul
+      89: aload_0
+      90: getfield      #21                 // Field lastResolved:Lorg/flywaydb/core/api/MigrationVersion;
+      93: ifnull        106
+      96: aload_0
+      97: getfield      #21                 // Field lastResolved:Lorg/flywaydb/core/api/MigrationVersion;
+     100: invokevirtual #100                // Method org/flywaydb/core/api/MigrationVersion.hashCode:()I
+     103: goto          107
+     106: iconst_0
+     107: iadd
+     108: istore_1
+     109: bipush        31
+     111: iload_1
+     112: imul
+     113: aload_0
+     114: getfield      #24                 // Field lastApplied:Lorg/flywaydb/core/api/MigrationVersion;
+     117: ifnull        130
+     120: aload_0
+     121: getfield      #24                 // Field lastApplied:Lorg/flywaydb/core/api/MigrationVersion;
+     124: invokevirtual #100                // Method org/flywaydb/core/api/MigrationVersion.hashCode:()I
+     127: goto          131
+     130: iconst_0
+     131: iadd
+     132: istore_1
+     133: bipush        31
+     135: iload_1
+     136: imul
+     137: aload_0
+     138: getfield      #40                 // Field cherryPick:[Lorg/flywaydb/core/api/MigrationPattern;
+     141: ifnull        154
+     144: aload_0
+     145: getfield      #40                 // Field cherryPick:[Lorg/flywaydb/core/api/MigrationPattern;
+     148: invokevirtual #104                // Method java/lang/Object.hashCode:()I
+     151: goto          155
+     154: iconst_0
+     155: iadd
+     156: istore_1
+     157: bipush        31
+     159: iload_1
+     160: imul
+     161: aload_0
+     162: getfield      #9                  // Field ignorePatterns:[Lorg/flywaydb/core/api/pattern/ValidatePattern;
+     165: ifnull        178
+     168: aload_0
+     169: getfield      #9                  // Field ignorePatterns:[Lorg/flywaydb/core/api/pattern/ValidatePattern;
+     172: invokevirtual #104                // Method java/lang/Object.hashCode:()I
+     175: goto          179
+     178: iconst_0
+     179: iadd
+     180: istore_1
+     181: bipush        31
+     183: iload_1
+     184: imul
+     185: aload_0
+     186: getfield      #30                 // Field latestRepeatableRuns:Ljava/util/Map;
+     189: invokeinterface #105,  1          // InterfaceMethod java/util/Map.hashCode:()I
+     194: iadd
+     195: istore_1
+     196: iload_1
+     197: ireturn
+}

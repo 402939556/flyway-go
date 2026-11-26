@@ -1,0 +1,2 @@
+CREATE TABLE broken (id INT);
+THIS IS NOT VALID SQL;

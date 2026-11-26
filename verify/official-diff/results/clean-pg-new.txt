@@ -1,0 +1,123 @@
+=== OFFICIAL MIGRATE PG CLEAN CASE ===
+11�� 20, 2026 11:57:29 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:57:29 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 11:57:29 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory allAppliedMigrations
+��Ϣ: Schema history table "public"."flyway_schema_history" does not exist yet
+11�� 20, 2026 11:57:29 ���� org.flywaydb.core.internal.command.DbValidate validate
+��Ϣ: Successfully validated 1 migration (execution time 00:00.016s)
+11�� 20, 2026 11:57:29 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory create
+��Ϣ: Creating Schema History table "public"."flyway_schema_history" ...
+11�� 20, 2026 11:57:29 ���� org.flywaydb.core.internal.command.DbMigrate migrateGroup
+��Ϣ: Current version of schema "public": << Empty Schema >>
+11�� 20, 2026 11:57:29 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" to version "1 - objects"
+11�� 20, 2026 11:57:29 ���� org.flywaydb.core.internal.command.DbMigrate logSummary
+��Ϣ: Successfully applied 1 migration to schema "public", now at version v1 (execution time 00:00.010s)
+RESULT	migrate	success=true	migrationsExecuted=1
+
+=== OBJECTS BEFORE OFFICIAL CLEAN ===
+        typname         
+------------------------
+ _flyway_schema_history
+ _mood
+ _t_clean
+ _v_clean
+ flyway_schema_history
+ mood
+ t_clean
+ v_clean
+(8 rows)
+
+ proname 
+---------
+ f_clean
+(1 row)
+
+
+=== OFFICIAL CLEAN ===
+11�� 20, 2026 11:57:30 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:57:30 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+ERROR	org.flywaydb.core.api.FlywayException	Unable to execute clean as it has been disabled with the 'flyway.cleanDisabled' property.
+org.flywaydb.core.api.FlywayException: Unable to execute clean as it has been disabled with the 'flyway.cleanDisabled' property.
+	at org.flywaydb.core.internal.command.clean.DbClean.clean(DbClean.java:66)
+	at org.flywaydb.core.Flyway.doClean(Flyway.java:517)
+	at org.flywaydb.core.Flyway.lambda$clean$0(Flyway.java:313)
+	at org.flywaydb.core.FlywayExecutor.execute(FlywayExecutor.java:242)
+	at org.flywaydb.core.FlywayExecutor.execute(FlywayExecutor.java:125)
+	at org.flywaydb.core.Flyway.clean(Flyway.java:312)
+	at FlywayRunner.main(FlywayRunner.java:64)
+EXIT=1
+
+=== OBJECTS AFTER OFFICIAL CLEAN ===
+        typname         
+------------------------
+ _flyway_schema_history
+ _mood
+ _t_clean
+ _v_clean
+ flyway_schema_history
+ mood
+ t_clean
+ v_clean
+(8 rows)
+
+ proname 
+---------
+ f_clean
+(1 row)
+
+
+=== OFFICIAL CLEAN RETRY WITH CORRECT ARG ===
+11�� 20, 2026 11:57:41 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:57:41 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 11:57:41 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory allAppliedMigrations
+��Ϣ: Schema history table "public"."flyway_schema_history" does not exist yet
+11�� 20, 2026 11:57:41 ���� org.flywaydb.core.internal.command.clean.CleanExecutor dropDatabaseObjectsPreSchemas
+��Ϣ: Successfully dropped pre-schema database level objects (execution time 00:00.000s)
+11�� 20, 2026 11:57:41 ���� org.flywaydb.core.internal.command.clean.CleanExecutor cleanSchema
+��Ϣ: Successfully cleaned schema "public" (execution time 00:00.019s)
+11�� 20, 2026 11:57:41 ���� org.flywaydb.core.internal.command.clean.CleanExecutor cleanSchema
+��Ϣ: Successfully cleaned schema "public" (execution time 00:00.012s)
+11�� 20, 2026 11:57:41 ���� org.flywaydb.core.internal.command.clean.CleanExecutor dropDatabaseObjectsPostSchemas
+��Ϣ: Successfully dropped post-schema database level objects (execution time 00:00.000s)
+RESULT	clean	success=true
+EXIT=0
+
+=== OBJECTS AFTER OFFICIAL CLEAN ===
+ typname 
+---------
+(0 rows)
+
+ proname 
+---------
+(0 rows)
+
+
+=== GO MIGRATE PG CLEAN CASE ===
+创建历史表 flyway_schema_history
+迁移 1（objects）...
+  -> 成功，耗时 3 ms
+迁移完成，共执行 1 个脚本
+
+=== GO CLEAN ===
+clean 完成，清理了 4 个对象
+EXIT=0
+
+=== OBJECTS AFTER GO CLEAN ===
+ typname 
+---------
+ _mood
+ mood
+(2 rows)
+
+ proname 
+---------
+ f_clean
+(1 row)
+

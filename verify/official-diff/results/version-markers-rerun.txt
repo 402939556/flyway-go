@@ -1,0 +1,68 @@
+=== RESET PG ===
+NOTICE:  drop cascades to 3 other objects
+DETAIL:  drop cascades to table flyway_schema_history
+drop cascades to table users
+drop cascades to view v_users
+DROP SCHEMA
+CREATE SCHEMA
+
+=== OFFICIAL target=next ===
+11�� 20, 2026 12:09:24 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 12:09:24 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 12:09:24 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory allAppliedMigrations
+��Ϣ: Schema history table "public"."flyway_schema_history" does not exist yet
+11�� 20, 2026 12:09:24 ���� org.flywaydb.core.internal.command.DbValidate validate
+��Ϣ: Successfully validated 2 migrations (execution time 00:00.017s)
+11�� 20, 2026 12:09:24 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory create
+��Ϣ: Creating Schema History table "public"."flyway_schema_history" ...
+11�� 20, 2026 12:09:24 ���� org.flywaydb.core.internal.command.DbMigrate migrateGroup
+��Ϣ: Current version of schema "public": << Empty Schema >>
+11�� 20, 2026 12:09:24 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" to version "1 - one"
+11�� 20, 2026 12:09:24 ���� org.flywaydb.core.internal.command.DbMigrate logSummary
+��Ϣ: Successfully applied 1 migration to schema "public", now at version v1 (execution time 00:00.005s)
+RESULT	migrate	success=true	migrationsExecuted=1
+OFFICIAL_NEXT_EXIT=0
+ installed_rank | version | description |   script    
+----------------+---------+-------------+-------------
+              1 | 1       | one         | V1__one.sql
+(1 row)
+
+
+=== RESET PG ===
+NOTICE:  drop cascades to 2 other objects
+DETAIL:  drop cascades to table flyway_schema_history
+drop cascades to table marker1
+DROP SCHEMA
+CREATE SCHEMA
+
+=== GO target=next RUN 1 ===
+创建历史表 flyway_schema_history
+迁移 1（one）...
+  -> 成功，耗时 0 ms
+迁移 2（two）...
+  -> 成功，耗时 0 ms
+迁移完成，共执行 2 个脚本
+GO_NEXT1_EXIT=0
+ installed_rank | version | description |   script    
+----------------+---------+-------------+-------------
+              1 | 1       | one         | V1__one.sql
+              2 | 2       | two         | V2__two.sql
+(2 rows)
+
+
+=== GO target=next RUN 2 ===
+数据库已是最新状态，无需执行迁移
+GO_NEXT2_EXIT=0
+ installed_rank | version | description |   script    
+----------------+---------+-------------+-------------
+              1 | 1       | one         | V1__one.sql
+              2 | 2       | two         | V2__two.sql
+(2 rows)
+
+
+=== GO target=latest ===
+数据库已是最新状态，无需执行迁移
+GO_LATEST_EXIT=0

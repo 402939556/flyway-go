@@ -1,0 +1,12 @@
+WARNING: No locations configured and default location 'sql' not found.
+Flyway OSS Edition 13.13.0 by Redgate
+
+See release notes here: https://help.red-gate.com/help/flyway-cli13/help_13.aspx?topic=release-notes-and-older-versions/release-notes-for-flyway-engine
+Database Name   
+----------------
+MariaDB         
+H2              
+SQLite          
+Testcontainers  
+PostgreSQL      
+MySQL           

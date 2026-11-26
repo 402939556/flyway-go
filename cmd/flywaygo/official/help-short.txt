@@ -1,0 +1,27 @@
+Usage:
+    flyway [options] [command]
+    flyway help [command]
+
+Commands:
+    version, -v, --version  Print the Flyway version and edition
+    list-engines            Lists the database engines that Flyway has loaded support for.
+    help                    Print this usage info and exit
+
+Configuration parameters: (Format: -key=value)
+    driver                  Fully qualified classname of the JDBC driver
+    url                     Jdbc url to use to connect to the database
+    user                    User to use to connect to the database
+    password                Password to use to connect to the database
+    (To see all configuration options please run flyway --help)
+
+Flags:
+    -X                      Print debug output
+    -q                      Suppress all output, except for errors and warnings
+    --help, -h, -?          Print this usage info and exit
+
+Example:
+    flyway -user=myuser -password=s3cr3t -url=jdbc:h2:mem -placeholders.abc=def migrate
+    flyway help check
+
+More info at https://help.red-gate.com/help/flyway-cli13/help_13.aspx?topic=reference/usage/command-line
+

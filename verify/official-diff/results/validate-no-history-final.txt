@@ -1,0 +1,4 @@
+=== GO VALIDATE no history default ===
+EXIT=0
+=== GO VALIDATE no history pending ===
+EXIT=0

@@ -1,0 +1,25 @@
+=== OFFICIAL INFO ===
+11�� 20, 2026 11:53:44 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:53:44 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+INFO	Versioned	1	one	SQL	SUCCESS	2026-11-20 11:53:37.336393	postgres	V1__one.sql	1189105721	1
+INFO	Versioned	2	two	SQL	SUCCESS	2026-11-20 11:53:37.376073	postgres	V2__two.sql	1714472617	2
+INFO	Versioned	3	three	SQL	SUCCESS	2026-11-20 11:53:37.39464	postgres	V3__three.sql	1107467086	3
+INFO	Repeatable	null	rr	SQL	SUCCESS	2026-11-20 11:53:37.411791	postgres	R__rr.sql	1033863754	4
+INFO	Versioned	4	future success	SQL	FUTURE_SUCCESS	2026-11-20 03:53:37.582981	manual	V4__future-success.sql	123	90
+INFO	Versioned	5	future failed	SQL	FUTURE_FAILED	2026-11-20 03:53:37.582981	manual	V5__future-failed.sql	456	91
+INFO	Repeatable	null	deleted repeatable	DELETE	SUCCESS	2026-11-20 03:53:37.582981	manual	R__deleted.sql	null	92
+INFO	Versioned	2	two	SQL	OUT_OF_ORDER	2026-11-20 03:53:37.582981	manual	V2__two.sql	999999	93
+EXIT=0
+=== GO INFO ===
+Category     Version    Description                      Type         Installed On         State
+--------------------------------------------------------------------------------------------------------------
+Versioned    1          one                              SQL          2026-11-20 11:53:37  Success
+Versioned    2          two                              SQL          2026-11-20 03:53:37  Success
+Versioned    3          three                            SQL          2026-11-20 11:53:37  Success
+Repeatable              rr                               SQL          2026-11-20 11:53:37  Success
+Versioned    4          future success                   SQL          2026-11-20 03:53:37  Missing
+Versioned    5          future failed                    SQL          2026-11-20 03:53:37  Missing
+Versioned               deleted repeatable               DELETE       2026-11-20 03:53:37  Missing
+EXIT=0

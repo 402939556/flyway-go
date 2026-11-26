@@ -1,0 +1,55 @@
+=== OFFICIAL MIGRATE validateMigrationNaming=true ===
+11�� 20, 2026 11:53:25 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:53:25 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+ERROR	org.flywaydb.core.api.FlywayException	Invalid SQL filenames found:
+Invalid versioned migration name format: V2_bad.sql (could not recognise version number 2_bad)
+org.flywaydb.core.api.FlywayException: Invalid SQL filenames found:
+Invalid versioned migration name format: V2_bad.sql (could not recognise version number 2_bad)
+	at org.flywaydb.core.internal.resource.ResourceNameValidator.validateSQLMigrationNaming(ResourceNameValidator.java:66)
+	at org.flywaydb.core.FlywayExecutor.execute(FlywayExecutor.java:156)
+	at org.flywaydb.core.FlywayExecutor.execute(FlywayExecutor.java:125)
+	at org.flywaydb.core.Flyway.migrate(Flyway.java:176)
+	at FlywayRunner.main(FlywayRunner.java:47)
+EXIT=1
+TABLES=
+=== GO MIGRATE (no equivalent flag) ===
+创建历史表 flyway_schema_history
+迁移 1（ok）...
+  -> 成功，耗时 0 ms
+迁移 R__ok（ok）...
+  -> 成功，耗时 0 ms
+迁移完成，共执行 2 个脚本
+EXIT=0
+TABLES=flyway_schema_history,naming_ok
+=== GO with unsupported official option spelling ===
+flag provided but not defined: -validateMigrationNaming
+Usage of migrate:
+  -baseline-description string
+    	基线描述 (default "<< Flyway Baseline >>")
+  -baseline-on-migrate
+    	库非空时自动 baseline
+  -baseline-version string
+    	基线版本 (default "1")
+  -clean-disabled
+    	禁用 clean (default true)
+  -driver string
+    	驱动: postgres | mysql
+  -ignore-missing
+    	忽略本地缺失的已应用迁移
+  -ignore-pending
+    	忽略未应用的本地迁移
+  -locations string
+    	迁移脚本目录，逗号分隔 (default ".")
+  -out-of-order
+    	允许执行低版本脚本
+  -table string
+    	历史表名 (default "flyway_schema_history")
+  -target string
+    	迁移目标版本
+  -url string
+    	数据库连接串
+  -validate-on-migrate
+    	迁移前校验 (default true)
+EXIT=2

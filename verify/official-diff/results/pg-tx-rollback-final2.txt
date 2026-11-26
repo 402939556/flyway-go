@@ -1,0 +1,4 @@
+=== GO PG TX ROLLBACK FINAL ===
+EXIT=1
+1|1|SQL|true
+0

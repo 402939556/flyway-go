@@ -1,0 +1,1 @@
+CREATE TABLE cb_conf_main (id INTEGER PRIMARY KEY);

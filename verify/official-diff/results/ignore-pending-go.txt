@@ -1,0 +1,28 @@
+flag provided but not defined: -ignoreMigrationPatterns
+Usage of validate:
+  -baseline-description string
+    	基线描述 (default "<< Flyway Baseline >>")
+  -baseline-on-migrate
+    	库非空时自动 baseline
+  -baseline-version string
+    	基线版本 (default "1")
+  -clean-disabled
+    	禁用 clean (default true)
+  -driver string
+    	驱动: postgres | mysql
+  -ignore-missing
+    	忽略本地缺失的已应用迁移
+  -ignore-pending
+    	忽略未应用的本地迁移
+  -locations string
+    	迁移脚本目录，逗号分隔 (default ".")
+  -out-of-order
+    	允许执行低版本脚本
+  -table string
+    	历史表名 (default "flyway_schema_history")
+  -target string
+    	迁移目标版本
+  -url string
+    	数据库连接串
+  -validate-on-migrate
+    	迁移前校验 (default true)

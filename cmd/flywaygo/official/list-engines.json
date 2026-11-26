@@ -1,0 +1,18 @@
+{
+  "version" : "13.13.0",
+  "command" : "list-engines",
+  "edition" : null,
+  "dbInfoResults" : [ {
+    "name" : "MariaDB"
+  }, {
+    "name" : "H2"
+  }, {
+    "name" : "SQLite"
+  }, {
+    "name" : "Testcontainers"
+  }, {
+    "name" : "PostgreSQL"
+  }, {
+    "name" : "MySQL"
+  } ]
+}

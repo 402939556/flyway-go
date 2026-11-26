@@ -1,0 +1,154 @@
+=== OFFICIAL baselineOnMigrate non-empty ===
+--- version=latest ---
+11�� 20, 2026 12:01:19 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 12:01:19 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 12:01:19 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory allAppliedMigrations
+��Ϣ: Schema history table "public"."flyway_schema_history" does not exist yet
+11�� 20, 2026 12:01:19 ���� org.flywaydb.core.internal.command.DbValidate validate
+��Ϣ: Successfully validated 3 migrations (execution time 00:00.017s)
+11�� 20, 2026 12:01:19 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory create
+��Ϣ: Creating Schema History table "public"."flyway_schema_history" with baseline ...
+11�� 20, 2026 12:01:19 ���� org.flywaydb.core.internal.command.DbBaseline baseline
+��Ϣ: Successfully baselined schema with version: << Latest Version >>
+ERROR	org.flywaydb.core.api.FlywayException	Version may only contain 0..9 and . (dot). Invalid version: << Latest Version >>
+org.flywaydb.core.api.FlywayException: Version may only contain 0..9 and . (dot). Invalid version: << Latest Version >>
+	at org.flywaydb.core.api.MigrationVersion.toBigInteger(MigrationVersion.java:323)
+	at org.flywaydb.core.api.MigrationVersion.tokenize(MigrationVersion.java:306)
+	at org.flywaydb.core.api.MigrationVersion.<init>(MigrationVersion.java:105)
+	at org.flywaydb.core.api.MigrationVersion.fromVersion(MigrationVersion.java:94)
+	at org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory.lambda$refreshCache$0(JdbcTableSchemaHistory.java:266)
+	at org.flywaydb.core.internal.jdbc.JdbcTemplate.query(JdbcTemplate.java:383)
+	at org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory.refreshCache(JdbcTableSchemaHistory.java:250)
+	at org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory.allAppliedMigrations(JdbcTableSchemaHistory.java:241)
+	at org.flywaydb.core.internal.info.MigrationInfoServiceImpl.refresh(MigrationInfoServiceImpl.java:92)
+	at org.flywaydb.core.internal.command.DbMigrate.migrateGroup(DbMigrate.java:192)
+	at org.flywaydb.core.internal.command.DbMigrate.lambda$migrateAll$0(DbMigrate.java:158)
+	at org.flywaydb.database.postgresql.PostgreSQLAdvisoryLockTemplate.execute(PostgreSQLAdvisoryLockTemplate.java:80)
+	at org.flywaydb.database.postgresql.PostgreSQLAdvisoryLockTemplate.lambda$execute$0(PostgreSQLAdvisoryLockTemplate.java:63)
+	at org.flywaydb.core.internal.jdbc.TransactionalExecutionTemplate.execute(TransactionalExecutionTemplate.java:60)
+	at org.flywaydb.database.postgresql.PostgreSQLAdvisoryLockTemplate.execute(PostgreSQLAdvisoryLockTemplate.java:63)
+	at org.flywaydb.database.postgresql.PostgreSQLConnection.lock(PostgreSQLConnection.java:104)
+	at org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory.lock(JdbcTableSchemaHistory.java:177)
+	at org.flywaydb.core.internal.command.DbMigrate.migrateAll(DbMigrate.java:158)
+	at org.flywaydb.core.internal.command.DbMigrate.migrate(DbMigrate.java:110)
+	at org.flywaydb.core.Flyway.lambda$migrate$0(Flyway.java:242)
+	at org.flywaydb.core.FlywayExecutor.execute(FlywayExecutor.java:242)
+	at org.flywaydb.core.FlywayExecutor.execute(FlywayExecutor.java:125)
+	at org.flywaydb.core.Flyway.migrate(Flyway.java:176)
+	at FlywayRunner.main(FlywayRunner.java:47)
+EXIT=1
+HISTORY:
+1|<< Latest Version >>|<< Flyway Baseline >>|BASELINE|<< Flyway Baseline >>||t
+--- version=current ---
+11�� 20, 2026 12:01:20 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 12:01:20 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 12:01:20 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory allAppliedMigrations
+��Ϣ: Schema history table "public"."flyway_schema_history" does not exist yet
+11�� 20, 2026 12:01:20 ���� org.flywaydb.core.internal.command.DbValidate validate
+��Ϣ: Successfully validated 3 migrations (execution time 00:00.016s)
+11�� 20, 2026 12:01:20 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory create
+��Ϣ: Creating Schema History table "public"."flyway_schema_history" with baseline ...
+11�� 20, 2026 12:01:21 ���� org.flywaydb.core.internal.command.DbBaseline baseline
+��Ϣ: Successfully baselined schema with version: << Current Version >>
+ERROR	org.flywaydb.core.api.FlywayException	Version may only contain 0..9 and . (dot). Invalid version: << Current Version >>
+org.flywaydb.core.api.FlywayException: Version may only contain 0..9 and . (dot). Invalid version: << Current Version >>
+	at org.flywaydb.core.api.MigrationVersion.toBigInteger(MigrationVersion.java:323)
+	at org.flywaydb.core.api.MigrationVersion.tokenize(MigrationVersion.java:306)
+	at org.flywaydb.core.api.MigrationVersion.<init>(MigrationVersion.java:105)
+	at org.flywaydb.core.api.MigrationVersion.fromVersion(MigrationVersion.java:94)
+	at org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory.lambda$refreshCache$0(JdbcTableSchemaHistory.java:266)
+	at org.flywaydb.core.internal.jdbc.JdbcTemplate.query(JdbcTemplate.java:383)
+	at org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory.refreshCache(JdbcTableSchemaHistory.java:250)
+	at org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory.allAppliedMigrations(JdbcTableSchemaHistory.java:241)
+	at org.flywaydb.core.internal.info.MigrationInfoServiceImpl.refresh(MigrationInfoServiceImpl.java:92)
+	at org.flywaydb.core.internal.command.DbMigrate.migrateGroup(DbMigrate.java:192)
+	at org.flywaydb.core.internal.command.DbMigrate.lambda$migrateAll$0(DbMigrate.java:158)
+	at org.flywaydb.database.postgresql.PostgreSQLAdvisoryLockTemplate.execute(PostgreSQLAdvisoryLockTemplate.java:80)
+	at org.flywaydb.database.postgresql.PostgreSQLAdvisoryLockTemplate.lambda$execute$0(PostgreSQLAdvisoryLockTemplate.java:63)
+	at org.flywaydb.core.internal.jdbc.TransactionalExecutionTemplate.execute(TransactionalExecutionTemplate.java:60)
+	at org.flywaydb.database.postgresql.PostgreSQLAdvisoryLockTemplate.execute(PostgreSQLAdvisoryLockTemplate.java:63)
+	at org.flywaydb.database.postgresql.PostgreSQLConnection.lock(PostgreSQLConnection.java:104)
+	at org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory.lock(JdbcTableSchemaHistory.java:177)
+	at org.flywaydb.core.internal.command.DbMigrate.migrateAll(DbMigrate.java:158)
+	at org.flywaydb.core.internal.command.DbMigrate.migrate(DbMigrate.java:110)
+	at org.flywaydb.core.Flyway.lambda$migrate$0(Flyway.java:242)
+	at org.flywaydb.core.FlywayExecutor.execute(FlywayExecutor.java:242)
+	at org.flywaydb.core.FlywayExecutor.execute(FlywayExecutor.java:125)
+	at org.flywaydb.core.Flyway.migrate(Flyway.java:176)
+	at FlywayRunner.main(FlywayRunner.java:47)
+EXIT=1
+HISTORY:
+1|<< Current Version >>|<< Flyway Baseline >>|BASELINE|<< Flyway Baseline >>||t
+--- version=next ---
+11�� 20, 2026 12:01:22 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 12:01:22 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 12:01:22 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory allAppliedMigrations
+��Ϣ: Schema history table "public"."flyway_schema_history" does not exist yet
+11�� 20, 2026 12:01:22 ���� org.flywaydb.core.internal.command.DbValidate validate
+��Ϣ: Successfully validated 3 migrations (execution time 00:00.017s)
+11�� 20, 2026 12:01:22 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory create
+��Ϣ: Creating Schema History table "public"."flyway_schema_history" with baseline ...
+11�� 20, 2026 12:01:22 ���� org.flywaydb.core.internal.command.DbBaseline baseline
+��Ϣ: Successfully baselined schema with version: << Next Version >>
+ERROR	org.flywaydb.core.api.FlywayException	Version may only contain 0..9 and . (dot). Invalid version: << Next Version >>
+org.flywaydb.core.api.FlywayException: Version may only contain 0..9 and . (dot). Invalid version: << Next Version >>
+	at org.flywaydb.core.api.MigrationVersion.toBigInteger(MigrationVersion.java:323)
+	at org.flywaydb.core.api.MigrationVersion.tokenize(MigrationVersion.java:306)
+	at org.flywaydb.core.api.MigrationVersion.<init>(MigrationVersion.java:105)
+	at org.flywaydb.core.api.MigrationVersion.fromVersion(MigrationVersion.java:94)
+	at org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory.lambda$refreshCache$0(JdbcTableSchemaHistory.java:266)
+	at org.flywaydb.core.internal.jdbc.JdbcTemplate.query(JdbcTemplate.java:383)
+	at org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory.refreshCache(JdbcTableSchemaHistory.java:250)
+	at org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory.allAppliedMigrations(JdbcTableSchemaHistory.java:241)
+	at org.flywaydb.core.internal.info.MigrationInfoServiceImpl.refresh(MigrationInfoServiceImpl.java:92)
+	at org.flywaydb.core.internal.command.DbMigrate.migrateGroup(DbMigrate.java:192)
+	at org.flywaydb.core.internal.command.DbMigrate.lambda$migrateAll$0(DbMigrate.java:158)
+	at org.flywaydb.database.postgresql.PostgreSQLAdvisoryLockTemplate.execute(PostgreSQLAdvisoryLockTemplate.java:80)
+	at org.flywaydb.database.postgresql.PostgreSQLAdvisoryLockTemplate.lambda$execute$0(PostgreSQLAdvisoryLockTemplate.java:63)
+	at org.flywaydb.core.internal.jdbc.TransactionalExecutionTemplate.execute(TransactionalExecutionTemplate.java:60)
+	at org.flywaydb.database.postgresql.PostgreSQLAdvisoryLockTemplate.execute(PostgreSQLAdvisoryLockTemplate.java:63)
+	at org.flywaydb.database.postgresql.PostgreSQLConnection.lock(PostgreSQLConnection.java:104)
+	at org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory.lock(JdbcTableSchemaHistory.java:177)
+	at org.flywaydb.core.internal.command.DbMigrate.migrateAll(DbMigrate.java:158)
+	at org.flywaydb.core.internal.command.DbMigrate.migrate(DbMigrate.java:110)
+	at org.flywaydb.core.Flyway.lambda$migrate$0(Flyway.java:242)
+	at org.flywaydb.core.FlywayExecutor.execute(FlywayExecutor.java:242)
+	at org.flywaydb.core.FlywayExecutor.execute(FlywayExecutor.java:125)
+	at org.flywaydb.core.Flyway.migrate(Flyway.java:176)
+	at FlywayRunner.main(FlywayRunner.java:47)
+EXIT=1
+HISTORY:
+1|<< Next Version >>|<< Flyway Baseline >>|BASELINE|<< Flyway Baseline >>||t
+=== GO baselineOnMigrate non-empty ===
+--- version=latest ---
+数据库非空且无历史表，自动执行 baseline（版本 latest）
+执行失败: 非法 baselineVersion "<< Latest Version >>": 版本号只能包含 0..9 与点号，非法版本: << Latest Version >>
+EXIT=1
+HISTORY:
+--- version=current ---
+数据库非空且无历史表，自动执行 baseline（版本 current）
+迁移 1（one）...
+  -> 成功，耗时 0 ms
+迁移 2（two）...
+  -> 成功，耗时 0 ms
+迁移 3（three）...
+  -> 成功，耗时 0 ms
+迁移完成，共执行 3 个脚本
+EXIT=0
+HISTORY:
+1|current|<< Flyway Baseline >>|BASELINE|<< Flyway Baseline >>||t
+2|1|one|SQL|V1__one.sql|-1692034512|t
+3|2|two|SQL|V2__two.sql|46660657|t
+4|3|three|SQL|V3__three.sql|-1018616847|t
+--- version=next ---
+数据库非空且无历史表，自动执行 baseline（版本 next）
+数据库已是最新状态，无需执行迁移
+EXIT=0
+HISTORY:
+1|next|<< Flyway Baseline >>|BASELINE|<< Flyway Baseline >>||t

@@ -1,0 +1,1 @@
+CREATE OR REPLACE VIEW v_rr AS SELECT id, id AS id2, id AS id3 FROM rr;

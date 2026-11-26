@@ -1,0 +1,92 @@
+11�� 20, 2026 11:50:01 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:50:01 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 11:50:01 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory allAppliedMigrations
+��Ϣ: Schema history table "public"."flyway_schema_history" does not exist yet
+11�� 20, 2026 11:50:01 ���� org.flywaydb.core.internal.command.DbValidate validate
+��Ϣ: Successfully validated 2 migrations (execution time 00:00.017s)
+11�� 20, 2026 11:50:01 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory create
+��Ϣ: Creating Schema History table "public"."flyway_schema_history" ...
+11�� 20, 2026 11:50:02 ���� org.flywaydb.core.internal.command.DbMigrate migrateGroup
+��Ϣ: Current version of schema "public": << Empty Schema >>
+11�� 20, 2026 11:50:02 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" to version "1 - ok"
+11�� 20, 2026 11:50:02 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" to version "2 - bad"
+11�� 20, 2026 11:50:02 ���� org.flywaydb.core.internal.command.DbMigrate applyMigrations
+����: Migration of schema "public" to version "2 - bad" failed! Changes successfully rolled back.
+ERROR	org.flywaydb.core.internal.exception.FlywayMigrateException	Failed to execute script V2__bad.sql
+------------------------------------
+SQL State  : 42601
+Error Code : 0
+Message    : ERROR: syntax error at or near "THIS"
+  λ�ã�1
+Location   : E:\work\flyway-go\verify\official-diff\cases\pg-failed\migrations\V2__bad.sql (E:\work\flyway-go\verify\official-diff\cases\pg-failed\migrations\V2__bad.sql)
+Line       : 2
+Statement  : Run Flyway with -X option to see the actual statement causing the problem
+
+org.flywaydb.core.internal.exception.FlywayMigrateException: Failed to execute script V2__bad.sql
+------------------------------------
+SQL State  : 42601
+Error Code : 0
+Message    : ERROR: syntax error at or near "THIS"
+  λ�ã�1
+Location   : E:\work\flyway-go\verify\official-diff\cases\pg-failed\migrations\V2__bad.sql (E:\work\flyway-go\verify\official-diff\cases\pg-failed\migrations\V2__bad.sql)
+Line       : 2
+Statement  : Run Flyway with -X option to see the actual statement causing the problem
+
+	at org.flywaydb.core.internal.command.DbMigrate.doMigrateGroup(DbMigrate.java:461)
+	at org.flywaydb.core.internal.command.DbMigrate.lambda$applyMigrations$0(DbMigrate.java:325)
+	at org.flywaydb.core.internal.jdbc.TransactionalExecutionTemplate.execute(TransactionalExecutionTemplate.java:60)
+	at org.flywaydb.core.internal.command.DbMigrate.applyMigrations(DbMigrate.java:324)
+	at org.flywaydb.core.internal.command.DbMigrate.migrateGroup(DbMigrate.java:287)
+	at org.flywaydb.core.internal.command.DbMigrate.lambda$migrateAll$0(DbMigrate.java:158)
+	at org.flywaydb.database.postgresql.PostgreSQLAdvisoryLockTemplate.execute(PostgreSQLAdvisoryLockTemplate.java:80)
+	at org.flywaydb.database.postgresql.PostgreSQLAdvisoryLockTemplate.lambda$execute$0(PostgreSQLAdvisoryLockTemplate.java:63)
+	at org.flywaydb.core.internal.jdbc.TransactionalExecutionTemplate.execute(TransactionalExecutionTemplate.java:60)
+	at org.flywaydb.database.postgresql.PostgreSQLAdvisoryLockTemplate.execute(PostgreSQLAdvisoryLockTemplate.java:63)
+	at org.flywaydb.database.postgresql.PostgreSQLConnection.lock(PostgreSQLConnection.java:104)
+	at org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory.lock(JdbcTableSchemaHistory.java:177)
+	at org.flywaydb.core.internal.command.DbMigrate.migrateAll(DbMigrate.java:158)
+	at org.flywaydb.core.internal.command.DbMigrate.migrate(DbMigrate.java:110)
+	at org.flywaydb.core.Flyway.lambda$migrate$0(Flyway.java:242)
+	at org.flywaydb.core.FlywayExecutor.execute(FlywayExecutor.java:242)
+	at org.flywaydb.core.FlywayExecutor.execute(FlywayExecutor.java:125)
+	at org.flywaydb.core.Flyway.migrate(Flyway.java:176)
+	at FlywayRunner.main(FlywayRunner.java:47)
+Caused by: org.flywaydb.core.internal.sqlscript.FlywaySqlScriptException: Failed to execute script V2__bad.sql
+------------------------------------
+SQL State  : 42601
+Error Code : 0
+Message    : ERROR: syntax error at or near "THIS"
+  λ�ã�1
+Location   : E:\work\flyway-go\verify\official-diff\cases\pg-failed\migrations\V2__bad.sql (E:\work\flyway-go\verify\official-diff\cases\pg-failed\migrations\V2__bad.sql)
+Line       : 2
+Statement  : Run Flyway with -X option to see the actual statement causing the problem
+
+	at org.flywaydb.core.internal.proprietaryStubs.ErrorOverridesSupportStub.handleException(ErrorOverridesSupportStub.java:42)
+	at org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor.handleException(DefaultSqlScriptExecutor.java:296)
+	at org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor.executeStatement(DefaultSqlScriptExecutor.java:257)
+	at org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor.execute(DefaultSqlScriptExecutor.java:148)
+	at org.flywaydb.core.internal.resolver.sql.SqlMigrationExecutor.executeOnce(SqlMigrationExecutor.java:76)
+	at org.flywaydb.core.internal.resolver.sql.SqlMigrationExecutor.lambda$execute$0(SqlMigrationExecutor.java:64)
+	at org.flywaydb.core.internal.database.DefaultExecutionStrategy.execute(DefaultExecutionStrategy.java:31)
+	at org.flywaydb.core.internal.resolver.sql.SqlMigrationExecutor.execute(SqlMigrationExecutor.java:63)
+	at org.flywaydb.core.internal.command.DbMigrate.doMigrateGroup(DbMigrate.java:450)
+	... 18 more
+Caused by: org.postgresql.util.PSQLException: ERROR: syntax error at or near "THIS"
+  λ�ã�1
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2734)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2421)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:372)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:518)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:435)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:357)
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:342)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:318)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:313)
+	at org.flywaydb.core.internal.jdbc.JdbcTemplate.executeStatement(JdbcTemplate.java:229)
+	at org.flywaydb.core.internal.sqlscript.ParsedSqlStatement.execute(ParsedSqlStatement.java:93)
+	at org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor.executeStatement(DefaultSqlScriptExecutor.java:248)
+	... 24 more

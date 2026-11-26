@@ -1,0 +1,1 @@
+CREATE OR REPLACE VIEW rm_view AS SELECT id FROM rm_base;

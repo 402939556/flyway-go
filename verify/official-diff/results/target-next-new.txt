@@ -1,0 +1,46 @@
+=== OFFICIAL TARGET NEXT RUN 1 ===
+11�� 20, 2026 11:52:44 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:52:44 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 11:52:44 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory allAppliedMigrations
+��Ϣ: Schema history table "public"."flyway_schema_history" does not exist yet
+11�� 20, 2026 11:52:44 ���� org.flywaydb.core.internal.command.DbValidate validate
+��Ϣ: Successfully validated 3 migrations (execution time 00:00.020s)
+11�� 20, 2026 11:52:44 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory create
+��Ϣ: Creating Schema History table "public"."flyway_schema_history" ...
+11�� 20, 2026 11:52:44 ���� org.flywaydb.core.internal.command.DbMigrate migrateGroup
+��Ϣ: Current version of schema "public": << Empty Schema >>
+11�� 20, 2026 11:52:44 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" to version "1 - one"
+11�� 20, 2026 11:52:44 ���� org.flywaydb.core.internal.command.DbMigrate logSummary
+��Ϣ: Successfully applied 1 migration to schema "public", now at version v1 (execution time 00:00.007s)
+RESULT	migrate	success=true	migrationsExecuted=1
+EXIT=0
+=== OFFICIAL TARGET NEXT RUN 2 ===
+11�� 20, 2026 11:52:44 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:52:44 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 11:52:45 ���� org.flywaydb.core.internal.command.DbValidate validate
+��Ϣ: Successfully validated 3 migrations (execution time 00:00.029s)
+11�� 20, 2026 11:52:45 ���� org.flywaydb.core.internal.command.DbMigrate migrateGroup
+��Ϣ: Current version of schema "public": 1
+11�� 20, 2026 11:52:45 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" to version "2 - two"
+11�� 20, 2026 11:52:45 ���� org.flywaydb.core.internal.command.DbMigrate logSummary
+��Ϣ: Successfully applied 1 migration to schema "public", now at version v2 (execution time 00:00.010s)
+RESULT	migrate	success=true	migrationsExecuted=1
+EXIT=0
+OFFICIAL_RANKS=1:1,2:2
+=== GO TARGET NEXT RUN 1 ===
+创建历史表 flyway_schema_history
+迁移 1（one）...
+  -> 成功，耗时 1 ms
+迁移 2（two）...
+  -> 成功，耗时 0 ms
+迁移 3（three）...
+  -> 成功，耗时 0 ms
+迁移完成，共执行 3 个脚本
+EXIT=0
+GO_RANKS=1:1,2:2,3:3

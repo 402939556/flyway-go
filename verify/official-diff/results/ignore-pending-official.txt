@@ -1,0 +1,9 @@
+11�� 20, 2026 11:48:50 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:48:50 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 11:48:50 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory allAppliedMigrations
+��Ϣ: Schema history table "public"."flyway_schema_history" does not exist yet
+11�� 20, 2026 11:48:50 ���� org.flywaydb.core.internal.command.DbValidate validate
+��Ϣ: Successfully validated 3 migrations (execution time 00:00.018s)
+RESULT	validate	valid=true	invalidMigrations=0	validateCount=3

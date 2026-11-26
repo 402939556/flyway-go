@@ -1,0 +1,8 @@
+=== OFFICIAL VALIDATE no history default ===
+EXIT=1
+=== GO VALIDATE no history default ===
+EXIT=0
+=== OFFICIAL VALIDATE no history pending ===
+EXIT=1
+=== GO VALIDATE no history pending ===
+EXIT=2

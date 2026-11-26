@@ -1,0 +1,2 @@
+CREATE TABLE nt_partial(id INT);
+THIS IS NOT VALID SQL;

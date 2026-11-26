@@ -1,0 +1,78 @@
+=== OFFICIAL BASIC MIGRATE ===
+11�� 20, 2026 12:06:33 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 12:06:33 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 12:06:33 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory allAppliedMigrations
+��Ϣ: Schema history table "public"."flyway_schema_history" does not exist yet
+11�� 20, 2026 12:06:33 ���� org.flywaydb.core.internal.command.DbValidate validate
+��Ϣ: Successfully validated 3 migrations (execution time 00:00.020s)
+11�� 20, 2026 12:06:33 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory create
+��Ϣ: Creating Schema History table "public"."flyway_schema_history" ...
+11�� 20, 2026 12:06:33 ���� org.flywaydb.core.internal.command.DbMigrate migrateGroup
+��Ϣ: Current version of schema "public": << Empty Schema >>
+11�� 20, 2026 12:06:33 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" to version "1 - create-users"
+11�� 20, 2026 12:06:33 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" to version "2 - add-email"
+11�� 20, 2026 12:06:33 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" with repeatable migration "user-view"
+11�� 20, 2026 12:06:33 ���� org.flywaydb.core.internal.command.DbMigrate logSummary
+��Ϣ: Successfully applied 3 migrations to schema "public", now at version v2 (execution time 00:00.050s)
+RESULT	migrate	success=true	migrationsExecuted=3
+JAVA_EXIT=0
+=== OFFICIAL HISTORY RAW ===
+ db_tz |            db_now             |     db_localtimestamp      
+-------+-------------------------------+----------------------------
+ UTC   | 2026-11-20 04:06:33.521218+00 | 2026-11-20 04:06:33.521218
+(1 row)
+
+ installed_rank | version | description  | type |        script        |        installed_on        | success 
+----------------+---------+--------------+------+----------------------+----------------------------+---------
+              1 | 1       | create-users | SQL  | V1__create-users.sql | 2026-11-20 12:06:33.246171 | t
+              2 | 2       | add-email    | SQL  | V2__add-email.sql    | 2026-11-20 12:06:33.319832 | t
+              3 |         | user-view    | SQL  | R__user-view.sql     | 2026-11-20 12:06:33.337511 | t
+(3 rows)
+
+=== OFFICIAL INFO ===
+11�� 20, 2026 12:06:34 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 12:06:34 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+INFO	Versioned	1	create-users	SQL	SUCCESS	2026-11-20 12:06:33.246171	postgres	V1__create-users.sql	-475489945	1
+INFO	Versioned	2	add-email	SQL	SUCCESS	2026-11-20 12:06:33.319832	postgres	V2__add-email.sql	-504985890	2
+INFO	Repeatable	null	user-view	SQL	SUCCESS	2026-11-20 12:06:33.337511	postgres	R__user-view.sql	-2128053619	3
+JAVA_EXIT=0
+=== GO BASIC MIGRATE ===
+创建历史表 flyway_schema_history
+迁移 1（create users）...
+  -> 成功，耗时 1 ms
+迁移 2（add email）...
+  -> 成功，耗时 1 ms
+迁移 R__user view（user view）...
+  -> 成功，耗时 1 ms
+迁移完成，共执行 3 个脚本
+GO_EXIT=0
+=== GO HISTORY RAW ===
+ db_tz |            db_now             |     db_localtimestamp      
+-------+-------------------------------+----------------------------
+ UTC   | 2026-11-20 04:06:34.674027+00 | 2026-11-20 04:06:34.674027
+(1 row)
+
+ installed_rank | version | description  | type |        script        |        installed_on        | success 
+----------------+---------+--------------+------+----------------------+----------------------------+---------
+              1 | 1       | create users | SQL  | V1__create-users.sql | 2026-11-20 04:06:34.552264 | t
+              2 | 2       | add email    | SQL  | V2__add-email.sql    | 2026-11-20 04:06:34.556276 | t
+              3 |         | user view    | SQL  | R__user-view.sql     | 2026-11-20 04:06:34.558909 | t
+(3 rows)
+
+=== OFFICIAL INFO ON GO HISTORY ===
+11�� 20, 2026 12:06:35 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 12:06:35 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+INFO	Versioned	1	create users	SQL	SUCCESS	2026-11-20 04:06:34.552264	postgres	V1__create-users.sql	-475489945	1
+INFO	Versioned	2	add email	SQL	SUCCESS	2026-11-20 04:06:34.556276	postgres	V2__add-email.sql	-504985890	2
+INFO	Repeatable	null	user view	SQL	MISSING_SUCCESS	2026-11-20 04:06:34.558909	postgres	R__user-view.sql	-2128053619	3
+INFO	Repeatable	null	user-view	SQL	PENDING	null		R__user-view.sql	-2128053619	null
+JAVA_EXIT=0

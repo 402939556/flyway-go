@@ -1,0 +1,11 @@
+.gocache/
+.workbuddy/
+bin/
+tmp/
+*.exe
+
+verify/official-diff/parity-results/
+verify/official-diff/tmp/
+verify/official-diff/org/
+verify/official-diff/META-INF/
+verify/official-diff/*.jar

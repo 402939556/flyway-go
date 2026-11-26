@@ -1,0 +1,305 @@
+Compiled from "DbValidate.java"
+public class org.flywaydb.core.internal.command.DbValidate {
+  private static final org.flywaydb.core.api.logging.Log LOG;
+
+  private final org.flywaydb.core.internal.schemahistory.SchemaHistory schemaHistory;
+
+  private final org.flywaydb.core.internal.database.base.Schema schema;
+
+  private final org.flywaydb.core.internal.database.base.Database database;
+
+  private final org.flywaydb.core.internal.resolver.CompositeMigrationResolver migrationResolver;
+
+  private final org.flywaydb.core.api.configuration.Configuration configuration;
+
+  private final org.flywaydb.core.internal.callback.CallbackExecutor<org.flywaydb.core.api.callback.Event> callbackExecutor;
+
+  private final org.flywaydb.core.internal.database.base.Connection connection;
+
+  private final org.flywaydb.core.api.pattern.ValidatePattern[] ignorePatterns;
+
+  private final org.flywaydb.core.ProgressLogger progress;
+
+  public org.flywaydb.core.internal.command.DbValidate(org.flywaydb.core.internal.database.base.Database, org.flywaydb.core.internal.schemahistory.SchemaHistory, org.flywaydb.core.internal.database.base.Schema, org.flywaydb.core.internal.resolver.CompositeMigrationResolver, org.flywaydb.core.api.configuration.Configuration, org.flywaydb.core.internal.callback.CallbackExecutor<org.flywaydb.core.api.callback.Event>, org.flywaydb.core.api.pattern.ValidatePattern[]);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: aload_2
+       6: putfield      #7                  // Field schemaHistory:Lorg/flywaydb/core/internal/schemahistory/SchemaHistory;
+       9: aload_0
+      10: aload_3
+      11: putfield      #13                 // Field schema:Lorg/flywaydb/core/internal/database/base/Schema;
+      14: aload_0
+      15: aload_1
+      16: putfield      #17                 // Field database:Lorg/flywaydb/core/internal/database/base/Database;
+      19: aload_0
+      20: aload         4
+      22: putfield      #21                 // Field migrationResolver:Lorg/flywaydb/core/internal/resolver/CompositeMigrationResolver;
+      25: aload_0
+      26: aload         5
+      28: putfield      #25                 // Field configuration:Lorg/flywaydb/core/api/configuration/Configuration;
+      31: aload_0
+      32: aload         6
+      34: putfield      #29                 // Field callbackExecutor:Lorg/flywaydb/core/internal/callback/CallbackExecutor;
+      37: aload_0
+      38: aload_1
+      39: invokevirtual #33                 // Method org/flywaydb/core/internal/database/base/Database.getMainConnection:()Lorg/flywaydb/core/internal/database/base/Connection;
+      42: putfield      #39                 // Field connection:Lorg/flywaydb/core/internal/database/base/Connection;
+      45: aload_0
+      46: aload         7
+      48: putfield      #43                 // Field ignorePatterns:[Lorg/flywaydb/core/api/pattern/ValidatePattern;
+      51: aload_0
+      52: aload         5
+      54: ldc           #47                 // String validate
+      56: invokeinterface #49,  2           // InterfaceMethod org/flywaydb/core/api/configuration/Configuration.createProgress:(Ljava/lang/String;)Lorg/flywaydb/core/ProgressLogger;
+      61: putfield      #55                 // Field progress:Lorg/flywaydb/core/ProgressLogger;
+      64: return
+
+  public org.flywaydb.core.api.output.ValidateResult validate();
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field schema:Lorg/flywaydb/core/internal/database/base/Schema;
+       4: invokevirtual #59                 // Method org/flywaydb/core/internal/database/base/Schema.exists:()Z
+       7: ifne          106
+      10: aload_0
+      11: getfield      #21                 // Field migrationResolver:Lorg/flywaydb/core/internal/resolver/CompositeMigrationResolver;
+      14: aload_0
+      15: getfield      #25                 // Field configuration:Lorg/flywaydb/core/api/configuration/Configuration;
+      18: invokevirtual #65                 // Method org/flywaydb/core/internal/resolver/CompositeMigrationResolver.resolveMigrations:(Lorg/flywaydb/core/api/configuration/Configuration;)Ljava/util/Collection;
+      21: invokeinterface #71,  1           // InterfaceMethod java/util/Collection.isEmpty:()Z
+      26: ifne          85
+      29: aload_0
+      30: getfield      #43                 // Field ignorePatterns:[Lorg/flywaydb/core/api/pattern/ValidatePattern;
+      33: invokestatic  #76                 // Method org/flywaydb/core/internal/util/ValidatePatternUtils.isPendingIgnored:([Lorg/flywaydb/core/api/pattern/ValidatePattern;)Z
+      36: ifne          85
+      39: aload_0
+      40: getfield      #13                 // Field schema:Lorg/flywaydb/core/internal/database/base/Schema;
+      43: invokestatic  #82                 // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      46: invokedynamic #88,  0             // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      51: astore_1
+      52: new           #92                 // class org/flywaydb/core/api/ErrorDetails
+      55: dup
+      56: getstatic     #94                 // Field org/flywaydb/core/api/CoreErrorCode.SCHEMA_DOES_NOT_EXIST:Lorg/flywaydb/core/api/CoreErrorCode;
+      59: aload_1
+      60: invokespecial #100                // Method org/flywaydb/core/api/ErrorDetails."<init>":(Lorg/flywaydb/core/api/ErrorCode;Ljava/lang/String;)V
+      63: astore_2
+      64: aload_0
+      65: getfield      #17                 // Field database:Lorg/flywaydb/core/internal/database/base/Database;
+      68: invokevirtual #103                // Method org/flywaydb/core/internal/database/base/Database.getCatalog:()Ljava/lang/String;
+      71: aload_2
+      72: iconst_0
+      73: aconst_null
+      74: new           #107                // class java/util/ArrayList
+      77: dup
+      78: invokespecial #109                // Method java/util/ArrayList."<init>":()V
+      81: invokestatic  #110                // Method org/flywaydb/core/api/output/CommandResultFactory.createValidateResult:(Ljava/lang/String;Lorg/flywaydb/core/api/ErrorDetails;ILjava/util/List;Ljava/util/List;)Lorg/flywaydb/core/api/output/ValidateResult;
+      84: areturn
+      85: aload_0
+      86: getfield      #17                 // Field database:Lorg/flywaydb/core/internal/database/base/Database;
+      89: invokevirtual #103                // Method org/flywaydb/core/internal/database/base/Database.getCatalog:()Ljava/lang/String;
+      92: aconst_null
+      93: iconst_0
+      94: aconst_null
+      95: new           #107                // class java/util/ArrayList
+      98: dup
+      99: invokespecial #109                // Method java/util/ArrayList."<init>":()V
+     102: invokestatic  #110                // Method org/flywaydb/core/api/output/CommandResultFactory.createValidateResult:(Ljava/lang/String;Lorg/flywaydb/core/api/ErrorDetails;ILjava/util/List;Ljava/util/List;)Lorg/flywaydb/core/api/output/ValidateResult;
+     105: areturn
+     106: aload_0
+     107: getfield      #29                 // Field callbackExecutor:Lorg/flywaydb/core/internal/callback/CallbackExecutor;
+     110: getstatic     #116                // Field org/flywaydb/core/api/callback/Event.BEFORE_VALIDATE:Lorg/flywaydb/core/api/callback/Event;
+     113: invokeinterface #122,  2          // InterfaceMethod org/flywaydb/core/internal/callback/CallbackExecutor.onEvent:(Lorg/flywaydb/core/api/callback/CallbackEvent;)Ljava/util/Collection;
+     118: pop
+     119: getstatic     #128                // Field LOG:Lorg/flywaydb/core/api/logging/Log;
+     122: ldc           #132                // String Validating migrations ...
+     124: invokeinterface #134,  2          // InterfaceMethod org/flywaydb/core/api/logging/Log.debug:(Ljava/lang/String;)V
+     129: aload_0
+     130: getfield      #55                 // Field progress:Lorg/flywaydb/core/ProgressLogger;
+     133: ldc           #132                // String Validating migrations ...
+     135: invokeinterface #140,  2          // InterfaceMethod org/flywaydb/core/ProgressLogger.log:(Ljava/lang/String;)V
+     140: new           #145                // class org/flywaydb/core/internal/util/StopWatch
+     143: dup
+     144: invokespecial #147                // Method org/flywaydb/core/internal/util/StopWatch."<init>":()V
+     147: astore_1
+     148: aload_1
+     149: invokevirtual #148                // Method org/flywaydb/core/internal/util/StopWatch.start:()V
+     152: aload_0
+     153: getfield      #39                 // Field connection:Lorg/flywaydb/core/internal/database/base/Connection;
+     156: invokevirtual #151                // Method org/flywaydb/core/internal/database/base/Connection.getJdbcConnection:()Ljava/sql/Connection;
+     159: aload_0
+     160: getfield      #17                 // Field database:Lorg/flywaydb/core/internal/database/base/Database;
+     163: invokestatic  #157                // Method org/flywaydb/core/internal/jdbc/ExecutionTemplateFactory.createExecutionTemplate:(Ljava/sql/Connection;Lorg/flywaydb/core/internal/database/base/Database;)Lorg/flywaydb/core/internal/jdbc/ExecutionTemplate;
+     166: aload_0
+     167: invokedynamic #163,  0            // InvokeDynamic #1:call:(Lorg/flywaydb/core/internal/command/DbValidate;)Ljava/util/concurrent/Callable;
+     172: invokeinterface #167,  2          // InterfaceMethod org/flywaydb/core/internal/jdbc/ExecutionTemplate.execute:(Ljava/util/concurrent/Callable;)Ljava/lang/Object;
+     177: checkcast     #173                // class org/flywaydb/core/internal/command/DbValidate$ValidationOutcome
+     180: astore_2
+     181: aload_1
+     182: invokevirtual #175                // Method org/flywaydb/core/internal/util/StopWatch.stop:()V
+     185: new           #107                // class java/util/ArrayList
+     188: dup
+     189: invokespecial #109                // Method java/util/ArrayList."<init>":()V
+     192: astore_3
+     193: aload_2
+     194: invokevirtual #178                // Method org/flywaydb/core/internal/command/DbValidate$ValidationOutcome.invalidMigrations:()Ljava/util/List;
+     197: astore        4
+     199: aconst_null
+     200: astore        5
+     202: iconst_0
+     203: istore        6
+     205: aload         4
+     207: invokeinterface #182,  1          // InterfaceMethod java/util/List.isEmpty:()Z
+     212: ifeq          392
+     215: aload_2
+     216: invokevirtual #185                // Method org/flywaydb/core/internal/command/DbValidate$ValidationOutcome.allMigrationsCount:()I
+     219: istore        6
+     221: aload_0
+     222: getfield      #55                 // Field progress:Lorg/flywaydb/core/ProgressLogger;
+     225: iload         6
+     227: invokedynamic #189,  0            // InvokeDynamic #2:makeConcatWithConstants:(I)Ljava/lang/String;
+     232: invokeinterface #140,  2          // InterfaceMethod org/flywaydb/core/ProgressLogger.log:(Ljava/lang/String;)V
+     237: iload         6
+     239: iconst_1
+     240: if_icmpne     273
+     243: getstatic     #128                // Field LOG:Lorg/flywaydb/core/api/logging/Log;
+     246: ldc           #192                // String Successfully validated 1 migration (execution time %s)
+     248: iconst_1
+     249: anewarray     #2                  // class java/lang/Object
+     252: dup
+     253: iconst_0
+     254: aload_1
+     255: invokevirtual #194                // Method org/flywaydb/core/internal/util/StopWatch.getTotalTimeMillis:()J
+     258: invokestatic  #198                // Method org/flywaydb/core/internal/util/TimeFormat.format:(J)Ljava/lang/String;
+     261: aastore
+     262: invokestatic  #204                // Method java/lang/String.format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+     265: invokeinterface #207,  2          // InterfaceMethod org/flywaydb/core/api/logging/Log.info:(Ljava/lang/String;)V
+     270: goto          336
+     273: getstatic     #128                // Field LOG:Lorg/flywaydb/core/api/logging/Log;
+     276: ldc           #210                // String Successfully validated %d migrations (execution time %s)
+     278: iconst_2
+     279: anewarray     #2                  // class java/lang/Object
+     282: dup
+     283: iconst_0
+     284: iload         6
+     286: invokestatic  #212                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     289: aastore
+     290: dup
+     291: iconst_1
+     292: aload_1
+     293: invokevirtual #194                // Method org/flywaydb/core/internal/util/StopWatch.getTotalTimeMillis:()J
+     296: invokestatic  #198                // Method org/flywaydb/core/internal/util/TimeFormat.format:(J)Ljava/lang/String;
+     299: aastore
+     300: invokestatic  #204                // Method java/lang/String.format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+     303: invokeinterface #207,  2          // InterfaceMethod org/flywaydb/core/api/logging/Log.info:(Ljava/lang/String;)V
+     308: iload         6
+     310: ifne          336
+     313: ldc           #217                // String No migrations found. Are your locations set up correctly?
+     315: astore        7
+     317: aload_3
+     318: ldc           #217                // String No migrations found. Are your locations set up correctly?
+     320: invokeinterface #219,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     325: pop
+     326: getstatic     #128                // Field LOG:Lorg/flywaydb/core/api/logging/Log;
+     329: ldc           #217                // String No migrations found. Are your locations set up correctly?
+     331: invokeinterface #223,  2          // InterfaceMethod org/flywaydb/core/api/logging/Log.warn:(Ljava/lang/String;)V
+     336: iload         6
+     338: ifle          376
+     341: aload_2
+     342: invokevirtual #226                // Method org/flywaydb/core/internal/command/DbValidate$ValidationOutcome.hasResolvedMigrations:()Z
+     345: ifne          376
+     348: iload         6
+     350: invokedynamic #229,  0            // InvokeDynamic #3:makeConcatWithConstants:(I)Ljava/lang/String;
+     355: astore        7
+     357: aload_3
+     358: aload         7
+     360: invokeinterface #219,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     365: pop
+     366: getstatic     #128                // Field LOG:Lorg/flywaydb/core/api/logging/Log;
+     369: aload         7
+     371: invokeinterface #223,  2          // InterfaceMethod org/flywaydb/core/api/logging/Log.warn:(Ljava/lang/String;)V
+     376: aload_0
+     377: getfield      #29                 // Field callbackExecutor:Lorg/flywaydb/core/internal/callback/CallbackExecutor;
+     380: getstatic     #230                // Field org/flywaydb/core/api/callback/Event.AFTER_VALIDATE:Lorg/flywaydb/core/api/callback/Event;
+     383: invokeinterface #122,  2          // InterfaceMethod org/flywaydb/core/internal/callback/CallbackExecutor.onEvent:(Lorg/flywaydb/core/api/callback/CallbackEvent;)Ljava/util/Collection;
+     388: pop
+     389: goto          430
+     392: new           #92                 // class org/flywaydb/core/api/ErrorDetails
+     395: dup
+     396: getstatic     #233                // Field org/flywaydb/core/api/CoreErrorCode.VALIDATE_ERROR:Lorg/flywaydb/core/api/CoreErrorCode;
+     399: ldc           #236                // String Migrations have failed validation
+     401: invokespecial #100                // Method org/flywaydb/core/api/ErrorDetails."<init>":(Lorg/flywaydb/core/api/ErrorCode;Ljava/lang/String;)V
+     404: astore        5
+     406: aload_0
+     407: getfield      #55                 // Field progress:Lorg/flywaydb/core/ProgressLogger;
+     410: ldc           #236                // String Migrations have failed validation
+     412: invokeinterface #140,  2          // InterfaceMethod org/flywaydb/core/ProgressLogger.log:(Ljava/lang/String;)V
+     417: aload_0
+     418: getfield      #29                 // Field callbackExecutor:Lorg/flywaydb/core/internal/callback/CallbackExecutor;
+     421: getstatic     #238                // Field org/flywaydb/core/api/callback/Event.AFTER_VALIDATE_ERROR:Lorg/flywaydb/core/api/callback/Event;
+     424: invokeinterface #122,  2          // InterfaceMethod org/flywaydb/core/internal/callback/CallbackExecutor.onEvent:(Lorg/flywaydb/core/api/callback/CallbackEvent;)Ljava/util/Collection;
+     429: pop
+     430: aload_0
+     431: getfield      #17                 // Field database:Lorg/flywaydb/core/internal/database/base/Database;
+     434: invokevirtual #103                // Method org/flywaydb/core/internal/database/base/Database.getCatalog:()Ljava/lang/String;
+     437: aload         5
+     439: iload         6
+     441: aload         4
+     443: aload_3
+     444: invokestatic  #110                // Method org/flywaydb/core/api/output/CommandResultFactory.createValidateResult:(Ljava/lang/String;Lorg/flywaydb/core/api/ErrorDetails;ILjava/util/List;Ljava/util/List;)Lorg/flywaydb/core/api/output/ValidateResult;
+     447: areturn
+
+  private org.flywaydb.core.internal.command.DbValidate$ValidationOutcome lambda$validate$0() throws java.lang.Exception;
+    Code:
+       0: new           #241                // class org/flywaydb/core/internal/info/MigrationInfoServiceImpl
+       3: dup
+       4: aload_0
+       5: getfield      #21                 // Field migrationResolver:Lorg/flywaydb/core/internal/resolver/CompositeMigrationResolver;
+       8: aload_0
+       9: getfield      #7                  // Field schemaHistory:Lorg/flywaydb/core/internal/schemahistory/SchemaHistory;
+      12: aload_0
+      13: getfield      #17                 // Field database:Lorg/flywaydb/core/internal/database/base/Database;
+      16: aload_0
+      17: getfield      #25                 // Field configuration:Lorg/flywaydb/core/api/configuration/Configuration;
+      20: aload_0
+      21: getfield      #25                 // Field configuration:Lorg/flywaydb/core/api/configuration/Configuration;
+      24: invokeinterface #243,  1          // InterfaceMethod org/flywaydb/core/api/configuration/Configuration.getTarget:()Lorg/flywaydb/core/api/MigrationVersion;
+      29: aload_0
+      30: getfield      #25                 // Field configuration:Lorg/flywaydb/core/api/configuration/Configuration;
+      33: invokeinterface #247,  1          // InterfaceMethod org/flywaydb/core/api/configuration/Configuration.isOutOfOrder:()Z
+      38: aload_0
+      39: getfield      #43                 // Field ignorePatterns:[Lorg/flywaydb/core/api/pattern/ValidatePattern;
+      42: invokespecial #250                // Method org/flywaydb/core/internal/info/MigrationInfoServiceImpl."<init>":(Lorg/flywaydb/core/internal/resolver/CompositeMigrationResolver;Lorg/flywaydb/core/internal/schemahistory/SchemaHistory;Lorg/flywaydb/core/internal/database/base/Database;Lorg/flywaydb/core/api/configuration/Configuration;Lorg/flywaydb/core/api/MigrationVersion;Z[Lorg/flywaydb/core/api/pattern/ValidatePattern;)V
+      45: astore_1
+      46: aload_1
+      47: invokevirtual #253                // Method org/flywaydb/core/internal/info/MigrationInfoServiceImpl.refresh:()V
+      50: aload_1
+      51: invokevirtual #256                // Method org/flywaydb/core/internal/info/MigrationInfoServiceImpl.all:()[Lorg/flywaydb/core/api/MigrationInfo;
+      54: arraylength
+      55: istore_2
+      56: aload_1
+      57: invokevirtual #260                // Method org/flywaydb/core/internal/info/MigrationInfoServiceImpl.resolved:()[Lorg/flywaydb/core/api/MigrationInfo;
+      60: arraylength
+      61: ifle          68
+      64: iconst_1
+      65: goto          69
+      68: iconst_0
+      69: istore_3
+      70: aload_1
+      71: invokevirtual #263                // Method org/flywaydb/core/internal/info/MigrationInfoServiceImpl.validate:()Ljava/util/List;
+      74: astore        4
+      76: new           #173                // class org/flywaydb/core/internal/command/DbValidate$ValidationOutcome
+      79: dup
+      80: iload_2
+      81: iload_3
+      82: aload         4
+      84: invokespecial #265                // Method org/flywaydb/core/internal/command/DbValidate$ValidationOutcome."<init>":(IZLjava/util/List;)V
+      87: areturn
+
+  static {};
+    Code:
+       0: ldc           #8                  // class org/flywaydb/core/internal/command/DbValidate
+       2: invokestatic  #268                // Method org/flywaydb/core/api/logging/LogFactory.getLog:(Ljava/lang/Class;)Lorg/flywaydb/core/api/logging/Log;
+       5: putstatic     #128                // Field LOG:Lorg/flywaydb/core/api/logging/Log;
+       8: return
+}

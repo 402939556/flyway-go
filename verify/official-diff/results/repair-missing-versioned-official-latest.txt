@@ -1,0 +1,3 @@
+1|1|base|SQL|-1728876599|true
+2|2|two|SQL|-553608531|true
+3|3|three|SQL|1152645797|true

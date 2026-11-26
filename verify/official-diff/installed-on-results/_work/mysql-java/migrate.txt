@@ -1,0 +1,17 @@
+RESULT	migrate	success=true
+Nov 23, 2026 10:03:21 AM org.flywaydb.core.FlywayExecutor init
+INFO: Environment: default
+Nov 23, 2026 10:03:21 AM org.flywaydb.core.FlywayExecutor init
+INFO: Database: jdbc:mysql:******** (MySQL 8.4)
+Nov 23, 2026 10:03:21 AM org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory allAppliedMigrations
+INFO: Schema history table `flywaygo`.`flyway_schema_history` does not exist yet
+Nov 23, 2026 10:03:21 AM org.flywaydb.core.internal.command.DbValidate validate
+INFO: Successfully validated 1 migration (execution time 00:00.029s)
+Nov 23, 2026 10:03:21 AM org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory create
+INFO: Creating Schema History table `flywaygo`.`flyway_schema_history` ...
+Nov 23, 2026 10:03:21 AM org.flywaydb.core.internal.command.DbMigrate migrateGroup
+INFO: Current version of schema `flywaygo`: << Empty Schema >>
+Nov 23, 2026 10:03:21 AM org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+INFO: Migrating schema `flywaygo` to version "1 - installed on"
+Nov 23, 2026 10:03:21 AM org.flywaydb.core.internal.command.DbMigrate logSummary
+INFO: Successfully applied 1 migration to schema `flywaygo`, now at version v1 (execution time 00:00.022s)

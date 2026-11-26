@@ -1,0 +1,219 @@
+Compiled from "DbBaseline.java"
+public class org.flywaydb.core.internal.command.DbBaseline {
+  private static final org.flywaydb.core.api.logging.Log LOG;
+
+  private final org.flywaydb.core.internal.schemahistory.SchemaHistory schemaHistory;
+
+  private final org.flywaydb.core.api.MigrationVersion baselineVersion;
+
+  private final java.lang.String baselineDescription;
+
+  private final org.flywaydb.core.internal.callback.CallbackExecutor<org.flywaydb.core.api.callback.Event> callbackExecutor;
+
+  private final org.flywaydb.core.api.output.BaselineResult baselineResult;
+
+  public org.flywaydb.core.internal.command.DbBaseline(org.flywaydb.core.internal.schemahistory.SchemaHistory, org.flywaydb.core.api.MigrationVersion, java.lang.String, org.flywaydb.core.internal.callback.CallbackExecutor<org.flywaydb.core.api.callback.Event>, org.flywaydb.core.internal.database.base.Database);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #7                  // Field schemaHistory:Lorg/flywaydb/core/internal/schemahistory/SchemaHistory;
+       9: aload_0
+      10: aload_2
+      11: putfield      #13                 // Field baselineVersion:Lorg/flywaydb/core/api/MigrationVersion;
+      14: aload_0
+      15: aload_3
+      16: putfield      #17                 // Field baselineDescription:Ljava/lang/String;
+      19: aload_0
+      20: aload         4
+      22: putfield      #21                 // Field callbackExecutor:Lorg/flywaydb/core/internal/callback/CallbackExecutor;
+      25: aload_0
+      26: aload         5
+      28: invokevirtual #25                 // Method org/flywaydb/core/internal/database/base/Database.getCatalog:()Ljava/lang/String;
+      31: invokestatic  #31                 // Method org/flywaydb/core/api/output/CommandResultFactory.createBaselineResult:(Ljava/lang/String;)Lorg/flywaydb/core/api/output/BaselineResult;
+      34: putfield      #37                 // Field baselineResult:Lorg/flywaydb/core/api/output/BaselineResult;
+      37: return
+
+  public org.flywaydb.core.api.output.BaselineResult baseline();
+    Code:
+       0: aload_0
+       1: getfield      #21                 // Field callbackExecutor:Lorg/flywaydb/core/internal/callback/CallbackExecutor;
+       4: getstatic     #41                 // Field org/flywaydb/core/api/callback/Event.BEFORE_BASELINE:Lorg/flywaydb/core/api/callback/Event;
+       7: invokeinterface #47,  2           // InterfaceMethod org/flywaydb/core/internal/callback/CallbackExecutor.onEvent:(Lorg/flywaydb/core/api/callback/CallbackEvent;)Ljava/util/Collection;
+      12: pop
+      13: aload_0
+      14: getfield      #7                  // Field schemaHistory:Lorg/flywaydb/core/internal/schemahistory/SchemaHistory;
+      17: invokevirtual #53                 // Method org/flywaydb/core/internal/schemahistory/SchemaHistory.exists:()Z
+      20: ifne          76
+      23: aload_0
+      24: getfield      #7                  // Field schemaHistory:Lorg/flywaydb/core/internal/schemahistory/SchemaHistory;
+      27: iconst_1
+      28: invokevirtual #59                 // Method org/flywaydb/core/internal/schemahistory/SchemaHistory.create:(Z)V
+      31: getstatic     #63                 // Field LOG:Lorg/flywaydb/core/api/logging/Log;
+      34: aload_0
+      35: getfield      #13                 // Field baselineVersion:Lorg/flywaydb/core/api/MigrationVersion;
+      38: invokestatic  #67                 // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      41: invokedynamic #73,  0             // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      46: invokeinterface #77,  2           // InterfaceMethod org/flywaydb/core/api/logging/Log.info:(Ljava/lang/String;)V
+      51: aload_0
+      52: getfield      #37                 // Field baselineResult:Lorg/flywaydb/core/api/output/BaselineResult;
+      55: iconst_1
+      56: putfield      #83                 // Field org/flywaydb/core/api/output/BaselineResult.successfullyBaselined:Z
+      59: aload_0
+      60: getfield      #37                 // Field baselineResult:Lorg/flywaydb/core/api/output/BaselineResult;
+      63: aload_0
+      64: getfield      #13                 // Field baselineVersion:Lorg/flywaydb/core/api/MigrationVersion;
+      67: invokevirtual #89                 // Method org/flywaydb/core/api/MigrationVersion.toString:()Ljava/lang/String;
+      70: putfield      #94                 // Field org/flywaydb/core/api/output/BaselineResult.baselineVersion:Ljava/lang/String;
+      73: goto          379
+      76: aload_0
+      77: getfield      #7                  // Field schemaHistory:Lorg/flywaydb/core/internal/schemahistory/SchemaHistory;
+      80: invokevirtual #96                 // Method org/flywaydb/core/internal/schemahistory/SchemaHistory.getBaselineMarker:()Lorg/flywaydb/core/extensibility/AppliedMigration;
+      83: astore_1
+      84: aload_1
+      85: ifnull        231
+      88: aload_0
+      89: getfield      #13                 // Field baselineVersion:Lorg/flywaydb/core/api/MigrationVersion;
+      92: aload_1
+      93: invokeinterface #100,  1          // InterfaceMethod org/flywaydb/core/extensibility/AppliedMigration.getVersion:()Lorg/flywaydb/core/api/MigrationVersion;
+      98: invokevirtual #106                // Method org/flywaydb/core/api/MigrationVersion.equals:(Ljava/lang/Object;)Z
+     101: ifeq          176
+     104: aload_0
+     105: getfield      #17                 // Field baselineDescription:Ljava/lang/String;
+     108: aload_1
+     109: invokeinterface #110,  1          // InterfaceMethod org/flywaydb/core/extensibility/AppliedMigration.getDescription:()Ljava/lang/String;
+     114: invokevirtual #113                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+     117: ifeq          176
+     120: getstatic     #63                 // Field LOG:Lorg/flywaydb/core/api/logging/Log;
+     123: aload_0
+     124: getfield      #7                  // Field schemaHistory:Lorg/flywaydb/core/internal/schemahistory/SchemaHistory;
+     127: invokestatic  #67                 // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     130: aload_0
+     131: getfield      #13                 // Field baselineVersion:Lorg/flywaydb/core/api/MigrationVersion;
+     134: invokestatic  #67                 // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     137: aload_0
+     138: getfield      #17                 // Field baselineDescription:Ljava/lang/String;
+     141: invokedynamic #114,  0            // InvokeDynamic #1:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     146: invokeinterface #77,  2           // InterfaceMethod org/flywaydb/core/api/logging/Log.info:(Ljava/lang/String;)V
+     151: aload_0
+     152: getfield      #37                 // Field baselineResult:Lorg/flywaydb/core/api/output/BaselineResult;
+     155: iconst_1
+     156: putfield      #83                 // Field org/flywaydb/core/api/output/BaselineResult.successfullyBaselined:Z
+     159: aload_0
+     160: getfield      #37                 // Field baselineResult:Lorg/flywaydb/core/api/output/BaselineResult;
+     163: aload_0
+     164: getfield      #13                 // Field baselineVersion:Lorg/flywaydb/core/api/MigrationVersion;
+     167: invokevirtual #89                 // Method org/flywaydb/core/api/MigrationVersion.toString:()Ljava/lang/String;
+     170: putfield      #94                 // Field org/flywaydb/core/api/output/BaselineResult.baselineVersion:Ljava/lang/String;
+     173: goto          379
+     176: new           #117                // class org/flywaydb/core/api/FlywayException
+     179: dup
+     180: aload_0
+     181: getfield      #7                  // Field schemaHistory:Lorg/flywaydb/core/internal/schemahistory/SchemaHistory;
+     184: invokestatic  #67                 // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     187: aload_0
+     188: getfield      #13                 // Field baselineVersion:Lorg/flywaydb/core/api/MigrationVersion;
+     191: invokestatic  #67                 // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     194: aload_0
+     195: getfield      #17                 // Field baselineDescription:Ljava/lang/String;
+     198: aload_1
+     199: invokeinterface #100,  1          // InterfaceMethod org/flywaydb/core/extensibility/AppliedMigration.getVersion:()Lorg/flywaydb/core/api/MigrationVersion;
+     204: invokestatic  #67                 // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     207: aload_1
+     208: invokeinterface #110,  1          // InterfaceMethod org/flywaydb/core/extensibility/AppliedMigration.getDescription:()Ljava/lang/String;
+     213: getstatic     #119                // Field org/flywaydb/core/internal/Topic.REBASELINING:Lorg/flywaydb/core/internal/Topic;
+     216: invokestatic  #125                // Method org/flywaydb/core/internal/util/FlywayDbWebsiteLinks.getRedirectLinkFromTopic:(Lorg/flywaydb/core/internal/Topic;)Ljava/net/URL;
+     219: invokestatic  #67                 // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     222: invokedynamic #131,  0            // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     227: invokespecial #134                // Method org/flywaydb/core/api/FlywayException."<init>":(Ljava/lang/String;)V
+     230: athrow
+     231: aload_0
+     232: getfield      #7                  // Field schemaHistory:Lorg/flywaydb/core/internal/schemahistory/SchemaHistory;
+     235: invokevirtual #136                // Method org/flywaydb/core/internal/schemahistory/SchemaHistory.hasSchemasMarker:()Z
+     238: ifeq          276
+     241: aload_0
+     242: getfield      #13                 // Field baselineVersion:Lorg/flywaydb/core/api/MigrationVersion;
+     245: ldc           #139                // String 0
+     247: invokestatic  #141                // Method org/flywaydb/core/api/MigrationVersion.fromVersion:(Ljava/lang/String;)Lorg/flywaydb/core/api/MigrationVersion;
+     250: invokevirtual #106                // Method org/flywaydb/core/api/MigrationVersion.equals:(Ljava/lang/Object;)Z
+     253: ifeq          276
+     256: new           #117                // class org/flywaydb/core/api/FlywayException
+     259: dup
+     260: aload_0
+     261: getfield      #7                  // Field schemaHistory:Lorg/flywaydb/core/internal/schemahistory/SchemaHistory;
+     264: invokestatic  #67                 // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     267: invokedynamic #145,  0            // InvokeDynamic #3:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     272: invokespecial #134                // Method org/flywaydb/core/api/FlywayException."<init>":(Ljava/lang/String;)V
+     275: athrow
+     276: aload_0
+     277: getfield      #7                  // Field schemaHistory:Lorg/flywaydb/core/internal/schemahistory/SchemaHistory;
+     280: invokevirtual #146                // Method org/flywaydb/core/internal/schemahistory/SchemaHistory.hasNonSyntheticAppliedMigrations:()Z
+     283: ifeq          315
+     286: new           #117                // class org/flywaydb/core/api/FlywayException
+     289: dup
+     290: aload_0
+     291: getfield      #7                  // Field schemaHistory:Lorg/flywaydb/core/internal/schemahistory/SchemaHistory;
+     294: invokestatic  #67                 // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     297: getstatic     #119                // Field org/flywaydb/core/internal/Topic.REBASELINING:Lorg/flywaydb/core/internal/Topic;
+     300: invokestatic  #125                // Method org/flywaydb/core/internal/util/FlywayDbWebsiteLinks.getRedirectLinkFromTopic:(Lorg/flywaydb/core/internal/Topic;)Ljava/net/URL;
+     303: invokestatic  #67                 // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     306: invokedynamic #149,  0            // InvokeDynamic #4:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     311: invokespecial #134                // Method org/flywaydb/core/api/FlywayException."<init>":(Ljava/lang/String;)V
+     314: athrow
+     315: aload_0
+     316: getfield      #7                  // Field schemaHistory:Lorg/flywaydb/core/internal/schemahistory/SchemaHistory;
+     319: invokevirtual #152                // Method org/flywaydb/core/internal/schemahistory/SchemaHistory.allAppliedMigrations:()Ljava/util/List;
+     322: invokeinterface #156,  1          // InterfaceMethod java/util/List.isEmpty:()Z
+     327: ifeq          350
+     330: new           #117                // class org/flywaydb/core/api/FlywayException
+     333: dup
+     334: aload_0
+     335: getfield      #7                  // Field schemaHistory:Lorg/flywaydb/core/internal/schemahistory/SchemaHistory;
+     338: invokestatic  #67                 // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     341: invokedynamic #161,  0            // InvokeDynamic #5:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     346: invokespecial #134                // Method org/flywaydb/core/api/FlywayException."<init>":(Ljava/lang/String;)V
+     349: athrow
+     350: new           #117                // class org/flywaydb/core/api/FlywayException
+     353: dup
+     354: aload_0
+     355: getfield      #7                  // Field schemaHistory:Lorg/flywaydb/core/internal/schemahistory/SchemaHistory;
+     358: invokestatic  #67                 // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     361: getstatic     #119                // Field org/flywaydb/core/internal/Topic.REBASELINING:Lorg/flywaydb/core/internal/Topic;
+     364: invokestatic  #125                // Method org/flywaydb/core/internal/util/FlywayDbWebsiteLinks.getRedirectLinkFromTopic:(Lorg/flywaydb/core/internal/Topic;)Ljava/net/URL;
+     367: invokestatic  #67                 // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     370: invokedynamic #162,  0            // InvokeDynamic #6:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     375: invokespecial #134                // Method org/flywaydb/core/api/FlywayException."<init>":(Ljava/lang/String;)V
+     378: athrow
+     379: goto          406
+     382: astore_1
+     383: aload_0
+     384: getfield      #21                 // Field callbackExecutor:Lorg/flywaydb/core/internal/callback/CallbackExecutor;
+     387: getstatic     #163                // Field org/flywaydb/core/api/callback/Event.AFTER_BASELINE_ERROR:Lorg/flywaydb/core/api/callback/Event;
+     390: invokeinterface #47,  2           // InterfaceMethod org/flywaydb/core/internal/callback/CallbackExecutor.onEvent:(Lorg/flywaydb/core/api/callback/CallbackEvent;)Ljava/util/Collection;
+     395: pop
+     396: aload_0
+     397: getfield      #37                 // Field baselineResult:Lorg/flywaydb/core/api/output/BaselineResult;
+     400: iconst_0
+     401: putfield      #83                 // Field org/flywaydb/core/api/output/BaselineResult.successfullyBaselined:Z
+     404: aload_1
+     405: athrow
+     406: aload_0
+     407: getfield      #21                 // Field callbackExecutor:Lorg/flywaydb/core/internal/callback/CallbackExecutor;
+     410: getstatic     #166                // Field org/flywaydb/core/api/callback/Event.AFTER_BASELINE:Lorg/flywaydb/core/api/callback/Event;
+     413: invokeinterface #47,  2           // InterfaceMethod org/flywaydb/core/internal/callback/CallbackExecutor.onEvent:(Lorg/flywaydb/core/api/callback/CallbackEvent;)Ljava/util/Collection;
+     418: pop
+     419: aload_0
+     420: getfield      #37                 // Field baselineResult:Lorg/flywaydb/core/api/output/BaselineResult;
+     423: areturn
+    Exception table:
+       from    to  target type
+          13   379   382   Class org/flywaydb/core/api/FlywayException
+
+  static {};
+    Code:
+       0: ldc           #8                  // class org/flywaydb/core/internal/command/DbBaseline
+       2: invokestatic  #169                // Method org/flywaydb/core/api/logging/LogFactory.getLog:(Ljava/lang/Class;)Lorg/flywaydb/core/api/logging/Log;
+       5: putstatic     #63                 // Field LOG:Lorg/flywaydb/core/api/logging/Log;
+       8: return
+}

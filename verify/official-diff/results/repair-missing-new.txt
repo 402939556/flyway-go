@@ -1,0 +1,72 @@
+=== OFFICIAL MIGRATE ===
+11�� 20, 2026 11:57:16 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:57:16 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 11:57:16 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory allAppliedMigrations
+��Ϣ: Schema history table "public"."flyway_schema_history" does not exist yet
+11�� 20, 2026 11:57:16 ���� org.flywaydb.core.internal.command.DbValidate validate
+��Ϣ: Successfully validated 3 migrations (execution time 00:00.019s)
+11�� 20, 2026 11:57:16 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory create
+��Ϣ: Creating Schema History table "public"."flyway_schema_history" ...
+11�� 20, 2026 11:57:16 ���� org.flywaydb.core.internal.command.DbMigrate migrateGroup
+��Ϣ: Current version of schema "public": << Empty Schema >>
+11�� 20, 2026 11:57:16 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" to version "1 - base"
+11�� 20, 2026 11:57:16 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" to version "2 - two"
+11�� 20, 2026 11:57:16 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" with repeatable migration "rr"
+11�� 20, 2026 11:57:16 ���� org.flywaydb.core.internal.command.DbMigrate logSummary
+��Ϣ: Successfully applied 3 migrations to schema "public", now at version v2 (execution time 00:00.014s)
+RESULT	migrate	success=true	migrationsExecuted=3
+
+=== OFFICIAL REPAIR AFTER R FILE REMOVED ===
+11�� 20, 2026 11:57:17 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:57:17 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 11:57:17 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory removeFailedMigrations
+��Ϣ: Repair of failed migration in Schema History table "public"."flyway_schema_history" not necessary. No failed migration detected.
+11�� 20, 2026 11:57:17 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory delete
+��Ϣ: Repairing Schema History table for description "rr" (Marking as DELETED)  ...
+11�� 20, 2026 11:57:17 ���� org.flywaydb.core.internal.command.DbRepair repair
+��Ϣ: Successfully repaired schema history table "public"."flyway_schema_history" (execution time 00:00.045s).
+11�� 20, 2026 11:57:17 ���� org.flywaydb.core.internal.command.DbRepair repair
+��Ϣ: Please ensure the previous contents of the deleted migrations are removed from the database, or moved into an existing migration.
+RESULT	repair	repairActions=1	alignedMigrations=0
+REPAIR	Marked missing migrations as deleted
+EXIT=0
+
+=== HISTORY AFTER OFFICIAL REPAIR ===
+ installed_rank | version | description |  type  |    script    |  checksum   | success 
+----------------+---------+-------------+--------+--------------+-------------+---------
+              1 | 1       | base        | SQL    | V1__base.sql |  1964700033 | t
+              2 | 2       | two         | SQL    | V2__two.sql  | -1910640083 | t
+              3 |         | rr          | SQL    | R__rr.sql    |  -270389297 | t
+              4 |         | rr          | DELETE | R__rr.sql    |  -270389297 | t
+(4 rows)
+
+
+=== GO MIGRATE ===
+创建历史表 flyway_schema_history
+迁移 1（base）...
+  -> 成功，耗时 1 ms
+迁移 2（two）...
+  -> 成功，耗时 0 ms
+迁移 R__rr（rr）...
+  -> 成功，耗时 0 ms
+迁移完成，共执行 3 个脚本
+
+=== GO REPAIR AFTER R FILE REMOVED ===
+已清理 0 条失败记录
+EXIT=0
+
+=== HISTORY AFTER GO REPAIR ===
+ installed_rank | version | description | type |    script    |  checksum   | success 
+----------------+---------+-------------+------+--------------+-------------+---------
+              1 | 1       | base        | SQL  | V1__base.sql |  1964700033 | t
+              2 | 2       | two         | SQL  | V2__two.sql  | -1910640083 | t
+              3 |         | rr          | SQL  | R__rr.sql    |  -270389297 | t
+(3 rows)
+

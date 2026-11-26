@@ -1,0 +1,1 @@
+CREATE TABLE cb_dup_one (id INTEGER PRIMARY KEY);

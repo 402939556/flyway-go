@@ -1,0 +1,6 @@
+创建历史表 flyway_schema_history
+迁移 1（ok）...
+  -> 成功，耗时 2 ms
+迁移 2（bad）...
+执行失败: 迁移 V2__bad.sql 第 2 条语句执行失败: pq: syntax error at or near "THIS"
+语句: THIS IS NOT VALID SQL

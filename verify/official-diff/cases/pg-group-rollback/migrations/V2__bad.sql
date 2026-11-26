@@ -1,0 +1,2 @@
+CREATE TABLE group_two(id INT);
+THIS IS NOT VALID SQL;

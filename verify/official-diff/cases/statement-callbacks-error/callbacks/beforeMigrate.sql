@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS stmt_events (seq INTEGER PRIMARY KEY, event TEXT);

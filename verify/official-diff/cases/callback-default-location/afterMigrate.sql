@@ -1,0 +1,1 @@
+INSERT INTO cb_default_events(event) VALUES ('afterMigrate');

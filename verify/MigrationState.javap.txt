@@ -1,0 +1,399 @@
+Compiled from "MigrationState.java"
+public final class org.flywaydb.core.api.MigrationState extends java.lang.Enum<org.flywaydb.core.api.MigrationState> {
+  public static final org.flywaydb.core.api.MigrationState PENDING;
+
+  public static final org.flywaydb.core.api.MigrationState ABOVE_TARGET;
+
+  public static final org.flywaydb.core.api.MigrationState BELOW_BASELINE;
+
+  public static final org.flywaydb.core.api.MigrationState BASELINE_IGNORED;
+
+  public static final org.flywaydb.core.api.MigrationState BASELINE;
+
+  public static final org.flywaydb.core.api.MigrationState IGNORED;
+
+  public static final org.flywaydb.core.api.MigrationState MISSING_SUCCESS;
+
+  public static final org.flywaydb.core.api.MigrationState MISSING_FAILED;
+
+  public static final org.flywaydb.core.api.MigrationState SUCCESS;
+
+  public static final org.flywaydb.core.api.MigrationState UNDONE;
+
+  public static final org.flywaydb.core.api.MigrationState AVAILABLE;
+
+  public static final org.flywaydb.core.api.MigrationState FAILED;
+
+  public static final org.flywaydb.core.api.MigrationState OUT_OF_ORDER;
+
+  public static final org.flywaydb.core.api.MigrationState FUTURE_SUCCESS;
+
+  public static final org.flywaydb.core.api.MigrationState FUTURE_FAILED;
+
+  public static final org.flywaydb.core.api.MigrationState OUTDATED;
+
+  public static final org.flywaydb.core.api.MigrationState SUPERSEDED;
+
+  public static final org.flywaydb.core.api.MigrationState DELETED;
+
+  private final java.lang.String displayName;
+
+  private final java.lang.String pattern;
+
+  private final boolean resolved;
+
+  private final boolean applied;
+
+  private final boolean failed;
+
+  private static final org.flywaydb.core.api.MigrationState[] $VALUES;
+
+  public static org.flywaydb.core.api.MigrationState[] values();
+    Code:
+       0: getstatic     #58                 // Field $VALUES:[Lorg/flywaydb/core/api/MigrationState;
+       3: invokevirtual #62                 // Method "[Lorg/flywaydb/core/api/MigrationState;".clone:()Ljava/lang/Object;
+       6: checkcast     #63                 // class "[Lorg/flywaydb/core/api/MigrationState;"
+       9: areturn
+
+  public static org.flywaydb.core.api.MigrationState valueOf(java.lang.String);
+    Code:
+       0: ldc           #1                  // class org/flywaydb/core/api/MigrationState
+       2: aload_0
+       3: invokestatic  #67                 // Method java/lang/Enum.valueOf:(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
+       6: checkcast     #1                  // class org/flywaydb/core/api/MigrationState
+       9: areturn
+
+  private org.flywaydb.core.api.MigrationState(java.lang.String, boolean, boolean, boolean);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iload_2
+       3: aload_3
+       4: aload_3
+       5: iload         4
+       7: iload         5
+       9: iload         6
+      11: invokespecial #73                 // Method "<init>":(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;ZZZ)V
+      14: return
+
+  private org.flywaydb.core.api.MigrationState(java.lang.String, java.lang.String, boolean, boolean, boolean);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iload_2
+       3: invokespecial #77                 // Method java/lang/Enum."<init>":(Ljava/lang/String;I)V
+       6: aload_0
+       7: aload_3
+       8: putfield      #80                 // Field displayName:Ljava/lang/String;
+      11: aload_0
+      12: aload         4
+      14: putfield      #84                 // Field pattern:Ljava/lang/String;
+      17: aload_0
+      18: iload         5
+      20: putfield      #87                 // Field resolved:Z
+      23: aload_0
+      24: iload         6
+      26: putfield      #91                 // Field applied:Z
+      29: aload_0
+      30: iload         7
+      32: putfield      #94                 // Field failed:Z
+      35: return
+
+  public java.lang.String getDisplayName();
+    Code:
+       0: aload_0
+       1: getfield      #80                 // Field displayName:Ljava/lang/String;
+       4: areturn
+
+  public java.lang.String getPattern();
+    Code:
+       0: aload_0
+       1: getfield      #84                 // Field pattern:Ljava/lang/String;
+       4: areturn
+
+  public boolean isResolved();
+    Code:
+       0: aload_0
+       1: getfield      #87                 // Field resolved:Z
+       4: ireturn
+
+  public boolean isApplied();
+    Code:
+       0: aload_0
+       1: getfield      #91                 // Field applied:Z
+       4: ireturn
+
+  public boolean isFailed();
+    Code:
+       0: aload_0
+       1: getfield      #94                 // Field failed:Z
+       4: ireturn
+
+  private static org.flywaydb.core.api.MigrationState[] $values();
+    Code:
+       0: bipush        18
+       2: anewarray     #1                  // class org/flywaydb/core/api/MigrationState
+       5: dup
+       6: iconst_0
+       7: getstatic     #3                  // Field PENDING:Lorg/flywaydb/core/api/MigrationState;
+      10: aastore
+      11: dup
+      12: iconst_1
+      13: getstatic     #7                  // Field ABOVE_TARGET:Lorg/flywaydb/core/api/MigrationState;
+      16: aastore
+      17: dup
+      18: iconst_2
+      19: getstatic     #10                 // Field BELOW_BASELINE:Lorg/flywaydb/core/api/MigrationState;
+      22: aastore
+      23: dup
+      24: iconst_3
+      25: getstatic     #13                 // Field BASELINE_IGNORED:Lorg/flywaydb/core/api/MigrationState;
+      28: aastore
+      29: dup
+      30: iconst_4
+      31: getstatic     #16                 // Field BASELINE:Lorg/flywaydb/core/api/MigrationState;
+      34: aastore
+      35: dup
+      36: iconst_5
+      37: getstatic     #19                 // Field IGNORED:Lorg/flywaydb/core/api/MigrationState;
+      40: aastore
+      41: dup
+      42: bipush        6
+      44: getstatic     #22                 // Field MISSING_SUCCESS:Lorg/flywaydb/core/api/MigrationState;
+      47: aastore
+      48: dup
+      49: bipush        7
+      51: getstatic     #25                 // Field MISSING_FAILED:Lorg/flywaydb/core/api/MigrationState;
+      54: aastore
+      55: dup
+      56: bipush        8
+      58: getstatic     #28                 // Field SUCCESS:Lorg/flywaydb/core/api/MigrationState;
+      61: aastore
+      62: dup
+      63: bipush        9
+      65: getstatic     #31                 // Field UNDONE:Lorg/flywaydb/core/api/MigrationState;
+      68: aastore
+      69: dup
+      70: bipush        10
+      72: getstatic     #34                 // Field AVAILABLE:Lorg/flywaydb/core/api/MigrationState;
+      75: aastore
+      76: dup
+      77: bipush        11
+      79: getstatic     #37                 // Field FAILED:Lorg/flywaydb/core/api/MigrationState;
+      82: aastore
+      83: dup
+      84: bipush        12
+      86: getstatic     #40                 // Field OUT_OF_ORDER:Lorg/flywaydb/core/api/MigrationState;
+      89: aastore
+      90: dup
+      91: bipush        13
+      93: getstatic     #43                 // Field FUTURE_SUCCESS:Lorg/flywaydb/core/api/MigrationState;
+      96: aastore
+      97: dup
+      98: bipush        14
+     100: getstatic     #46                 // Field FUTURE_FAILED:Lorg/flywaydb/core/api/MigrationState;
+     103: aastore
+     104: dup
+     105: bipush        15
+     107: getstatic     #49                 // Field OUTDATED:Lorg/flywaydb/core/api/MigrationState;
+     110: aastore
+     111: dup
+     112: bipush        16
+     114: getstatic     #52                 // Field SUPERSEDED:Lorg/flywaydb/core/api/MigrationState;
+     117: aastore
+     118: dup
+     119: bipush        17
+     121: getstatic     #55                 // Field DELETED:Lorg/flywaydb/core/api/MigrationState;
+     124: aastore
+     125: areturn
+
+  static {};
+    Code:
+       0: new           #1                  // class org/flywaydb/core/api/MigrationState
+       3: dup
+       4: ldc           #97                 // String PENDING
+       6: iconst_0
+       7: ldc           #98                 // String Pending
+       9: ldc           #100                // String pending
+      11: iconst_1
+      12: iconst_0
+      13: iconst_0
+      14: invokespecial #73                 // Method "<init>":(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;ZZZ)V
+      17: putstatic     #3                  // Field PENDING:Lorg/flywaydb/core/api/MigrationState;
+      20: new           #1                  // class org/flywaydb/core/api/MigrationState
+      23: dup
+      24: ldc           #102                // String ABOVE_TARGET
+      26: iconst_1
+      27: ldc           #103                // String Above Target
+      29: iconst_1
+      30: iconst_0
+      31: iconst_0
+      32: invokespecial #105                // Method "<init>":(Ljava/lang/String;ILjava/lang/String;ZZZ)V
+      35: putstatic     #7                  // Field ABOVE_TARGET:Lorg/flywaydb/core/api/MigrationState;
+      38: new           #1                  // class org/flywaydb/core/api/MigrationState
+      41: dup
+      42: ldc           #108                // String BELOW_BASELINE
+      44: iconst_2
+      45: ldc           #109                // String Below Baseline
+      47: iconst_1
+      48: iconst_0
+      49: iconst_0
+      50: invokespecial #105                // Method "<init>":(Ljava/lang/String;ILjava/lang/String;ZZZ)V
+      53: putstatic     #10                 // Field BELOW_BASELINE:Lorg/flywaydb/core/api/MigrationState;
+      56: new           #1                  // class org/flywaydb/core/api/MigrationState
+      59: dup
+      60: ldc           #111                // String BASELINE_IGNORED
+      62: iconst_3
+      63: ldc           #112                // String Ignored (Baseline)
+      65: iconst_1
+      66: iconst_0
+      67: iconst_0
+      68: invokespecial #105                // Method "<init>":(Ljava/lang/String;ILjava/lang/String;ZZZ)V
+      71: putstatic     #13                 // Field BASELINE_IGNORED:Lorg/flywaydb/core/api/MigrationState;
+      74: new           #1                  // class org/flywaydb/core/api/MigrationState
+      77: dup
+      78: ldc           #114                // String BASELINE
+      80: iconst_4
+      81: ldc           #115                // String Baseline
+      83: iconst_1
+      84: iconst_1
+      85: iconst_0
+      86: invokespecial #105                // Method "<init>":(Ljava/lang/String;ILjava/lang/String;ZZZ)V
+      89: putstatic     #16                 // Field BASELINE:Lorg/flywaydb/core/api/MigrationState;
+      92: new           #1                  // class org/flywaydb/core/api/MigrationState
+      95: dup
+      96: ldc           #117                // String IGNORED
+      98: iconst_5
+      99: ldc           #118                // String Ignored
+     101: ldc           #120                // String ignored
+     103: iconst_1
+     104: iconst_0
+     105: iconst_0
+     106: invokespecial #73                 // Method "<init>":(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;ZZZ)V
+     109: putstatic     #19                 // Field IGNORED:Lorg/flywaydb/core/api/MigrationState;
+     112: new           #1                  // class org/flywaydb/core/api/MigrationState
+     115: dup
+     116: ldc           #122                // String MISSING_SUCCESS
+     118: bipush        6
+     120: ldc           #123                // String Missing
+     122: ldc           #125                // String missing
+     124: iconst_0
+     125: iconst_1
+     126: iconst_0
+     127: invokespecial #73                 // Method "<init>":(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;ZZZ)V
+     130: putstatic     #22                 // Field MISSING_SUCCESS:Lorg/flywaydb/core/api/MigrationState;
+     133: new           #1                  // class org/flywaydb/core/api/MigrationState
+     136: dup
+     137: ldc           #127                // String MISSING_FAILED
+     139: bipush        7
+     141: ldc           #128                // String Failed (Missing)
+     143: iconst_0
+     144: iconst_1
+     145: iconst_1
+     146: invokespecial #105                // Method "<init>":(Ljava/lang/String;ILjava/lang/String;ZZZ)V
+     149: putstatic     #25                 // Field MISSING_FAILED:Lorg/flywaydb/core/api/MigrationState;
+     152: new           #1                  // class org/flywaydb/core/api/MigrationState
+     155: dup
+     156: ldc           #130                // String SUCCESS
+     158: bipush        8
+     160: ldc           #131                // String Success
+     162: iconst_1
+     163: iconst_1
+     164: iconst_0
+     165: invokespecial #105                // Method "<init>":(Ljava/lang/String;ILjava/lang/String;ZZZ)V
+     168: putstatic     #28                 // Field SUCCESS:Lorg/flywaydb/core/api/MigrationState;
+     171: new           #1                  // class org/flywaydb/core/api/MigrationState
+     174: dup
+     175: ldc           #133                // String UNDONE
+     177: bipush        9
+     179: ldc           #134                // String Undone
+     181: iconst_1
+     182: iconst_1
+     183: iconst_0
+     184: invokespecial #105                // Method "<init>":(Ljava/lang/String;ILjava/lang/String;ZZZ)V
+     187: putstatic     #31                 // Field UNDONE:Lorg/flywaydb/core/api/MigrationState;
+     190: new           #1                  // class org/flywaydb/core/api/MigrationState
+     193: dup
+     194: ldc           #136                // String AVAILABLE
+     196: bipush        10
+     198: ldc           #137                // String Available
+     200: iconst_1
+     201: iconst_0
+     202: iconst_0
+     203: invokespecial #105                // Method "<init>":(Ljava/lang/String;ILjava/lang/String;ZZZ)V
+     206: putstatic     #34                 // Field AVAILABLE:Lorg/flywaydb/core/api/MigrationState;
+     209: new           #1                  // class org/flywaydb/core/api/MigrationState
+     212: dup
+     213: ldc           #139                // String FAILED
+     215: bipush        11
+     217: ldc           #140                // String Failed
+     219: iconst_1
+     220: iconst_1
+     221: iconst_1
+     222: invokespecial #105                // Method "<init>":(Ljava/lang/String;ILjava/lang/String;ZZZ)V
+     225: putstatic     #37                 // Field FAILED:Lorg/flywaydb/core/api/MigrationState;
+     228: new           #1                  // class org/flywaydb/core/api/MigrationState
+     231: dup
+     232: ldc           #142                // String OUT_OF_ORDER
+     234: bipush        12
+     236: ldc           #143                // String Out of Order
+     238: iconst_1
+     239: iconst_1
+     240: iconst_0
+     241: invokespecial #105                // Method "<init>":(Ljava/lang/String;ILjava/lang/String;ZZZ)V
+     244: putstatic     #40                 // Field OUT_OF_ORDER:Lorg/flywaydb/core/api/MigrationState;
+     247: new           #1                  // class org/flywaydb/core/api/MigrationState
+     250: dup
+     251: ldc           #145                // String FUTURE_SUCCESS
+     253: bipush        13
+     255: ldc           #146                // String Future
+     257: ldc           #148                // String future
+     259: iconst_0
+     260: iconst_1
+     261: iconst_0
+     262: invokespecial #73                 // Method "<init>":(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;ZZZ)V
+     265: putstatic     #43                 // Field FUTURE_SUCCESS:Lorg/flywaydb/core/api/MigrationState;
+     268: new           #1                  // class org/flywaydb/core/api/MigrationState
+     271: dup
+     272: ldc           #150                // String FUTURE_FAILED
+     274: bipush        14
+     276: ldc           #151                // String Failed (Future)
+     278: iconst_0
+     279: iconst_1
+     280: iconst_1
+     281: invokespecial #105                // Method "<init>":(Ljava/lang/String;ILjava/lang/String;ZZZ)V
+     284: putstatic     #46                 // Field FUTURE_FAILED:Lorg/flywaydb/core/api/MigrationState;
+     287: new           #1                  // class org/flywaydb/core/api/MigrationState
+     290: dup
+     291: ldc           #153                // String OUTDATED
+     293: bipush        15
+     295: ldc           #154                // String Outdated
+     297: iconst_1
+     298: iconst_1
+     299: iconst_0
+     300: invokespecial #105                // Method "<init>":(Ljava/lang/String;ILjava/lang/String;ZZZ)V
+     303: putstatic     #49                 // Field OUTDATED:Lorg/flywaydb/core/api/MigrationState;
+     306: new           #1                  // class org/flywaydb/core/api/MigrationState
+     309: dup
+     310: ldc           #156                // String SUPERSEDED
+     312: bipush        16
+     314: ldc           #157                // String Superseded
+     316: iconst_1
+     317: iconst_1
+     318: iconst_0
+     319: invokespecial #105                // Method "<init>":(Ljava/lang/String;ILjava/lang/String;ZZZ)V
+     322: putstatic     #52                 // Field SUPERSEDED:Lorg/flywaydb/core/api/MigrationState;
+     325: new           #1                  // class org/flywaydb/core/api/MigrationState
+     328: dup
+     329: ldc           #159                // String DELETED
+     331: bipush        17
+     333: ldc           #160                // String Deleted
+     335: iconst_0
+     336: iconst_1
+     337: iconst_0
+     338: invokespecial #105                // Method "<init>":(Ljava/lang/String;ILjava/lang/String;ZZZ)V
+     341: putstatic     #55                 // Field DELETED:Lorg/flywaydb/core/api/MigrationState;
+     344: invokestatic  #162                // Method $values:()[Lorg/flywaydb/core/api/MigrationState;
+     347: putstatic     #58                 // Field $VALUES:[Lorg/flywaydb/core/api/MigrationState;
+     350: return
+}

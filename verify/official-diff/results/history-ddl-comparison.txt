@@ -1,0 +1,140 @@
+=== RESET DBs ===
+NOTICE:  drop cascades to 2 other objects
+DETAIL:  drop cascades to table flyway_schema_history
+drop cascades to table i1
+DROP SCHEMA
+CREATE SCHEMA
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+=== OFFICIAL PG CREATE HISTORY ===
+11�� 20, 2026 12:09:15 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 12:09:15 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 12:09:15 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory allAppliedMigrations
+��Ϣ: Schema history table "public"."flyway_schema_history" does not exist yet
+11�� 20, 2026 12:09:15 ���� org.flywaydb.core.internal.command.DbValidate validate
+��Ϣ: Successfully validated 3 migrations (execution time 00:00.020s)
+11�� 20, 2026 12:09:15 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory create
+��Ϣ: Creating Schema History table "public"."flyway_schema_history" ...
+11�� 20, 2026 12:09:15 ���� org.flywaydb.core.internal.command.DbMigrate migrateGroup
+��Ϣ: Current version of schema "public": << Empty Schema >>
+11�� 20, 2026 12:09:15 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" to version "1 - create-users"
+11�� 20, 2026 12:09:15 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" to version "2 - add-email"
+11�� 20, 2026 12:09:15 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" with repeatable migration "user-view"
+11�� 20, 2026 12:09:15 ���� org.flywaydb.core.internal.command.DbMigrate logSummary
+��Ϣ: Successfully applied 3 migrations to schema "public", now at version v2 (execution time 00:00.014s)
+RESULT	migrate	success=true	migrationsExecuted=3
+
+=== OFFICIAL PG HISTORY COLUMNS ===
+  column_name   |          data_type          | character_maximum_length | is_nullable | column_default 
+----------------+-----------------------------+--------------------------+-------------+----------------
+ installed_rank | integer                     |                          | NO          | 
+ version        | character varying           |                       50 | YES         | 
+ description    | character varying           |                      200 | NO          | 
+ type           | character varying           |                       20 | NO          | 
+ script         | character varying           |                     1000 | NO          | 
+ checksum       | integer                     |                          | YES         | 
+ installed_by   | character varying           |                      100 | NO          | 
+ installed_on   | timestamp without time zone |                          | NO          | now()
+ execution_time | integer                     |                          | NO          | 
+ success        | boolean                     |                          | NO          | 
+(10 rows)
+
+
+=== OFFICIAL PG INDEXES/CONSTRAINTS ===
+          indexname          |                                                 indexdef                                                  
+-----------------------------+-----------------------------------------------------------------------------------------------------------
+ flyway_schema_history_pk    | CREATE UNIQUE INDEX flyway_schema_history_pk ON public.flyway_schema_history USING btree (installed_rank)
+ flyway_schema_history_s_idx | CREATE INDEX flyway_schema_history_s_idx ON public.flyway_schema_history USING btree (success)
+(2 rows)
+
+
+=== RESET PG FOR GO ===
+NOTICE:  drop cascades to 3 other objects
+DETAIL:  drop cascades to table flyway_schema_history
+drop cascades to table users
+drop cascades to view v_users
+DROP SCHEMA
+CREATE SCHEMA
+
+=== GO PG CREATE HISTORY ===
+创建历史表 flyway_schema_history
+迁移 1（create users）...
+  -> 成功，耗时 2 ms
+迁移 2（add email）...
+  -> 成功，耗时 0 ms
+迁移 R__user view（user view）...
+  -> 成功，耗时 1 ms
+迁移完成，共执行 3 个脚本
+
+=== GO PG HISTORY COLUMNS ===
+  column_name   |          data_type          | character_maximum_length | is_nullable | column_default 
+----------------+-----------------------------+--------------------------+-------------+----------------
+ installed_rank | integer                     |                          | NO          | 
+ version        | character varying           |                       50 | YES         | 
+ description    | character varying           |                      200 | NO          | 
+ type           | character varying           |                       20 | NO          | 
+ script         | character varying           |                     1000 | NO          | 
+ checksum       | integer                     |                          | YES         | 
+ installed_by   | character varying           |                      100 | NO          | 
+ installed_on   | timestamp without time zone |                          | NO          | now()
+ execution_time | integer                     |                          | NO          | 
+ success        | boolean                     |                          | NO          | 
+(10 rows)
+
+
+=== GO PG INDEXES/CONSTRAINTS ===
+          indexname          |                                                 indexdef                                                  
+-----------------------------+-----------------------------------------------------------------------------------------------------------
+ flyway_schema_history_pk    | CREATE UNIQUE INDEX flyway_schema_history_pk ON public.flyway_schema_history USING btree (installed_rank)
+ flyway_schema_history_s_idx | CREATE INDEX flyway_schema_history_s_idx ON public.flyway_schema_history USING btree (success)
+(2 rows)
+
+
+=== OFFICIAL MYSQL CREATE HISTORY ===
+11�� 20, 2026 12:09:16 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 12:09:16 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:mysql:******** (MySQL 8.4)
+11�� 20, 2026 12:09:16 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory allAppliedMigrations
+��Ϣ: Schema history table `flywaygo`.`flyway_schema_history` does not exist yet
+11�� 20, 2026 12:09:16 ���� org.flywaydb.core.internal.command.DbValidate validate
+��Ϣ: Successfully validated 3 migrations (execution time 00:00.029s)
+11�� 20, 2026 12:09:16 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory create
+��Ϣ: Creating Schema History table `flywaygo`.`flyway_schema_history` ...
+11�� 20, 2026 12:09:16 ���� org.flywaydb.core.internal.command.DbMigrate migrateGroup
+��Ϣ: Current version of schema `flywaygo`: << Empty Schema >>
+11�� 20, 2026 12:09:16 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema `flywaygo` to version "1 - create-users"
+11�� 20, 2026 12:09:16 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema `flywaygo` to version "2 - add-email"
+11�� 20, 2026 12:09:17 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema `flywaygo` with repeatable migration "user-view"
+11�� 20, 2026 12:09:17 ���� org.flywaydb.core.internal.command.DbMigrate logSummary
+��Ϣ: Successfully applied 3 migrations to schema `flywaygo`, now at version v2 (execution time 00:00.037s)
+RESULT	migrate	success=true	migrationsExecuted=3
+
+=== OFFICIAL MYSQL SHOW CREATE ===
+mysql: [Warning] Using a password on the command line interface can be insecure.
+flyway_schema_history	CREATE TABLE `flyway_schema_history` (\n  `installed_rank` int NOT NULL,\n  `version` varchar(50) DEFAULT NULL,\n  `description` varchar(200) NOT NULL,\n  `type` varchar(20) NOT NULL,\n  `script` varchar(1000) NOT NULL,\n  `checksum` int DEFAULT NULL,\n  `installed_by` varchar(100) NOT NULL,\n  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  `execution_time` int NOT NULL,\n  `success` tinyint(1) NOT NULL,\n  PRIMARY KEY (`installed_rank`),\n  KEY `flyway_schema_history_s_idx` (`success`)\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+=== RESET MYSQL FOR GO ===
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+=== GO MYSQL CREATE HISTORY ===
+创建历史表 flyway_schema_history
+迁移 1（create users）...
+  -> 成功，耗时 4 ms
+迁移 2（add email）...
+  -> 成功，耗时 8 ms
+迁移 R__user view（user view）...
+  -> 成功，耗时 1 ms
+迁移完成，共执行 3 个脚本
+
+=== GO MYSQL SHOW CREATE ===
+mysql: [Warning] Using a password on the command line interface can be insecure.
+flyway_schema_history	CREATE TABLE `flyway_schema_history` (\n  `installed_rank` int NOT NULL,\n  `version` varchar(50) DEFAULT NULL,\n  `description` varchar(200) NOT NULL,\n  `type` varchar(20) NOT NULL,\n  `script` varchar(1000) NOT NULL,\n  `checksum` int DEFAULT NULL,\n  `installed_by` varchar(100) NOT NULL,\n  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  `execution_time` int NOT NULL,\n  `success` tinyint(1) NOT NULL,\n  PRIMARY KEY (`installed_rank`),\n  KEY `flyway_schema_history_s_idx` (`success`)\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci

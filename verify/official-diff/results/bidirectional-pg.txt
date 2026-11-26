@@ -1,0 +1,61 @@
+=== RESET PG ===
+NOTICE:  drop cascades to 3 other objects
+DETAIL:  drop cascades to table flyway_schema_history
+drop cascades to table users
+drop cascades to view v_users
+DROP SCHEMA
+CREATE SCHEMA
+
+=== OFFICIAL BASIC MIGRATE ===
+11�� 20, 2026 12:08:35 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 12:08:35 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 12:08:35 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory allAppliedMigrations
+��Ϣ: Schema history table "public"."flyway_schema_history" does not exist yet
+11�� 20, 2026 12:08:35 ���� org.flywaydb.core.internal.command.DbValidate validate
+��Ϣ: Successfully validated 3 migrations (execution time 00:00.023s)
+11�� 20, 2026 12:08:35 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory create
+��Ϣ: Creating Schema History table "public"."flyway_schema_history" ...
+11�� 20, 2026 12:08:35 ���� org.flywaydb.core.internal.command.DbMigrate migrateGroup
+��Ϣ: Current version of schema "public": << Empty Schema >>
+11�� 20, 2026 12:08:35 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" to version "1 - create-users"
+11�� 20, 2026 12:08:35 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" to version "2 - add-email"
+11�� 20, 2026 12:08:35 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" with repeatable migration "user-view"
+11�� 20, 2026 12:08:35 ���� org.flywaydb.core.internal.command.DbMigrate logSummary
+��Ϣ: Successfully applied 3 migrations to schema "public", now at version v2 (execution time 00:00.014s)
+RESULT	migrate	success=true	migrationsExecuted=3
+JAVA_EXIT=0
+
+=== HISTORY WRITTEN BY OFFICIAL ===
+ installed_rank | version | description  |        script        |  checksum   |        installed_on        | success 
+----------------+---------+--------------+----------------------+-------------+----------------------------+---------
+              1 | 1       | create-users | V1__create-users.sql |  -475489945 | 2026-11-20 12:08:35.802109 | t
+              2 | 2       | add-email    | V2__add-email.sql    |  -504985890 | 2026-11-20 12:08:35.83748  | t
+              3 |         | user-view    | R__user-view.sql     | -2128053619 | 2026-11-20 12:08:35.854882 | t
+(3 rows)
+
+
+=== GO INFO ON OFFICIAL HISTORY ===
+Category     Version    Description                      Type         Installed On         State
+--------------------------------------------------------------------------------------------------------------
+Versioned    1          create users                     SQL          2026-11-20 12:08:35  Success
+Versioned    2          add email                        SQL          2026-11-20 12:08:35  Success
+Repeatable              user view                        SQL          2026-11-20 12:08:35  Success
+GO_INFO_EXIT=0
+
+=== GO MIGRATE ON OFFICIAL HISTORY ===
+数据库已是最新状态，无需执行迁移
+GO_MIGRATE_EXIT=0
+
+=== HISTORY AFTER GO ===
+ installed_rank | version | description  |        script        |  checksum   |        installed_on        | success 
+----------------+---------+--------------+----------------------+-------------+----------------------------+---------
+              1 | 1       | create-users | V1__create-users.sql |  -475489945 | 2026-11-20 12:08:35.802109 | t
+              2 | 2       | add-email    | V2__add-email.sql    |  -504985890 | 2026-11-20 12:08:35.83748  | t
+              3 |         | user-view    | R__user-view.sql     | -2128053619 | 2026-11-20 12:08:35.854882 | t
+(3 rows)
+

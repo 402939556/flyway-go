@@ -1,0 +1,335 @@
+Compiled from "ResolvedMigrationImpl.java"
+public class org.flywaydb.core.internal.resolver.ResolvedMigrationImpl implements org.flywaydb.core.api.resolver.ResolvedMigration {
+  private final java.lang.String script;
+
+  private final java.lang.Integer equivalentChecksum;
+
+  private final java.lang.Integer checksum;
+
+  private final org.flywaydb.core.api.MigrationVersion version;
+
+  private final java.lang.String description;
+
+  private final org.flywaydb.core.extensibility.MigrationType type;
+
+  private final java.lang.String physicalLocation;
+
+  private final org.flywaydb.core.api.executor.MigrationExecutor executor;
+
+  public org.flywaydb.core.internal.resolver.ResolvedMigrationImpl(org.flywaydb.core.api.MigrationVersion, java.lang.String, java.lang.String, java.lang.Integer, java.lang.Integer, org.flywaydb.core.extensibility.MigrationType, java.lang.String, org.flywaydb.core.api.executor.MigrationExecutor);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #7                  // Field version:Lorg/flywaydb/core/api/MigrationVersion;
+       9: aload_0
+      10: aload_2
+      11: putfield      #13                 // Field description:Ljava/lang/String;
+      14: aload_0
+      15: aload_3
+      16: putfield      #17                 // Field script:Ljava/lang/String;
+      19: aload_0
+      20: aload         4
+      22: putfield      #20                 // Field checksum:Ljava/lang/Integer;
+      25: aload_0
+      26: aload         5
+      28: putfield      #24                 // Field equivalentChecksum:Ljava/lang/Integer;
+      31: aload_0
+      32: aload         6
+      34: putfield      #27                 // Field type:Lorg/flywaydb/core/extensibility/MigrationType;
+      37: aload_0
+      38: aload         7
+      40: putfield      #31                 // Field physicalLocation:Ljava/lang/String;
+      43: aload_0
+      44: aload         8
+      46: putfield      #34                 // Field executor:Lorg/flywaydb/core/api/executor/MigrationExecutor;
+      49: return
+
+  public void validate();
+    Code:
+       0: return
+
+  public java.lang.Integer getChecksum();
+    Code:
+       0: aload_0
+       1: getfield      #20                 // Field checksum:Ljava/lang/Integer;
+       4: ifnonnull     14
+       7: aload_0
+       8: getfield      #24                 // Field equivalentChecksum:Ljava/lang/Integer;
+      11: goto          18
+      14: aload_0
+      15: getfield      #20                 // Field checksum:Ljava/lang/Integer;
+      18: areturn
+
+  public int compareTo(org.flywaydb.core.internal.resolver.ResolvedMigrationImpl);
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field version:Lorg/flywaydb/core/api/MigrationVersion;
+       4: aload_1
+       5: getfield      #7                  // Field version:Lorg/flywaydb/core/api/MigrationVersion;
+       8: invokevirtual #38                 // Method org/flywaydb/core/api/MigrationVersion.compareTo:(Lorg/flywaydb/core/api/MigrationVersion;)I
+      11: ireturn
+
+  public boolean equals(java.lang.Object);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: if_acmpne     7
+       5: iconst_1
+       6: ireturn
+       7: aload_1
+       8: ifnull        22
+      11: aload_0
+      12: invokevirtual #44                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      15: aload_1
+      16: invokevirtual #44                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      19: if_acmpeq     24
+      22: iconst_0
+      23: ireturn
+      24: aload_1
+      25: checkcast     #8                  // class org/flywaydb/core/internal/resolver/ResolvedMigrationImpl
+      28: astore_2
+      29: aload_0
+      30: getfield      #20                 // Field checksum:Ljava/lang/Integer;
+      33: ifnull        53
+      36: aload_0
+      37: getfield      #20                 // Field checksum:Ljava/lang/Integer;
+      40: aload_2
+      41: getfield      #20                 // Field checksum:Ljava/lang/Integer;
+      44: invokevirtual #48                 // Method java/lang/Integer.equals:(Ljava/lang/Object;)Z
+      47: ifne          62
+      50: goto          60
+      53: aload_2
+      54: getfield      #20                 // Field checksum:Ljava/lang/Integer;
+      57: ifnull        62
+      60: iconst_0
+      61: ireturn
+      62: aload_0
+      63: getfield      #24                 // Field equivalentChecksum:Ljava/lang/Integer;
+      66: ifnull        86
+      69: aload_0
+      70: getfield      #24                 // Field equivalentChecksum:Ljava/lang/Integer;
+      73: aload_2
+      74: getfield      #24                 // Field equivalentChecksum:Ljava/lang/Integer;
+      77: invokevirtual #48                 // Method java/lang/Integer.equals:(Ljava/lang/Object;)Z
+      80: ifne          95
+      83: goto          93
+      86: aload_2
+      87: getfield      #24                 // Field equivalentChecksum:Ljava/lang/Integer;
+      90: ifnull        95
+      93: iconst_0
+      94: ireturn
+      95: aload_0
+      96: getfield      #13                 // Field description:Ljava/lang/String;
+      99: ifnull        119
+     102: aload_0
+     103: getfield      #13                 // Field description:Ljava/lang/String;
+     106: aload_2
+     107: getfield      #13                 // Field description:Ljava/lang/String;
+     110: invokevirtual #54                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+     113: ifne          128
+     116: goto          126
+     119: aload_2
+     120: getfield      #13                 // Field description:Ljava/lang/String;
+     123: ifnull        128
+     126: iconst_0
+     127: ireturn
+     128: aload_0
+     129: getfield      #17                 // Field script:Ljava/lang/String;
+     132: ifnull        152
+     135: aload_0
+     136: getfield      #17                 // Field script:Ljava/lang/String;
+     139: aload_2
+     140: getfield      #17                 // Field script:Ljava/lang/String;
+     143: invokevirtual #54                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+     146: ifne          161
+     149: goto          159
+     152: aload_2
+     153: getfield      #17                 // Field script:Ljava/lang/String;
+     156: ifnull        161
+     159: iconst_0
+     160: ireturn
+     161: aload_0
+     162: getfield      #27                 // Field type:Lorg/flywaydb/core/extensibility/MigrationType;
+     165: aload_2
+     166: getfield      #27                 // Field type:Lorg/flywaydb/core/extensibility/MigrationType;
+     169: if_acmpeq     174
+     172: iconst_0
+     173: ireturn
+     174: aload_0
+     175: getfield      #7                  // Field version:Lorg/flywaydb/core/api/MigrationVersion;
+     178: aload_2
+     179: getfield      #7                  // Field version:Lorg/flywaydb/core/api/MigrationVersion;
+     182: invokestatic  #57                 // Method java/util/Objects.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+     185: ireturn
+
+  public int hashCode();
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field version:Lorg/flywaydb/core/api/MigrationVersion;
+       4: ifnull        17
+       7: aload_0
+       8: getfield      #7                  // Field version:Lorg/flywaydb/core/api/MigrationVersion;
+      11: invokevirtual #62                 // Method org/flywaydb/core/api/MigrationVersion.hashCode:()I
+      14: goto          18
+      17: iconst_0
+      18: istore_1
+      19: bipush        31
+      21: iload_1
+      22: imul
+      23: aload_0
+      24: getfield      #13                 // Field description:Ljava/lang/String;
+      27: ifnull        40
+      30: aload_0
+      31: getfield      #13                 // Field description:Ljava/lang/String;
+      34: invokevirtual #66                 // Method java/lang/String.hashCode:()I
+      37: goto          41
+      40: iconst_0
+      41: iadd
+      42: istore_1
+      43: bipush        31
+      45: iload_1
+      46: imul
+      47: aload_0
+      48: getfield      #17                 // Field script:Ljava/lang/String;
+      51: ifnull        64
+      54: aload_0
+      55: getfield      #17                 // Field script:Ljava/lang/String;
+      58: invokevirtual #66                 // Method java/lang/String.hashCode:()I
+      61: goto          65
+      64: iconst_0
+      65: iadd
+      66: istore_1
+      67: bipush        31
+      69: iload_1
+      70: imul
+      71: aload_0
+      72: getfield      #20                 // Field checksum:Ljava/lang/Integer;
+      75: ifnull        88
+      78: aload_0
+      79: getfield      #20                 // Field checksum:Ljava/lang/Integer;
+      82: invokevirtual #67                 // Method java/lang/Integer.hashCode:()I
+      85: goto          89
+      88: iconst_0
+      89: iadd
+      90: istore_1
+      91: bipush        31
+      93: iload_1
+      94: imul
+      95: aload_0
+      96: getfield      #24                 // Field equivalentChecksum:Ljava/lang/Integer;
+      99: ifnull        112
+     102: aload_0
+     103: getfield      #24                 // Field equivalentChecksum:Ljava/lang/Integer;
+     106: invokevirtual #67                 // Method java/lang/Integer.hashCode:()I
+     109: goto          113
+     112: iconst_0
+     113: iadd
+     114: istore_1
+     115: bipush        31
+     117: iload_1
+     118: imul
+     119: aload_0
+     120: getfield      #27                 // Field type:Lorg/flywaydb/core/extensibility/MigrationType;
+     123: invokeinterface #68,  1           // InterfaceMethod org/flywaydb/core/extensibility/MigrationType.hashCode:()I
+     128: iadd
+     129: istore_1
+     130: iload_1
+     131: ireturn
+
+  public java.lang.String toString();
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field version:Lorg/flywaydb/core/api/MigrationVersion;
+       4: invokestatic  #71                 // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+       7: aload_0
+       8: getfield      #13                 // Field description:Ljava/lang/String;
+      11: aload_0
+      12: getfield      #17                 // Field script:Ljava/lang/String;
+      15: aload_0
+      16: invokevirtual #75                 // Method getChecksum:()Ljava/lang/Integer;
+      19: aload_0
+      20: getfield      #27                 // Field type:Lorg/flywaydb/core/extensibility/MigrationType;
+      23: invokestatic  #71                 // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      26: aload_0
+      27: getfield      #31                 // Field physicalLocation:Ljava/lang/String;
+      30: aload_0
+      31: getfield      #34                 // Field executor:Lorg/flywaydb/core/api/executor/MigrationExecutor;
+      34: invokestatic  #71                 // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      37: invokedynamic #79,  0             // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      42: areturn
+
+  public boolean checksumMatches(java.lang.Integer);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: getfield      #20                 // Field checksum:Ljava/lang/Integer;
+       5: invokestatic  #57                 // Method java/util/Objects.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+       8: ifne          29
+      11: aload_1
+      12: aload_0
+      13: getfield      #24                 // Field equivalentChecksum:Ljava/lang/Integer;
+      16: invokestatic  #57                 // Method java/util/Objects.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+      19: ifeq          33
+      22: aload_0
+      23: getfield      #24                 // Field equivalentChecksum:Ljava/lang/Integer;
+      26: ifnull        33
+      29: iconst_1
+      30: goto          34
+      33: iconst_0
+      34: ireturn
+
+  public boolean checksumMatchesWithoutBeingIdentical(java.lang.Integer);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: getfield      #24                 // Field equivalentChecksum:Ljava/lang/Integer;
+       5: invokestatic  #57                 // Method java/util/Objects.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+       8: ifeq          26
+      11: aload_1
+      12: aload_0
+      13: getfield      #20                 // Field checksum:Ljava/lang/Integer;
+      16: invokestatic  #57                 // Method java/util/Objects.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+      19: ifne          26
+      22: iconst_1
+      23: goto          27
+      26: iconst_0
+      27: ireturn
+
+  public java.lang.String getScript();
+    Code:
+       0: aload_0
+       1: getfield      #17                 // Field script:Ljava/lang/String;
+       4: areturn
+
+  public org.flywaydb.core.api.MigrationVersion getVersion();
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field version:Lorg/flywaydb/core/api/MigrationVersion;
+       4: areturn
+
+  public java.lang.String getDescription();
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field description:Ljava/lang/String;
+       4: areturn
+
+  public org.flywaydb.core.extensibility.MigrationType getType();
+    Code:
+       0: aload_0
+       1: getfield      #27                 // Field type:Lorg/flywaydb/core/extensibility/MigrationType;
+       4: areturn
+
+  public java.lang.String getPhysicalLocation();
+    Code:
+       0: aload_0
+       1: getfield      #31                 // Field physicalLocation:Ljava/lang/String;
+       4: areturn
+
+  public org.flywaydb.core.api.executor.MigrationExecutor getExecutor();
+    Code:
+       0: aload_0
+       1: getfield      #34                 // Field executor:Lorg/flywaydb/core/api/executor/MigrationExecutor;
+       4: areturn
+}

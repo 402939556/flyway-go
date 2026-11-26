@@ -1,0 +1,1 @@
+CREATE TABLE repair_ok (id INT);

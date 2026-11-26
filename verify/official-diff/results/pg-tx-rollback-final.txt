@@ -1,0 +1,9 @@
+=== OFFICIAL PG TX ROLLBACK ===
+EXIT=1
+1|1|SQL|true
+0
+=== GO PG TX ROLLBACK ===
+EXIT=1
+1|1|SQL|true
+2|2|SQL|false
+0

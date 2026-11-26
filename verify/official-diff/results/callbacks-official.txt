@@ -1,0 +1,21 @@
+11�� 20, 2026 11:48:43 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:48:43 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 11:48:43 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory allAppliedMigrations
+��Ϣ: Schema history table "public"."flyway_schema_history" does not exist yet
+11�� 20, 2026 11:48:43 ���� org.flywaydb.core.internal.command.DbValidate validate
+��Ϣ: Successfully validated 1 migration (execution time 00:00.015s)
+11�� 20, 2026 11:48:43 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory create
+��Ϣ: Creating Schema History table "public"."flyway_schema_history" ...
+11�� 20, 2026 11:48:43 ���� org.flywaydb.core.internal.callback.SqlScriptCallbackFactory
+��Ϣ: Executing SQL callback: beforeMigrate - 
+11�� 20, 2026 11:48:43 ���� org.flywaydb.core.internal.command.DbMigrate migrateGroup
+��Ϣ: Current version of schema "public": << Empty Schema >>
+11�� 20, 2026 11:48:43 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" to version "1 - base"
+11�� 20, 2026 11:48:43 ���� org.flywaydb.core.internal.command.DbMigrate logSummary
+��Ϣ: Successfully applied 1 migration to schema "public", now at version v1 (execution time 00:00.008s)
+11�� 20, 2026 11:48:43 ���� org.flywaydb.core.internal.callback.SqlScriptCallbackFactory
+��Ϣ: Executing SQL callback: afterMigrate - 
+RESULT	migrate	success=true	migrationsExecuted=1

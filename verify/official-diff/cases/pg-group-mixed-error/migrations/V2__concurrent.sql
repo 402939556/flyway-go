@@ -1,0 +1,1 @@
+CREATE INDEX CONCURRENTLY gm_idx ON gm_base(id);

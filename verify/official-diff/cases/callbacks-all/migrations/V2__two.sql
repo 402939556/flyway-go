@@ -1,0 +1,1 @@
+ALTER TABLE cb_base ADD COLUMN name TEXT;

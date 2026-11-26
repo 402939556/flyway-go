@@ -1,0 +1,95 @@
+Compiled from "ResolvedMigration.java"
+public interface org.flywaydb.core.api.resolver.ResolvedMigration extends org.flywaydb.core.api.resolver.ChecksumMatcher {
+  public abstract org.flywaydb.core.api.MigrationVersion getVersion();
+
+  public default boolean isVersioned();
+    Code:
+       0: aload_0
+       1: invokeinterface #1,  1            // InterfaceMethod getVersion:()Lorg/flywaydb/core/api/MigrationVersion;
+       6: ifnull        13
+       9: iconst_1
+      10: goto          14
+      13: iconst_0
+      14: ireturn
+
+  public abstract java.lang.String getDescription();
+
+  public abstract java.lang.String getScript();
+
+  public abstract java.lang.Integer getChecksum();
+
+  public abstract org.flywaydb.core.extensibility.MigrationType getType();
+
+  public abstract java.lang.String getPhysicalLocation();
+
+  public abstract org.flywaydb.core.api.executor.MigrationExecutor getExecutor();
+
+  public default org.flywaydb.core.api.MigrationState getState(org.flywaydb.core.internal.info.MigrationInfoContext);
+    Code:
+       0: aload_0
+       1: invokeinterface #1,  1            // InterfaceMethod getVersion:()Lorg/flywaydb/core/api/MigrationVersion;
+       6: ifnull        147
+       9: aload_0
+      10: invokeinterface #1,  1            // InterfaceMethod getVersion:()Lorg/flywaydb/core/api/MigrationVersion;
+      15: aload_1
+      16: getfield      #7                  // Field org/flywaydb/core/internal/info/MigrationInfoContext.lastApplied:Lorg/flywaydb/core/api/MigrationVersion;
+      19: getstatic     #13                 // Field org/flywaydb/core/api/MigrationVersion.EMPTY:Lorg/flywaydb/core/api/MigrationVersion;
+      22: if_acmpne     32
+      25: aload_1
+      26: getfield      #18                 // Field org/flywaydb/core/internal/info/MigrationInfoContext.pendingBaseline:Lorg/flywaydb/core/api/MigrationVersion;
+      29: goto          36
+      32: aload_1
+      33: getfield      #21                 // Field org/flywaydb/core/internal/info/MigrationInfoContext.appliedBaseline:Lorg/flywaydb/core/api/MigrationVersion;
+      36: invokevirtual #24                 // Method org/flywaydb/core/api/MigrationVersion.compareTo:(Lorg/flywaydb/core/api/MigrationVersion;)I
+      39: ifge          46
+      42: getstatic     #28                 // Field org/flywaydb/core/api/MigrationState.BELOW_BASELINE:Lorg/flywaydb/core/api/MigrationState;
+      45: areturn
+      46: aload_0
+      47: invokeinterface #1,  1            // InterfaceMethod getVersion:()Lorg/flywaydb/core/api/MigrationVersion;
+      52: aload_1
+      53: getfield      #7                  // Field org/flywaydb/core/internal/info/MigrationInfoContext.lastApplied:Lorg/flywaydb/core/api/MigrationVersion;
+      56: getstatic     #13                 // Field org/flywaydb/core/api/MigrationVersion.EMPTY:Lorg/flywaydb/core/api/MigrationVersion;
+      59: if_acmpne     69
+      62: aload_1
+      63: getfield      #18                 // Field org/flywaydb/core/internal/info/MigrationInfoContext.pendingBaseline:Lorg/flywaydb/core/api/MigrationVersion;
+      66: goto          73
+      69: aload_1
+      70: getfield      #21                 // Field org/flywaydb/core/internal/info/MigrationInfoContext.appliedBaseline:Lorg/flywaydb/core/api/MigrationVersion;
+      73: invokevirtual #24                 // Method org/flywaydb/core/api/MigrationVersion.compareTo:(Lorg/flywaydb/core/api/MigrationVersion;)I
+      76: ifne          83
+      79: getstatic     #34                 // Field org/flywaydb/core/api/MigrationState.BASELINE_IGNORED:Lorg/flywaydb/core/api/MigrationState;
+      82: areturn
+      83: aload_1
+      84: getfield      #37                 // Field org/flywaydb/core/internal/info/MigrationInfoContext.target:Lorg/flywaydb/core/api/MigrationVersion;
+      87: ifnull        120
+      90: aload_1
+      91: getfield      #37                 // Field org/flywaydb/core/internal/info/MigrationInfoContext.target:Lorg/flywaydb/core/api/MigrationVersion;
+      94: getstatic     #40                 // Field org/flywaydb/core/api/MigrationVersion.NEXT:Lorg/flywaydb/core/api/MigrationVersion;
+      97: if_acmpeq     120
+     100: aload_0
+     101: invokeinterface #1,  1            // InterfaceMethod getVersion:()Lorg/flywaydb/core/api/MigrationVersion;
+     106: aload_1
+     107: getfield      #37                 // Field org/flywaydb/core/internal/info/MigrationInfoContext.target:Lorg/flywaydb/core/api/MigrationVersion;
+     110: invokevirtual #24                 // Method org/flywaydb/core/api/MigrationVersion.compareTo:(Lorg/flywaydb/core/api/MigrationVersion;)I
+     113: ifle          120
+     116: getstatic     #43                 // Field org/flywaydb/core/api/MigrationState.ABOVE_TARGET:Lorg/flywaydb/core/api/MigrationState;
+     119: areturn
+     120: aload_0
+     121: invokeinterface #1,  1            // InterfaceMethod getVersion:()Lorg/flywaydb/core/api/MigrationVersion;
+     126: aload_1
+     127: getfield      #7                  // Field org/flywaydb/core/internal/info/MigrationInfoContext.lastApplied:Lorg/flywaydb/core/api/MigrationVersion;
+     130: invokevirtual #24                 // Method org/flywaydb/core/api/MigrationVersion.compareTo:(Lorg/flywaydb/core/api/MigrationVersion;)I
+     133: ifge          147
+     136: aload_1
+     137: getfield      #46                 // Field org/flywaydb/core/internal/info/MigrationInfoContext.outOfOrder:Z
+     140: ifne          147
+     143: getstatic     #50                 // Field org/flywaydb/core/api/MigrationState.IGNORED:Lorg/flywaydb/core/api/MigrationState;
+     146: areturn
+     147: getstatic     #53                 // Field org/flywaydb/core/api/MigrationState.PENDING:Lorg/flywaydb/core/api/MigrationState;
+     150: areturn
+
+  public default boolean canCompareWith(org.flywaydb.core.api.resolver.ResolvedMigration);
+    Code:
+       0: iconst_1
+       1: ireturn
+}

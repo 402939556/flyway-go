@@ -1,0 +1,1 @@
+CREATE TABLE rr_refresh (id INT);

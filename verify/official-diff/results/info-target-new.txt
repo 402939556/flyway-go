@@ -1,0 +1,72 @@
+=== OFFICIAL MIGRATE ALL ===
+11�� 20, 2026 11:56:28 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:56:28 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 11:56:28 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory allAppliedMigrations
+��Ϣ: Schema history table "public"."flyway_schema_history" does not exist yet
+11�� 20, 2026 11:56:28 ���� org.flywaydb.core.internal.command.DbValidate validate
+��Ϣ: Successfully validated 3 migrations (execution time 00:00.018s)
+11�� 20, 2026 11:56:28 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory create
+��Ϣ: Creating Schema History table "public"."flyway_schema_history" ...
+11�� 20, 2026 11:56:28 ���� org.flywaydb.core.internal.command.DbMigrate migrateGroup
+��Ϣ: Current version of schema "public": << Empty Schema >>
+11�� 20, 2026 11:56:28 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" to version "1 - one"
+11�� 20, 2026 11:56:28 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" to version "2 - two"
+11�� 20, 2026 11:56:28 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" to version "3 - three"
+11�� 20, 2026 11:56:28 ���� org.flywaydb.core.internal.command.DbMigrate logSummary
+��Ϣ: Successfully applied 3 migrations to schema "public", now at version v3 (execution time 00:00.014s)
+RESULT	migrate	success=true	migrationsExecuted=3
+
+=== OFFICIAL INFO TARGET=2 ===
+INFO	Versioned	1	one	SQL	SUCCESS	V1__one.sql
+INFO	Versioned	2	two	SQL	SUCCESS	V2__two.sql
+INFO	Versioned	3	three	SQL	SUCCESS	V3__three.sql
+
+=== GO INFO TARGET=2 ===
+Category     Version    Description                      Type         Installed On         State
+--------------------------------------------------------------------------------------------------------------
+Versioned    1          one                              SQL          2026-11-20 11:56:28  Success
+Versioned    2          two                              SQL          2026-11-20 11:56:28  Success
+Versioned    3          three                            SQL          2026-11-20 11:56:28  Success
+EXIT=0
+=== OFFICIAL MIGRATE TARGET=2 ===
+11�� 20, 2026 11:56:36 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:56:36 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 11:56:36 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory allAppliedMigrations
+��Ϣ: Schema history table "public"."flyway_schema_history" does not exist yet
+11�� 20, 2026 11:56:36 ���� org.flywaydb.core.internal.command.DbValidate validate
+��Ϣ: Successfully validated 3 migrations (execution time 00:00.016s)
+11�� 20, 2026 11:56:36 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory create
+��Ϣ: Creating Schema History table "public"."flyway_schema_history" ...
+11�� 20, 2026 11:56:36 ���� org.flywaydb.core.internal.command.DbMigrate migrateGroup
+��Ϣ: Current version of schema "public": << Empty Schema >>
+11�� 20, 2026 11:56:36 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" to version "1 - one"
+11�� 20, 2026 11:56:36 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" to version "2 - two"
+11�� 20, 2026 11:56:36 ���� org.flywaydb.core.internal.command.DbMigrate logSummary
+��Ϣ: Successfully applied 2 migrations to schema "public", now at version v2 (execution time 00:00.010s)
+RESULT	migrate	success=true	migrationsExecuted=2
+
+=== OFFICIAL INFO TARGET=2 ===
+11�� 20, 2026 11:56:37 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:56:37 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+INFO	Versioned	1	one	SQL	SUCCESS	V1__one.sql
+INFO	Versioned	2	two	SQL	SUCCESS	V2__two.sql
+INFO	Versioned	3	three	SQL	ABOVE_TARGET	V3__three.sql
+
+=== GO INFO TARGET=2 (same DB) ===
+Category     Version    Description                      Type         Installed On         State
+--------------------------------------------------------------------------------------------------------------
+Versioned    1          one                              SQL          2026-11-20 11:56:36  Success
+Versioned    2          two                              SQL          2026-11-20 11:56:36  Success
+Versioned    3          three                            SQL                               Pending
+EXIT=0

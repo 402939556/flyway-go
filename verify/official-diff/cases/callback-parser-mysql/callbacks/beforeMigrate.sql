@@ -1,0 +1,7 @@
+CREATE TABLE cb_mysql_data (id INTEGER PRIMARY KEY);
+DELIMITER //
+CREATE PROCEDURE cb_mysql_proc()
+BEGIN
+  INSERT INTO cb_mysql_data(id) VALUES (1);
+END //
+DELIMITER ;

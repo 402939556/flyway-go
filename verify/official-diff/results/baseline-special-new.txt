@@ -1,0 +1,64 @@
+=== OFFICIAL BASELINE VERSION latest ===
+11�� 20, 2026 11:53:06 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:53:06 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 11:53:06 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory create
+��Ϣ: Creating Schema History table "public"."flyway_schema_history" with baseline ...
+11�� 20, 2026 11:53:06 ���� org.flywaydb.core.internal.command.DbBaseline baseline
+��Ϣ: Successfully baselined schema with version: << Latest Version >>
+RESULT	baseline	success=true	baselineVersion=<< Latest Version >>
+EXIT=0
+HISTORY=1|<< Latest Version >>|<< Flyway Baseline >>|BASELINE|<< Flyway Baseline >>
+=== GO BASELINE VERSION latest ===
+执行失败: 非法 baselineVersion "<< Latest Version >>": 版本号只能包含 0..9 与点号，非法版本: << Latest Version >>
+EXIT=1
+HISTORY=
+=== OFFICIAL BASELINE VERSION current ===
+11�� 20, 2026 11:53:07 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:53:07 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 11:53:07 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory create
+��Ϣ: Creating Schema History table "public"."flyway_schema_history" with baseline ...
+11�� 20, 2026 11:53:07 ���� org.flywaydb.core.internal.command.DbBaseline baseline
+��Ϣ: Successfully baselined schema with version: << Current Version >>
+RESULT	baseline	success=true	baselineVersion=<< Current Version >>
+EXIT=0
+HISTORY=1|<< Current Version >>|<< Flyway Baseline >>|BASELINE|<< Flyway Baseline >>
+=== GO BASELINE VERSION current ===
+已建立基线，版本 current
+EXIT=0
+HISTORY=1|current|<< Flyway Baseline >>|BASELINE|<< Flyway Baseline >>
+=== OFFICIAL BASELINE VERSION next ===
+11�� 20, 2026 11:53:09 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:53:09 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 11:53:09 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory create
+��Ϣ: Creating Schema History table "public"."flyway_schema_history" with baseline ...
+11�� 20, 2026 11:53:09 ���� org.flywaydb.core.internal.command.DbBaseline baseline
+��Ϣ: Successfully baselined schema with version: << Next Version >>
+RESULT	baseline	success=true	baselineVersion=<< Next Version >>
+EXIT=0
+HISTORY=1|<< Next Version >>|<< Flyway Baseline >>|BASELINE|<< Flyway Baseline >>
+=== GO BASELINE VERSION next ===
+已建立基线，版本 next
+EXIT=0
+HISTORY=1|next|<< Flyway Baseline >>|BASELINE|<< Flyway Baseline >>
+=== OFFICIAL BASELINE VERSION 0 ===
+11�� 20, 2026 11:53:10 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:53:10 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 11:53:10 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory create
+��Ϣ: Creating Schema History table "public"."flyway_schema_history" with baseline ...
+11�� 20, 2026 11:53:10 ���� org.flywaydb.core.internal.command.DbBaseline baseline
+��Ϣ: Successfully baselined schema with version: 0
+RESULT	baseline	success=true	baselineVersion=0
+EXIT=0
+HISTORY=1|0|<< Flyway Baseline >>|BASELINE|<< Flyway Baseline >>
+=== GO BASELINE VERSION 0 ===
+已建立基线，版本 0
+EXIT=0
+HISTORY=1|0|<< Flyway Baseline >>|BASELINE|<< Flyway Baseline >>

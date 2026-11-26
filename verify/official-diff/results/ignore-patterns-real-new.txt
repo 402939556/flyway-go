@@ -1,0 +1,58 @@
+=== OFFICIAL VALIDATE no history default ===
+11�� 20, 2026 11:54:19 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:54:19 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 11:54:19 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory allAppliedMigrations
+��Ϣ: Schema history table "public"."flyway_schema_history" does not exist yet
+RESULT	validate	valid=false	invalidMigrations=3	validateCount=0
+INVALID	1	one	E:\work\flyway-go\verify\official-diff\cases\ignore-patterns\V1__one.sql	RESOLVED_VERSIONED_MIGRATION_NOT_APPLIED	Detected resolved migration not applied to database: 1.
+To fix this error, either run migrate, or set -ignoreMigrationPatterns='*:pending'.
+INVALID	2	two	E:\work\flyway-go\verify\official-diff\cases\ignore-patterns\V2__two.sql	RESOLVED_VERSIONED_MIGRATION_NOT_APPLIED	Detected resolved migration not applied to database: 2.
+To fix this error, either run migrate, or set -ignoreMigrationPatterns='*:pending'.
+INVALID	3	three	E:\work\flyway-go\verify\official-diff\cases\ignore-patterns\V3__three.sql	RESOLVED_VERSIONED_MIGRATION_NOT_APPLIED	Detected resolved migration not applied to database: 3.
+To fix this error, either run migrate, or set -ignoreMigrationPatterns='*:pending'.
+EXIT=0
+=== OFFICIAL VALIDATE no history *:pending ===
+11�� 20, 2026 11:54:20 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:54:20 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 11:54:20 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory allAppliedMigrations
+��Ϣ: Schema history table "public"."flyway_schema_history" does not exist yet
+11�� 20, 2026 11:54:20 ���� org.flywaydb.core.internal.command.DbValidate validate
+��Ϣ: Successfully validated 3 migrations (execution time 00:00.016s)
+RESULT	validate	valid=true	invalidMigrations=0	validateCount=3
+EXIT=0
+=== OFFICIAL VALIDATE no history versioned:pending ===
+11�� 20, 2026 11:54:21 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:54:21 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 11:54:21 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory allAppliedMigrations
+��Ϣ: Schema history table "public"."flyway_schema_history" does not exist yet
+11�� 20, 2026 11:54:21 ���� org.flywaydb.core.internal.command.DbValidate validate
+��Ϣ: Successfully validated 3 migrations (execution time 00:00.017s)
+RESULT	validate	valid=true	invalidMigrations=0	validateCount=3
+EXIT=0
+=== OFFICIAL VALIDATE no history repeatable:pending ===
+11�� 20, 2026 11:54:21 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:54:21 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 11:54:21 ���� org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory allAppliedMigrations
+��Ϣ: Schema history table "public"."flyway_schema_history" does not exist yet
+RESULT	validate	valid=false	invalidMigrations=3	validateCount=0
+INVALID	1	one	E:\work\flyway-go\verify\official-diff\cases\ignore-patterns\V1__one.sql	RESOLVED_VERSIONED_MIGRATION_NOT_APPLIED	Detected resolved migration not applied to database: 1.
+To fix this error, either run migrate, or set -ignoreMigrationPatterns='*:pending'.
+INVALID	2	two	E:\work\flyway-go\verify\official-diff\cases\ignore-patterns\V2__two.sql	RESOLVED_VERSIONED_MIGRATION_NOT_APPLIED	Detected resolved migration not applied to database: 2.
+To fix this error, either run migrate, or set -ignoreMigrationPatterns='*:pending'.
+INVALID	3	three	E:\work\flyway-go\verify\official-diff\cases\ignore-patterns\V3__three.sql	RESOLVED_VERSIONED_MIGRATION_NOT_APPLIED	Detected resolved migration not applied to database: 3.
+To fix this error, either run migrate, or set -ignoreMigrationPatterns='*:pending'.
+EXIT=0
+=== GO VALIDATE no history default ===
+执行失败: 历史表 flyway_schema_history 不存在，无法校验，请先执行 migrate 或 baseline
+EXIT=1
+=== GO with -ignore-pending ===
+执行失败: 历史表 flyway_schema_history 不存在，无法校验，请先执行 migrate 或 baseline
+EXIT=1

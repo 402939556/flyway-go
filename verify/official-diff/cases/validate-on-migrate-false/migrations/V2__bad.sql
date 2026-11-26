@@ -1,0 +1,1 @@
+DROP TABLE IF EXISTS vom_bad; CREATE TABLE vom_bad (id INT);

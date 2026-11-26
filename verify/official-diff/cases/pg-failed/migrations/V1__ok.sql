@@ -1,0 +1,1 @@
+CREATE TABLE ok1 (id integer PRIMARY KEY);

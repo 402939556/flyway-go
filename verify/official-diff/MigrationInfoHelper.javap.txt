@@ -1,0 +1,134 @@
+Compiled from "MigrationInfoHelper.java"
+public class org.flywaydb.core.internal.resolver.MigrationInfoHelper {
+  public static org.flywaydb.core.internal.util.Pair<org.flywaydb.core.api.MigrationVersion, java.lang.String> extractVersionAndDescription(java.lang.String, java.lang.String, java.lang.String, java.lang.String[], boolean);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_3
+       3: invokestatic  #1                  // Method cleanMigrationName:(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)Ljava/lang/String;
+       6: astore        5
+       8: aload         5
+      10: aload_2
+      11: invokevirtual #7                  // Method java/lang/String.indexOf:(Ljava/lang/String;)I
+      14: istore        6
+      16: iload         6
+      18: ifge          32
+      21: aload         5
+      23: astore        7
+      25: ldc           #13                 // String
+      27: astore        8
+      29: goto          63
+      32: aload         5
+      34: iconst_0
+      35: iload         6
+      37: invokevirtual #15                 // Method java/lang/String.substring:(II)Ljava/lang/String;
+      40: astore        7
+      42: aload         5
+      44: iload         6
+      46: aload_2
+      47: invokevirtual #19                 // Method java/lang/String.length:()I
+      50: iadd
+      51: invokevirtual #23                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      54: ldc           #26                 // String _
+      56: ldc           #28                 // String
+      58: invokevirtual #30                 // Method java/lang/String.replace:(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+      61: astore        8
+      63: aload         7
+      65: invokestatic  #34                 // Method org/flywaydb/core/internal/util/StringUtils.hasText:(Ljava/lang/String;)Z
+      68: ifeq          128
+      71: iload         4
+      73: ifeq          97
+      76: new           #40                 // class org/flywaydb/core/api/FlywayException
+      79: dup
+      80: aload_0
+      81: aload_1
+      82: aload_2
+      83: aload         8
+      85: aload_3
+      86: iconst_0
+      87: aaload
+      88: invokedynamic #42,  0             // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      93: invokespecial #46                 // Method org/flywaydb/core/api/FlywayException."<init>":(Ljava/lang/String;)V
+      96: athrow
+      97: aload         7
+      99: invokestatic  #50                 // Method org/flywaydb/core/api/MigrationVersion.fromVersion:(Ljava/lang/String;)Lorg/flywaydb/core/api/MigrationVersion;
+     102: aload         8
+     104: invokestatic  #56                 // Method org/flywaydb/core/internal/util/Pair.of:(Ljava/lang/Object;Ljava/lang/Object;)Lorg/flywaydb/core/internal/util/Pair;
+     107: areturn
+     108: astore        9
+     110: new           #40                 // class org/flywaydb/core/api/FlywayException
+     113: dup
+     114: aload_0
+     115: aload         7
+     117: invokedynamic #64,  0             // InvokeDynamic #1:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     122: aload         9
+     124: invokespecial #67                 // Method org/flywaydb/core/api/FlywayException."<init>":(Ljava/lang/String;Ljava/lang/Throwable;)V
+     127: athrow
+     128: iload         4
+     130: ifne          154
+     133: new           #40                 // class org/flywaydb/core/api/FlywayException
+     136: dup
+     137: aload_0
+     138: aload_1
+     139: aload_2
+     140: aload         8
+     142: aload_3
+     143: iconst_0
+     144: aaload
+     145: invokedynamic #70,  0             // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     150: invokespecial #46                 // Method org/flywaydb/core/api/FlywayException."<init>":(Ljava/lang/String;)V
+     153: athrow
+     154: aconst_null
+     155: aload         8
+     157: invokestatic  #56                 // Method org/flywaydb/core/internal/util/Pair.of:(Ljava/lang/Object;Ljava/lang/Object;)Lorg/flywaydb/core/internal/util/Pair;
+     160: areturn
+    Exception table:
+       from    to  target type
+          97   107   108   Class java/lang/Exception
+
+  private static java.lang.String cleanMigrationName(java.lang.String, java.lang.String, java.lang.String[]);
+    Code:
+       0: aload_2
+       1: astore_3
+       2: aload_3
+       3: arraylength
+       4: istore        4
+       6: iconst_0
+       7: istore        5
+       9: iload         5
+      11: iload         4
+      13: if_icmpge     67
+      16: aload_3
+      17: iload         5
+      19: aaload
+      20: astore        6
+      22: aload_0
+      23: aload         6
+      25: invokevirtual #71                 // Method java/lang/String.endsWith:(Ljava/lang/String;)Z
+      28: ifeq          61
+      31: aload_0
+      32: aload_1
+      33: invokestatic  #74                 // Method org/flywaydb/core/internal/util/StringUtils.hasLength:(Ljava/lang/String;)Z
+      36: ifeq          46
+      39: aload_1
+      40: invokevirtual #19                 // Method java/lang/String.length:()I
+      43: goto          47
+      46: iconst_0
+      47: aload_0
+      48: invokevirtual #19                 // Method java/lang/String.length:()I
+      51: aload         6
+      53: invokevirtual #19                 // Method java/lang/String.length:()I
+      56: isub
+      57: invokevirtual #15                 // Method java/lang/String.substring:(II)Ljava/lang/String;
+      60: areturn
+      61: iinc          5, 1
+      64: goto          9
+      67: aload_0
+      68: areturn
+
+  private org.flywaydb.core.internal.resolver.MigrationInfoHelper();
+    Code:
+       0: aload_0
+       1: invokespecial #77                 // Method java/lang/Object."<init>":()V
+       4: return
+}

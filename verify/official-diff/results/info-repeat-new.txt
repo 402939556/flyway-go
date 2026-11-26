@@ -1,0 +1,44 @@
+=== OFFICIAL INFO AFTER REPEATABLE CONTENT CHANGE (before migrate) ===
+11�� 20, 2026 11:54:09 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:54:09 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+INFO	Versioned	1	one	SQL	SUCCESS	2026-11-20 11:54:08.933062	postgres	V1__one.sql	-204315647	1
+INFO	Repeatable	null	rr	SQL	OUTDATED	2026-11-20 11:54:08.96873	postgres	R__rr.sql	-294343637	2
+INFO	Repeatable	null	rr	SQL	PENDING	null		R__rr.sql	-1134146896	null
+=== GO INFO AFTER REPEATABLE CONTENT CHANGE (before migrate) ===
+Category     Version    Description                      Type         Installed On         State
+--------------------------------------------------------------------------------------------------------------
+Versioned    1          one                              SQL          2026-11-20 11:54:08  Success
+Repeatable              rr                               SQL          2026-11-20 11:54:08  Outdated
+=== OFFICIAL MIGRATE REAPPLY ===
+11�� 20, 2026 11:54:10 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:54:10 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+11�� 20, 2026 11:54:10 ���� org.flywaydb.core.internal.command.DbValidate validate
+��Ϣ: Successfully validated 3 migrations (execution time 00:00.032s)
+11�� 20, 2026 11:54:10 ���� org.flywaydb.core.internal.command.DbMigrate migrateGroup
+��Ϣ: Current version of schema "public": 1
+11�� 20, 2026 11:54:10 ���� org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+��Ϣ: Migrating schema "public" with repeatable migration "rr"
+11�� 20, 2026 11:54:10 ���� org.flywaydb.core.internal.command.DbMigrate logSummary
+��Ϣ: Successfully applied 1 migration to schema "public" (execution time 00:00.010s)
+RESULT	migrate	success=true	migrationsExecuted=1
+=== OFFICIAL INFO AFTER REPEATABLE REAPPLY ===
+11�� 20, 2026 11:54:11 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Environment: default
+11�� 20, 2026 11:54:11 ���� org.flywaydb.core.FlywayExecutor init
+��Ϣ: Database: jdbc:postgresql:******** (PostgreSQL 16.16)
+INFO	Versioned	1	one	SQL	SUCCESS	2026-11-20 11:54:08.933062	postgres	V1__one.sql	-204315647	1
+INFO	Repeatable	null	rr	SQL	SUPERSEDED	2026-11-20 11:54:08.96873	postgres	R__rr.sql	-294343637	2
+INFO	Repeatable	null	rr	SQL	SUCCESS	2026-11-20 11:54:10.625306	postgres	R__rr.sql	-1134146896	3
+=== GO INFO AFTER REPEATABLE REAPPLY (same DB) ===
+Category     Version    Description                      Type         Installed On         State
+--------------------------------------------------------------------------------------------------------------
+Versioned    1          one                              SQL          2026-11-20 11:54:08  Success
+Repeatable              rr                               SQL          2026-11-20 11:54:10  Success
+=== DB HISTORY ===
+1|1|one|SQL|V1__one.sql|-204315647|true
+2|NULL|rr|SQL|R__rr.sql|-294343637|true
+3|NULL|rr|SQL|R__rr.sql|-1134146896|true

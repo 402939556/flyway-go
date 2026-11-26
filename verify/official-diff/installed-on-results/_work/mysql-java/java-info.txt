@@ -1,0 +1,1 @@
+INFO	Versioned	1	installed on	SQL	SUCCESS	V1__installed_on.sql	1718168648	1	root	2024-01-02 03:04:05.0	2024-01-01T19:04:05Z

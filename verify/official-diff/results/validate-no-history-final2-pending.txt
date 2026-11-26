@@ -1,0 +1,1 @@
+RESULT	validate	valid=true	invalidMigrations=0	validateCount=3

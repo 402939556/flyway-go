@@ -1,0 +1,1 @@
+CREATE TABLE vom_ok (id INT);

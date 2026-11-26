@@ -1,0 +1,4 @@
+创建历史表 flyway_schema_history
+迁移 1（placeholder table）...
+执行失败: 迁移 V1__placeholder_table.sql 第 1 条语句执行失败: pq: syntax error at or near "$"
+语句: CREATE TABLE ${table_name} (id integer PRIMARY KEY)

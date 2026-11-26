@@ -1,0 +1,1 @@
+CREATE TABLE cb_mysql_main (id INTEGER PRIMARY KEY);

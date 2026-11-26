@@ -1,0 +1,141 @@
+===== 完整迁移流程 =====
+mysql: [Warning] Using a password on the command line interface can be insecure.
+=== RUN   TestMySQL
+=== RUN   TestMySQL/完整迁移流程
+    integration_test.go:28: 创建历史表 flyway_schema_history
+    integration_test.go:28: 迁移 1（create users）...
+    integration_test.go:28:   -> 成功，耗时 5 ms
+    integration_test.go:28: 迁移 2（add email）...
+    integration_test.go:28:   -> 成功，耗时 8 ms
+    integration_test.go:28: 迁移 R__user view（user view）...
+    integration_test.go:28:   -> 成功，耗时 1 ms
+    integration_test.go:28: 迁移完成，共执行 3 个脚本
+    integration_test.go:28: 数据库已是最新状态，无需执行迁移
+--- PASS: TestMySQL (0.06s)
+    --- PASS: TestMySQL/完整迁移流程 (0.06s)
+PASS
+ok  	github.com/linsu/flywaygo/core	0.095s
+GO_EXIT=0
+===== 校验和篡改应被拦截 =====
+mysql: [Warning] Using a password on the command line interface can be insecure.
+=== RUN   TestMySQL
+=== RUN   TestMySQL/校验和篡改应被拦截
+    integration_test.go:28: 创建历史表 flyway_schema_history
+    integration_test.go:28: 迁移 1（create）...
+    integration_test.go:28:   -> 成功，耗时 4 ms
+    integration_test.go:28: 迁移完成，共执行 1 个脚本
+    integration_test.go:209: 按预期拦截: Validate failed: 迁移 V1__create.sql 的校验和不一致：数据库记录 -1692034512，本地计算 1562644323
+--- PASS: TestMySQL (0.04s)
+    --- PASS: TestMySQL/校验和篡改应被拦截 (0.04s)
+PASS
+ok  	github.com/linsu/flywaygo/core	0.077s
+GO_EXIT=0
+===== 失败的迁移应被记录并可修复 =====
+mysql: [Warning] Using a password on the command line interface can be insecure.
+=== RUN   TestMySQL
+=== RUN   TestMySQL/失败的迁移应被记录并可修复
+    integration_test.go:28: 创建历史表 flyway_schema_history
+    integration_test.go:28: 迁移 1（ok）...
+    integration_test.go:28:   -> 成功，耗时 6 ms
+    integration_test.go:28: 迁移 2（bad）...
+    integration_test.go:223: 按预期失败: 迁移 V2__bad.sql 第 2 条语句执行失败: Error 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'THIS IS NOT VALID SQL' at line 1
+        语句: THIS IS NOT VALID SQL
+    integration_test.go:28: 已清理 1 条失败记录
+--- PASS: TestMySQL (0.05s)
+    --- PASS: TestMySQL/失败的迁移应被记录并可修复 (0.05s)
+PASS
+ok  	github.com/linsu/flywaygo/core	0.091s
+GO_EXIT=0
+===== 版本顺序与数值排序 =====
+mysql: [Warning] Using a password on the command line interface can be insecure.
+=== RUN   TestMySQL
+=== RUN   TestMySQL/版本顺序与数值排序
+    integration_test.go:28: 创建历史表 flyway_schema_history
+    integration_test.go:28: 迁移 1（one）...
+    integration_test.go:28:   -> 成功，耗时 5 ms
+    integration_test.go:28: 迁移 1.9（nine）...
+    integration_test.go:28:   -> 成功，耗时 5 ms
+    integration_test.go:28: 迁移 1.10（ten）...
+    integration_test.go:28:   -> 成功，耗时 4 ms
+    integration_test.go:28: 迁移完成，共执行 3 个脚本
+--- PASS: TestMySQL (0.05s)
+    --- PASS: TestMySQL/版本顺序与数值排序 (0.05s)
+PASS
+ok  	github.com/linsu/flywaygo/core	0.089s
+GO_EXIT=0
+===== 可重复迁移内容变化后重跑 =====
+mysql: [Warning] Using a password on the command line interface can be insecure.
+=== RUN   TestMySQL
+=== RUN   TestMySQL/可重复迁移内容变化后重跑
+    integration_test.go:28: 创建历史表 flyway_schema_history
+    integration_test.go:28: 迁移 1（t）...
+    integration_test.go:28:   -> 成功，耗时 4 ms
+    integration_test.go:28: 迁移 R__view（view）...
+    integration_test.go:28:   -> 成功，耗时 1 ms
+    integration_test.go:28: 迁移完成，共执行 2 个脚本
+    integration_test.go:28: 迁移 R__view（view）...
+    integration_test.go:28:   -> 成功，耗时 2 ms
+    integration_test.go:28: 迁移完成，共执行 1 个脚本
+--- PASS: TestMySQL (0.06s)
+    --- PASS: TestMySQL/可重复迁移内容变化后重跑 (0.06s)
+PASS
+ok  	github.com/linsu/flywaygo/core	0.095s
+GO_EXIT=0
+===== baseline 接管存量库 =====
+mysql: [Warning] Using a password on the command line interface can be insecure.
+=== RUN   TestMySQL
+=== RUN   TestMySQL/baseline_接管存量库
+    integration_test.go:28: 数据库非空且无历史表，自动执行 baseline（版本 1）
+    integration_test.go:28: 迁移 2（new）...
+    integration_test.go:28:   -> 成功，耗时 5 ms
+    integration_test.go:28: 迁移完成，共执行 1 个脚本
+--- PASS: TestMySQL (0.06s)
+    --- PASS: TestMySQL/baseline_接管存量库 (0.06s)
+PASS
+ok  	github.com/linsu/flywaygo/core	0.105s
+GO_EXIT=0
+===== clean 清空对象 =====
+mysql: [Warning] Using a password on the command line interface can be insecure.
+=== RUN   TestMySQL
+=== RUN   TestMySQL/clean_清空对象
+    integration_test.go:28: 创建历史表 flyway_schema_history
+    integration_test.go:28: 迁移 1（a）...
+    integration_test.go:28:   -> 成功，耗时 4 ms
+    integration_test.go:28: 迁移 2（b）...
+    integration_test.go:28:   -> 成功，耗时 5 ms
+    integration_test.go:28: 迁移完成，共执行 2 个脚本
+    integration_test.go:28: clean 完成，清理了 5 个对象
+--- PASS: TestMySQL (0.06s)
+    --- PASS: TestMySQL/clean_清空对象 (0.06s)
+PASS
+ok  	github.com/linsu/flywaygo/core	0.098s
+GO_EXIT=0
+===== undo 回滚最新版本 =====
+mysql: [Warning] Using a password on the command line interface can be insecure.
+=== RUN   TestMySQL
+=== RUN   TestMySQL/undo_回滚最新版本
+    integration_test.go:28: 创建历史表 flyway_schema_history
+    integration_test.go:28: 迁移 1（create）...
+    integration_test.go:28:   -> 成功，耗时 4 ms
+    integration_test.go:28: 迁移完成，共执行 1 个脚本
+    integration_test.go:28: 迁移 1（drop）...
+    integration_test.go:28:   -> 成功，耗时 2 ms
+    integration_test.go:28: 已撤销版本 1
+--- PASS: TestMySQL (0.04s)
+    --- PASS: TestMySQL/undo_回滚最新版本 (0.04s)
+PASS
+ok  	github.com/linsu/flywaygo/core	0.083s
+GO_EXIT=0
+===== info 状态正确 =====
+mysql: [Warning] Using a password on the command line interface can be insecure.
+=== RUN   TestMySQL
+=== RUN   TestMySQL/info_状态正确
+    integration_test.go:28: 创建历史表 flyway_schema_history
+    integration_test.go:28: 迁移 1（done）...
+    integration_test.go:28:   -> 成功，耗时 5 ms
+    integration_test.go:28: 迁移完成，共执行 1 个脚本
+--- PASS: TestMySQL (0.04s)
+    --- PASS: TestMySQL/info_状态正确 (0.04s)
+PASS
+ok  	github.com/linsu/flywaygo/core	0.080s
+GO_EXIT=0
